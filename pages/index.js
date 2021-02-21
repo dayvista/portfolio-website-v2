@@ -11,7 +11,8 @@ const HomePage = () => {
   return (
     <VStack
       w={["85vw", null, "100vw"]}
-      justify="center"
+      h="100vh"
+      justify="space-evenly"
       align="center"
       m="auto"
       fontFamily="Times New Roman, Times, serif"
