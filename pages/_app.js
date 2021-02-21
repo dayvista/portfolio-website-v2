@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
               async
               defer
               data-domain="liamdavis.dev"
-              src="https://plausible.io/js/plausible.js"
+              src="https://stats.liamdavis.dev/js/index.js"
             />
           )}
       </Head>
