@@ -28,7 +28,7 @@ const HomePage = () => {
       <UnorderedList spacing={7}>
         <ListItem>
           <Text size="md">
-            I make web apps and manage a team of developers/designers at{" "}
+            I make and manage full-stack web apps at{" "}
             <ChakraLink
               _active
               href="https://www.seoforrealestateinvestors.com/"
@@ -44,7 +44,7 @@ const HomePage = () => {
           <Text>
             I freelance with{" "}
             <ChakraLink
-              href="http://gammaguys.studio/"
+              href="http://gammaguysstudio.com/"
               target="_blank"
               rel="noopener noreferral nofollow"
             >
