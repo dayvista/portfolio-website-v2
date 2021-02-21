@@ -10,14 +10,14 @@ import {
 const HomePage = () => {
   return (
     <VStack
-      w="100vw"
+      w={["85vw", null, "100vw"]}
       justify="center"
       align="center"
       m="auto"
       fontFamily="Times New Roman, Times, serif"
     >
       <VStack m="5vh 0">
-        <Heading as="h1" size="md">
+        <Heading as="h1" size="md" textAlign={["center", null, "inherit"]}>
           The Best Web Developer Portfolio You've Ever Seen
         </Heading>
         <Heading as="h2" size="sm">
@@ -81,6 +81,32 @@ const HomePage = () => {
           </ChakraLink>
         </Text>
       </VStack>
+      <Text mt="5vh !important">
+        Made with{" "}
+        <ChakraLink
+          href="https://reactjs.org/"
+          target="_blank"
+          rel="noopener noreferral nofollow"
+        >
+          React
+        </ChakraLink>{" "}
+        /{" "}
+        <ChakraLink
+          href="https://nextjs.org/"
+          target="_blank"
+          rel="noopener noreferral nofollow"
+        >
+          Next.js
+        </ChakraLink>{" "}
+        and{" "}
+        <ChakraLink
+          href="https://chakra-ui.com/"
+          target="_blank"
+          rel="noopener noreferral nofollow"
+        >
+          Chakra UI
+        </ChakraLink>
+      </Text>
     </VStack>
   );
 };
