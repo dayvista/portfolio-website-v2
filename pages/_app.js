@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>liamdavis.dev</title>
+        <title>Liam Davis | Web Developer</title>
 
         <link
           rel="icon"
