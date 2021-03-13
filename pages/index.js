@@ -19,7 +19,7 @@ const HomePage = () => {
     >
       <VStack m="5vh 0">
         <Heading as="h1" size="md" textAlign={["center", null, "inherit"]}>
-          The Best Web Developer Portfolio You've Ever Seen
+          My Portfolio Website
         </Heading>
         <Heading as="h2" size="sm">
           By Liam Davis
