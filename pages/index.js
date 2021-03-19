@@ -19,7 +19,6 @@ import {
   ChakraSun,
   ChakraMoon,
 } from "src/lib/icons";
-import { default as darkModeStyles } from "src/theme/css/darkModeIcons.module.css";
 import { default as NextImage } from "next/image";
 
 const socialLinks = [
@@ -65,7 +64,12 @@ const HomePage = () => {
         <Box
           color={color}
           onClick={toggleColorMode}
-          className={darkModeStyles.container}
+          cursor="pointer"
+          fontSize="32px"
+          right={["1.5rem", null, "2.5rem"]}
+          top={["1rem", null, "2rem"]}
+          position="absolute"
+          transition="0.25s all"
           _hover={{ color: colorMode === "light" ? "grey.base" : "grey.100" }}
         >
           <Tooltip
