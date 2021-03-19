@@ -105,7 +105,7 @@ const HomePage = () => {
             animate={{
               scaleY: colorMode === "light" ? 1 : -1,
             }}
-            transition={{ bounce: 0, duration: 0, delay: 0.01 }}
+            transition={{ bounce: 0, duration: 0 }}
           >
             {colorMode === "light" ? (
               <NextImage
