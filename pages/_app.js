@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
+import "@fontsource/biorhyme/300.css";
+import "@fontsource/space-grotesk/300.css";
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -29,7 +31,6 @@ const App = ({ Component, pageProps }) => {
     <>
       <Head>
         <title>Liam Davis | Web Developer</title>
-
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <ChakraProvider theme={appTheme}>

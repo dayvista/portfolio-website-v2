@@ -1,7 +1,16 @@
 import { theme } from "@chakra-ui/react";
+import { Heading, Text } from "src/theme/components";
 
 export const appTheme = {
   ...theme,
+  styles: {
+    global: {
+      "html, body": {
+        fontWeight: 300,
+        fontFamily: "Space Grotesk, sans-serif",
+      },
+    },
+  },
   colors: {
     ...theme.colors,
     white: "#F2EFE9",
@@ -45,5 +54,10 @@ export const appTheme = {
       800: "#35191c",
       900: "#1a0408",
     },
+  },
+  components: {
+    ...theme.components,
+    Heading,
+    Text,
   },
 };
