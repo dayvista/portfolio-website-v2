@@ -17,6 +17,7 @@ import {
   ChakraMoon,
 } from "src/lib/icons";
 import { default as darkModeStyles } from "src/theme/css/darkModeIcons.module.css";
+import { default as NextImage } from "next/image";
 
 const socialLinks = [
   {
@@ -60,7 +61,6 @@ const HomePage = () => {
           color={color}
           onClick={toggleColorMode}
           className={darkModeStyles.container}
-          key="moon"
           _hover={{ color: colorMode === "light" ? "grey.base" : "grey.100" }}
         >
           <Tooltip
@@ -76,12 +76,32 @@ const HomePage = () => {
         <Heading
           as="h1"
           size="lg"
-          alignSelf="flex-start"
           userSelect="none"
           color={color}
+          alignSelf="flex-start"
         >
           Liam Davis | Web Developer
         </Heading>
+        <motion.div
+          style={{
+            position: "relative",
+            width: "384px",
+            height: "384px",
+            userSelect: "none",
+          }}
+          as={motion.div}
+          initial={{ scaleY: 1 }}
+          animate={{
+            scaleY: colorMode === "light" ? 1 : -1,
+          }}
+          transition={{ bounce: 0, duration: 0 }}
+        >
+          {colorMode === "light" ? (
+            <NextImage src="/logoDark.svg" layout="fill" objectFit="cover" />
+          ) : (
+            <NextImage src="/logoLight.svg" layout="fill" objectFit="cover" />
+          )}
+        </motion.div>
         <HStack w="20%" justify="space-between">
           {socialLinks.map((obj) => {
             return (

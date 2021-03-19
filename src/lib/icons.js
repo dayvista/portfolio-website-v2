@@ -1,11 +1,13 @@
 import { chakra } from "@chakra-ui/react";
 
-import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
-import { SiLinkedin } from "react-icons/si";
-import { HiMail } from "react-icons/hi";
+import { VscGithubAlt } from "react-icons/vsc";
+import { IoMailOutline } from "react-icons/io5";
+import { GiStripedSun } from "react-icons/gi";
+import { WiMoonAltWaningCrescent6 } from "react-icons/wi";
+import { RiLinkedinLine } from "react-icons/ri";
 
-export const ChakraMail = chakra(HiMail);
-export const ChakraGitHub = chakra(FaGithub);
-export const ChakraLinkedIn = chakra(SiLinkedin);
-export const ChakraSun = chakra(FaSun);
-export const ChakraMoon = chakra(FaMoon);
+export const ChakraMail = chakra(IoMailOutline);
+export const ChakraGitHub = chakra(VscGithubAlt);
+export const ChakraLinkedIn = chakra(RiLinkedinLine);
+export const ChakraSun = chakra(GiStripedSun);
+export const ChakraMoon = chakra(WiMoonAltWaningCrescent6);
