@@ -4,9 +4,12 @@ import {
   HStack,
   Link as ChakraLink,
   Box,
+  Tooltip,
+} from "@chakra-ui/react";
+import {
+  useMediaQuery,
   useColorMode,
   useColorModeValue,
-  Tooltip,
 } from "@chakra-ui/react";
 import { m as motion } from "framer-motion";
 import {
@@ -43,6 +46,8 @@ const HomePage = () => {
   const bg = useColorModeValue("white", "black");
   const color = useColorModeValue("black", "white");
 
+  const [isLargerThan1024Px] = useMediaQuery("( min-width: 1025px )");
+
   return (
     <>
       <VStack
@@ -66,7 +71,7 @@ const HomePage = () => {
           <Tooltip
             label={colorMode === "light" ? "Light Mode" : "Dark Mode"}
             aria-label="A tooltip for dark/light modes"
-            closeOnClick={false}
+            closeOnClick={isLargerThan1024Px ? false : true}
             userSelect="none"
           >
             <span>
@@ -83,7 +88,7 @@ const HomePage = () => {
         >
           Liam Davis | Web Developer
         </Heading>
-        <Box w="384px" h="384px">
+        <Box w={["320px", null, "384px"]} h={["320px", null, "384px"]}>
           <motion.div
             style={{
               position: "relative",
@@ -115,7 +120,7 @@ const HomePage = () => {
             )}
           </motion.div>
         </Box>
-        <HStack w={["80%", null, "20%"]} justify="space-between">
+        <HStack w={["80%", null, "40%", null, "20%"]} justify="space-between">
           {socialLinks.map((obj) => {
             return (
               <ChakraLink
