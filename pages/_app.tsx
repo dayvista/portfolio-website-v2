@@ -7,11 +7,13 @@ import Head from "next/head";
 import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
 import "@fontsource/biorhyme/300.css";
 import "@fontsource/space-grotesk/300.css";
+import type { NextRouter } from "next/router";
+import type { AppProps } from "next/app";
 
-const App = ({ Component, pageProps }) => {
-  const router = useRouter();
+const App = ({ Component, pageProps }: AppProps) => {
+  const router: NextRouter = useRouter();
 
-  const [url, setUrl] = useState(undefined);
+  const [url, setUrl] = useState<string>(undefined);
 
   typeof window !== "undefined" &&
     useAckee(
@@ -24,8 +26,10 @@ const App = ({ Component, pageProps }) => {
     );
 
   useEffect(() => {
-    setUrl(router?.pathname);
-  }, [router?.pathname]);
+    if (router?.pathname) {
+      setUrl(router.pathname);
+    }
+  }, [router]);
 
   return (
     <>
