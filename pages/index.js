@@ -99,9 +99,19 @@ const HomePage = () => {
             transition={{ bounce: 0, duration: 0 }}
           >
             {colorMode === "light" ? (
-              <NextImage src="/logoDark.svg" layout="fill" objectFit="cover" />
+              <NextImage
+                src="/logoDark.svg"
+                layout="fill"
+                objectFit="cover"
+                priority={true}
+              />
             ) : (
-              <NextImage src="/logoLight.svg" layout="fill" objectFit="cover" />
+              <NextImage
+                src="/logoLight.svg"
+                layout="fill"
+                objectFit="cover"
+                priority={true}
+              />
             )}
           </motion.div>
         </Box>
