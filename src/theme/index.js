@@ -1,13 +1,15 @@
 import { theme } from "@chakra-ui/react";
 import { Heading, Text } from "src/theme/components";
 
-export const appTheme = {
+const appTheme = {
   ...theme,
   styles: {
     global: {
       "html, body": {
         fontWeight: 300,
         fontFamily: "Space Grotesk, sans-serif",
+        overflowX: "hidden",
+        color: "black",
       },
     },
   },
@@ -41,6 +43,19 @@ export const appTheme = {
       800: "#29232b",
       900: "#100a15",
     },
+    gray: {
+      base: "#564E58",
+      50: "#f9eff9",
+      100: "#dcd5de",
+      200: "#c3bbc4",
+      300: "#a9a0ab",
+      400: "#8f8592",
+      500: "#766c79",
+      600: "#5c545f",
+      700: "#423c45",
+      800: "#29232b",
+      900: "#100a15",
+    },
     red: {
       base: "#904E55",
       50: "#ffeaed",
@@ -60,4 +75,10 @@ export const appTheme = {
     Heading,
     Text,
   },
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: true,
+  },
 };
+
+export default appTheme;

@@ -1,19 +1,110 @@
-import { Heading, VStack, HStack, chakra } from "@chakra-ui/react";
-import { default as NextLink } from "next/link";
+import {
+  Heading,
+  VStack,
+  HStack,
+  Link as ChakraLink,
+  Box,
+  useColorMode,
+  useColorModeValue,
+  Tooltip,
+} from "@chakra-ui/react";
 import { m as motion } from "framer-motion";
+import {
+  ChakraGitHub,
+  ChakraLinkedIn,
+  ChakraMail,
+  ChakraSun,
+  ChakraMoon,
+} from "src/lib/icons";
+import { default as darkModeStyles } from "src/theme/css/darkModeIcons.module.css";
+
+const socialLinks = [
+  {
+    link: "https://github.com/dayvista",
+    alt: "Liam Davis' GitHub profile, username dayvista",
+    icon: <ChakraGitHub />,
+  },
+  {
+    link: "https://www.linkedin.com/in/wjdiii",
+    alt: "Liam Davis' LinkedIn profile",
+    icon: <ChakraLinkedIn />,
+  },
+  {
+    link: "mailto:liamdavis@tuta.io",
+    alt: "Click here to email Liam directly.",
+    icon: <ChakraMail />,
+  },
+];
 
 const HomePage = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  const bg = useColorModeValue("white", "black");
+  const color = useColorModeValue("black", "white");
+
   return (
-    <VStack w="100vw" h="100vh" p="10vh 10vw" align="center">
-      <Heading as="h1" size="lg">
-        Liam Davis | Web Developer
-      </Heading>
-      <HStack w="65%">
-        <NextLink href="/projects">
-          <a>Projects</a>
-        </NextLink>
-      </HStack>
-    </VStack>
+    <>
+      <VStack
+        w="100vw"
+        h="100vh"
+        p="7.5vh 10vw"
+        justify="space-between"
+        align="center"
+        as={motion.div}
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: [0, 0, 0, 0, 1], x: [-10, -10, -10, -10, 0] }}
+        bg={bg}
+        transition="0.25s all"
+      >
+        <Box
+          color={color}
+          onClick={toggleColorMode}
+          className={darkModeStyles.container}
+          key="moon"
+          _hover={{ color: colorMode === "light" ? "grey.base" : "grey.100" }}
+        >
+          <Tooltip
+            label={colorMode === "light" ? "Light Mode" : "Dark Mode"}
+            aria-label="A tooltip for dark/light modes"
+            closeOnClick={false}
+          >
+            <span>
+              {colorMode === "light" ? <ChakraSun /> : <ChakraMoon />}
+            </span>
+          </Tooltip>
+        </Box>
+        <Heading
+          as="h1"
+          size="lg"
+          alignSelf="flex-start"
+          userSelect="none"
+          color={color}
+        >
+          Liam Davis | Web Developer
+        </Heading>
+        <HStack w="20%" justify="space-between">
+          {socialLinks.map((obj) => {
+            return (
+              <ChakraLink
+                href={obj.link}
+                alt={obj.alt}
+                target="_blank"
+                rel="noopener noreferral nofollow"
+                fontSize="32px"
+                color={color}
+                _hover={{
+                  color: colorMode === "light" ? "grey.base" : "grey.100",
+                }}
+                _focus={{ boxShadow: "none" }}
+                key={obj.link}
+              >
+                {obj.icon}
+              </ChakraLink>
+            );
+          })}
+        </HStack>
+      </VStack>
+    </>
   );
 };
 

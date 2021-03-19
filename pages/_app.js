@@ -1,5 +1,5 @@
 import { CSSReset, ChakraProvider } from "@chakra-ui/react";
-import { appTheme } from "src/theme";
+import appTheme from "src/theme";
 import * as useAckee from "use-ackee";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
