@@ -67,6 +67,7 @@ const HomePage = () => {
             label={colorMode === "light" ? "Light Mode" : "Dark Mode"}
             aria-label="A tooltip for dark/light modes"
             closeOnClick={false}
+            userSelect="none"
           >
             <span>
               {colorMode === "light" ? <ChakraSun /> : <ChakraMoon />}
@@ -82,27 +83,29 @@ const HomePage = () => {
         >
           Liam Davis | Web Developer
         </Heading>
-        <motion.div
-          style={{
-            position: "relative",
-            width: "384px",
-            height: "384px",
-            userSelect: "none",
-          }}
-          as={motion.div}
-          initial={{ scaleY: 1 }}
-          animate={{
-            scaleY: colorMode === "light" ? 1 : -1,
-          }}
-          transition={{ bounce: 0, duration: 0 }}
-        >
-          {colorMode === "light" ? (
-            <NextImage src="/logoDark.svg" layout="fill" objectFit="cover" />
-          ) : (
-            <NextImage src="/logoLight.svg" layout="fill" objectFit="cover" />
-          )}
-        </motion.div>
-        <HStack w="20%" justify="space-between">
+        <Box w="384px" h="384px">
+          <motion.div
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "100%",
+              userSelect: "none",
+            }}
+            as={motion.div}
+            initial={{ scaleY: 1 }}
+            animate={{
+              scaleY: colorMode === "light" ? 1 : -1,
+            }}
+            transition={{ bounce: 0, duration: 0 }}
+          >
+            {colorMode === "light" ? (
+              <NextImage src="/logoDark.svg" layout="fill" objectFit="cover" />
+            ) : (
+              <NextImage src="/logoLight.svg" layout="fill" objectFit="cover" />
+            )}
+          </motion.div>
+        </Box>
+        <HStack w={["80%", null, "20%"]} justify="space-between">
           {socialLinks.map((obj) => {
             return (
               <ChakraLink
