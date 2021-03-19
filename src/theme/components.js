@@ -1,26 +1,22 @@
 export const Heading = {
+  baseStyle: {
+    fontFamily: "BioRhyme, serif",
+  },
   sizes: {
     sm: {
-      fontSize: "25px",
+      fontSize: "24px",
     },
     md: {
-      fontSize: "35px",
+      fontSize: "28px",
+    },
+    lg: {
+      fontSize: "32px",
     },
   },
 };
 
 export const Text = {
   baseStyle: {
-    fontSize: "20px",
-  },
-};
-
-export const Link = {
-  baseStyle: {
-    color: "blue",
-    textDecoration: "underline",
-    _visited: {
-      color: "purple",
-    },
+    fontFamily: "Space Grotesk, sans-serif",
   },
 };
