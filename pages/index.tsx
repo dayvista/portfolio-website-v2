@@ -1,151 +1,43 @@
-import {
-  Heading,
-  VStack,
-  HStack,
-  Link as ChakraLink,
-  Box,
-  Tooltip,
-} from "@chakra-ui/react";
-import {
-  useMediaQuery,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import { m as motion } from "framer-motion";
-import {
-  ChakraGitHub,
-  ChakraLinkedIn,
-  ChakraMail,
-  ChakraSun,
-  ChakraMoon,
-} from "src/lib/icons";
 import { default as NextImage } from "next/image";
 
-const socialLinks = [
-  {
-    link: "https://github.com/dayvista",
-    alt: "Liam Davis' GitHub profile, username dayvista",
-    icon: <ChakraGitHub />,
-  },
-  {
-    link: "https://www.linkedin.com/in/wjdiii",
-    alt: "Liam Davis' LinkedIn profile",
-    icon: <ChakraLinkedIn />,
-  },
-  {
-    link: "mailto:liamdavis@tuta.io",
-    alt: "Click here to email Liam directly.",
-    icon: <ChakraMail />,
-  },
-];
-
 const HomePage = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-
-  const bg = useColorModeValue("white", "black");
-  const color = useColorModeValue("black", "white");
-
-  const [isLargerThan1024Px] = useMediaQuery("( min-width: 1025px )");
+  const { colorMode } = useColorMode();
 
   return (
-    <>
-      <VStack
-        w="100vw"
-        h="100vh"
-        p="7.5vh 10vw"
-        justify="space-between"
-        align="center"
-        as={motion.div}
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: [0, 0, 0, 0, 1], x: [-10, -10, -10, -10, 0] }}
-        bg={bg}
-        transition="0.25s all"
+    <Box w={["320px", null, "384px"]} h={["320px", null, "384px"]}>
+      <motion.div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          userSelect: "none",
+        }}
+        initial={{ scaleY: 1 }}
+        animate={{
+          scaleY: colorMode === "light" ? 1 : -1,
+        }}
+        transition={{ bounce: 0, duration: 0 }}
       >
-        <Box
-          color={color}
-          onClick={toggleColorMode}
-          cursor="pointer"
-          fontSize="32px"
-          right={["1.5rem", null, "2.5rem"]}
-          top={["1rem", null, "2rem"]}
-          position="absolute"
-          transition="0.25s all"
-          _hover={{ color: colorMode === "light" ? "grey.base" : "grey.100" }}
-        >
-          <Tooltip
-            label={colorMode === "light" ? "Light Mode" : "Dark Mode"}
-            aria-label="A tooltip for dark/light modes"
-            closeOnClick={isLargerThan1024Px ? false : true}
-            userSelect="none"
-          >
-            <span>
-              {colorMode === "light" ? <ChakraSun /> : <ChakraMoon />}
-            </span>
-          </Tooltip>
-        </Box>
-        <Heading
-          as="h1"
-          size="lg"
-          userSelect="none"
-          color={color}
-          alignSelf="flex-start"
-        >
-          Liam Davis | Web Developer
-        </Heading>
-        <Box w={["320px", null, "384px"]} h={["320px", null, "384px"]}>
-          <motion.div
-            style={{
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              userSelect: "none",
-            }}
-            initial={{ scaleY: 1 }}
-            animate={{
-              scaleY: colorMode === "light" ? 1 : -1,
-            }}
-            transition={{ bounce: 0, duration: 0 }}
-          >
-            {colorMode === "light" ? (
-              <NextImage
-                src="/logoDark.svg"
-                layout="fill"
-                objectFit="cover"
-                priority={true}
-              />
-            ) : (
-              <NextImage
-                src="/logoLight.svg"
-                layout="fill"
-                objectFit="cover"
-                priority={true}
-              />
-            )}
-          </motion.div>
-        </Box>
-        <HStack w={["80%", null, "40%", null, "20%"]} justify="space-between">
-          {socialLinks.map((obj) => {
-            return (
-              <ChakraLink
-                href={obj.link}
-                alt={obj.alt}
-                target="_blank"
-                rel="noopener noreferral nofollow"
-                fontSize="32px"
-                color={color}
-                _hover={{
-                  color: colorMode === "light" ? "grey.base" : "grey.100",
-                }}
-                _focus={{ boxShadow: "none" }}
-                key={obj.link}
-              >
-                {obj.icon}
-              </ChakraLink>
-            );
-          })}
-        </HStack>
-      </VStack>
-    </>
+        {colorMode === "light" ? (
+          <NextImage
+            src="/logoDark.svg"
+            layout="fill"
+            objectFit="cover"
+            priority={true}
+          />
+        ) : (
+          <NextImage
+            src="/logoLight.svg"
+            layout="fill"
+            objectFit="cover"
+            priority={true}
+          />
+        )}
+      </motion.div>
+    </Box>
   );
 };
 

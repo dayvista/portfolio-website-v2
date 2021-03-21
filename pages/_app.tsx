@@ -1,4 +1,10 @@
-import { CSSReset, ChakraProvider } from "@chakra-ui/react";
+import {
+  CSSReset,
+  ChakraProvider,
+  useColorMode,
+  useColorModeValue,
+  ColorMode,
+} from "@chakra-ui/react";
 import appTheme from "src/theme";
 import * as useAckee from "use-ackee";
 import { useEffect, useState } from "react";
@@ -9,6 +15,7 @@ import "@fontsource/biorhyme/300.css";
 import "@fontsource/space-grotesk/300.css";
 import type { NextRouter } from "next/router";
 import type { AppProps } from "next/app";
+import Layout from "src/components/Layout";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router: NextRouter = useRouter();
@@ -116,7 +123,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ChakraProvider theme={appTheme}>
         <CSSReset />
         <MotionConfig features={[AnimationFeature, GesturesFeature]}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </MotionConfig>
       </ChakraProvider>
     </>
