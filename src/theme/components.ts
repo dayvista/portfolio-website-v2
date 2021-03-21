@@ -1,4 +1,10 @@
-export const Heading = {
+interface ComponentStyles {
+  baseStyle?: object;
+  sizes?: object;
+  variants?: object;
+}
+
+export const Heading: ComponentStyles = {
   baseStyle: {
     fontFamily: "BioRhyme, serif",
   },
@@ -15,7 +21,7 @@ export const Heading = {
   },
 };
 
-export const Text = {
+export const Text: ComponentStyles = {
   baseStyle: {
     fontFamily: "Space Grotesk, sans-serif",
   },

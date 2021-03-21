@@ -100,7 +100,6 @@ const HomePage = () => {
               height: "100%",
               userSelect: "none",
             }}
-            as={motion.div}
             initial={{ scaleY: 1 }}
             animate={{
               scaleY: colorMode === "light" ? 1 : -1,
