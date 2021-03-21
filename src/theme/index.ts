@@ -10,6 +10,7 @@ const appTheme = {
         fontFamily: "Space Grotesk, sans-serif",
         overflowX: "hidden",
         color: "black",
+        background: "white",
       },
     },
   },
