@@ -3,12 +3,17 @@ import {
   useMediaQuery,
   Tooltip,
   Heading,
-  useColorMode,
-  useColorModeValue,
+  ColorMode,
 } from "@chakra-ui/react";
 import { ChakraSun, ChakraMoon } from "src/lib/icons";
 
-const Header = ({ color, colorMode, toggleColorMode }) => {
+interface HeaderProps {
+  color: "black" | "white";
+  colorMode: ColorMode;
+  toggleColorMode: () => void;
+}
+
+const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
   const [isLargerThan1024Px] = useMediaQuery("( min-width: 1025px )");
 
   return (
