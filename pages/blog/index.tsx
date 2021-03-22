@@ -17,6 +17,8 @@ interface PostProps {
     height: number;
     width: number;
   };
+  title: string;
+  published_at: string;
 }
 
 const BlogHome = ({ posts }: BlogHomeProps) => {
@@ -24,13 +26,15 @@ const BlogHome = ({ posts }: BlogHomeProps) => {
 
   // TODO: handle pagination with 'meta' prop
   return (
-    <HStack>
+    <HStack w="90%" flexWrap="wrap">
       {posts.map((post: PostProps) => {
         return (
           <BlogPostCard
             heroImg={post.feature_image}
             slug={post.slug}
             dimensions={post.feature_image_dimensions}
+            title={post.title}
+            datePosted={post.published_at}
             key={post.uuid}
           />
         );

@@ -6,18 +6,36 @@ interface CardProps {
   slug: string;
   heroImg: string;
   dimensions: { height: number; width: number };
+  title: string;
+  datePosted: string;
 }
 
-const BlogPostCard = ({ slug, heroImg, dimensions }: CardProps) => {
+const BlogPostCard = ({
+  slug,
+  heroImg,
+  dimensions,
+  title,
+  datePosted,
+}: CardProps) => {
   return (
-    <Container>
-      <VStack>
-        <Heading></Heading>
-        <Text></Text>
-        {/* <NextImage src={heroImg} width={dimensions.width} height={dimensions.height}/> */}
-        <Text></Text>
-      </VStack>
-    </Container>
+    <NextLink href={`/blog/post/${slug}`}>
+      <a>
+        <Container>
+          <VStack>
+            <Heading as="h3" size="sm">
+              {title}
+            </Heading>
+            <Text>{datePosted}</Text>
+            <NextImage
+              src={heroImg}
+              width={dimensions.width}
+              height={dimensions.height}
+            />
+            <Text></Text>
+          </VStack>
+        </Container>
+      </a>
+    </NextLink>
   );
 };
 
