@@ -78,6 +78,8 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
               ? "◐"
               : router?.pathname?.includes("portfolio")
               ? "◑"
+              : colorMode === "dark"
+              ? "◒"
               : "◓"}
           </Text>
           <NextLink href="/portfolio">

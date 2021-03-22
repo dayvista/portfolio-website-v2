@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import { getAllPosts, getRemoteImageDimensions } from "src/lib/utils";
 import { HStack } from "@chakra-ui/react";
 import BlogPostCard from "src/components/BlogPostCard";
+import { useEffect } from "react";
 
 interface BlogHomeProps {
   meta: object;
@@ -22,7 +23,9 @@ interface PostProps {
 }
 
 const BlogHome = ({ posts }: BlogHomeProps) => {
-  console.log(posts);
+  useEffect(() => {
+    console.log(posts);
+  }, []);
 
   // TODO: handle pagination with 'meta' prop
   return (
