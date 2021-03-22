@@ -4,8 +4,13 @@ import {
   Tooltip,
   Heading,
   ColorMode,
+  HStack,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { ChakraSun, ChakraMoon } from "src/lib/icons";
+import { default as NextLink } from "next/link";
+import { useRouter } from "next/router";
 
 interface HeaderProps {
   color: "black" | "white";
@@ -14,7 +19,13 @@ interface HeaderProps {
 }
 
 const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
+  const router = useRouter();
+
   const [isLargerThan1024Px] = useMediaQuery("( min-width: 1025px )");
+
+  const textHoverObj = {
+    color: colorMode === "light" ? "grey.base" : "grey.100",
+  };
 
   return (
     <>
@@ -27,7 +38,7 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
         top={["1rem", null, "2rem"]}
         position="absolute"
         transition="0.25s all"
-        _hover={{ color: colorMode === "light" ? "grey.base" : "grey.100" }}
+        _hover={textHoverObj}
       >
         <Tooltip
           label={colorMode === "light" ? "Light Mode" : "Dark Mode"}
@@ -38,15 +49,44 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
           <span>{colorMode === "light" ? <ChakraSun /> : <ChakraMoon />}</span>
         </Tooltip>
       </Box>
-      <Heading
-        as="h1"
-        size="lg"
+      <VStack
+        align="flex-start"
+        alignSelf="flex-start"
         userSelect="none"
         color={color}
-        alignSelf="flex-start"
       >
-        Liam Davis | Web Developer
-      </Heading>
+        <Box>
+          <NextLink href="/">
+            <a>
+              <Heading as="h1" size="lg" _hover={textHoverObj}>
+                Liam Davis | Web Developer
+              </Heading>
+            </a>
+          </NextLink>
+        </Box>
+        <HStack
+          fontSize={["20px", null, "24px", null, "22px"]}
+          spacing={[2, null, 4]}
+        >
+          <NextLink href="/blog">
+            <a>
+              <Text _hover={textHoverObj}>Blog</Text>
+            </a>
+          </NextLink>
+          <Text>
+            {router?.pathname?.includes("blog")
+              ? "◐"
+              : router?.pathname?.includes("portfolio")
+              ? "◑"
+              : "◓"}
+          </Text>
+          <NextLink href="/portfolio">
+            <a>
+              <Text _hover={textHoverObj}>Portfolio</Text>
+            </a>
+          </NextLink>
+        </HStack>
+      </VStack>
     </>
   );
 };

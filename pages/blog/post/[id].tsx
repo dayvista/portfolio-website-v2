@@ -7,10 +7,16 @@ const BlogPost = () => {
 export default BlogPost;
 
 export const getStaticProps: GetStaticProps = async () => {
-  return { props: {} };
+  return { props: {}, revalidate: 1 };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // if (!posts) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
+
   return {
     paths: [{ params: { id: "1" } }],
     fallback: false,

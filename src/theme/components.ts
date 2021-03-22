@@ -1,6 +1,12 @@
 interface ComponentStyles {
   baseStyle?: object;
-  sizes?: object;
+  sizes?: {
+    xs?: object;
+    sm?: object;
+    md?: object;
+    lg?: object;
+    xl?: object;
+  };
   variants?: object;
 }
 
