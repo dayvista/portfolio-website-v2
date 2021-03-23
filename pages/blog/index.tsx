@@ -28,6 +28,7 @@ const BlogHome = ({ posts }: BlogHomeProps) => {
   const { colorMode } = useColorMode();
 
   // TODO: handle pagination with 'meta' prop
+  // TODO: change box and card background colors to be more light/dark mode friendly
   return (
     <Grid
       w="100%"

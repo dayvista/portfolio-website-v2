@@ -17,47 +17,49 @@ const BlogPostCard = ({ slug, heroImg, title }: CardProps) => {
   const { colorMode } = useColorMode();
 
   return (
-    <NextLink href={`/blog/post/${slug}`}>
-      <a style={{ margin: "0 auto", display: "table", padding: "5% 0" }}>
-        <Container
-          w="20vw"
-          h="30vh"
-          ml="0"
-          mr="0"
-          bg={colorMode === "light" ? "white" : "black"}
-          p="0 !important"
-          boxShadow={
-            colorMode === "light"
-              ? "-1px 2px 13px 1px rgba(242,239,233,0.4)"
-              : "-1px 2px 13px 1px rgba(37,38,39,0.4)"
-          }
-          _hover={{
-            boxShadow:
+    <Box m="0 auto" p="5% 0" display="table">
+      <NextLink href={`/blog/post/${slug}`}>
+        <a>
+          <Container
+            w="20vw"
+            h="30vh"
+            ml="0"
+            mr="0"
+            bg={colorMode === "light" ? "white" : "black"}
+            p="0 !important"
+            boxShadow={
               colorMode === "light"
-                ? "-1px 2px 13px 1px rgba(242,239,233,0.7)"
-                : "-1px 2px 13px 1px rgba(37,38,39,0.7)",
-          }}
-          transition="0.25s all"
-          className={styles.img_container}
-        >
-          <VStack w="100%" h="100%">
-            <Box w="100%" h="50%" position="relative">
-              <NextImage src={heroImg} layout="fill" objectFit="cover" />
-            </Box>
-            <Text
-              fontSize="16px"
-              alignSelf="flex-start"
-              p="0 1vw"
-              fontWeight="bold"
-              mt="auto !important"
-              mb="auto !important"
-            >
-              {title}
-            </Text>
-          </VStack>
-        </Container>
-      </a>
-    </NextLink>
+                ? "-1px 2px 13px 1px rgba(242,239,233,0.4)"
+                : "-1px 2px 13px 1px rgba(37,38,39,0.4)"
+            }
+            _hover={{
+              boxShadow:
+                colorMode === "light"
+                  ? "-1px 2px 13px 1px rgba(242,239,233,0.7)"
+                  : "-1px 2px 13px 1px rgba(37,38,39,0.7)",
+            }}
+            transition="0.25s all"
+            className={styles.img_container}
+          >
+            <VStack w="100%" h="100%">
+              <Box w="100%" h="50%" position="relative">
+                <NextImage src={heroImg} layout="fill" objectFit="cover" />
+              </Box>
+              <Text
+                fontSize="16px"
+                alignSelf="flex-start"
+                p="0 1vw"
+                fontWeight="bold"
+                mt="auto !important"
+                mb="auto !important"
+              >
+                {title}
+              </Text>
+            </VStack>
+          </Container>
+        </a>
+      </NextLink>
+    </Box>
   );
 };
 
