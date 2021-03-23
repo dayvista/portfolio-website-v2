@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { getAllPosts, getRemoteImageDimensions } from "src/lib/utils";
-import { HStack } from "@chakra-ui/react";
+import { Grid, useColorModeValue } from "@chakra-ui/react";
 import BlogPostCard from "src/components/BlogPostCard";
 import { useEffect } from "react";
 
@@ -27,22 +27,38 @@ const BlogHome = ({ posts }: BlogHomeProps) => {
     console.log(posts);
   }, []);
 
+  const scrollbar = useColorModeValue("light_scroll", "dark_scroll");
+  const color = useColorModeValue("black", "white");
+
   // TODO: handle pagination with 'meta' prop
   return (
-    <HStack w="90%" flexWrap="wrap">
+    <Grid
+      w="100%"
+      h="57.5vh"
+      p="2%"
+      templateColumns="repeat(3, 1fr)"
+      borderRadius="5px"
+      gap={3}
+      overflowX="hidden"
+      overflowY="scroll"
+      bg={color}
+      color={color}
+      boxShadow="-1px 2px 13px 1px rgba(37,38,39,0.4)"
+      transition="0.25s all"
+      className={`scroll ${scrollbar}`}
+    >
       {posts.map((post: PostProps) => {
         return (
           <BlogPostCard
             heroImg={post.feature_image}
             slug={post.slug}
-            dimensions={post.feature_image_dimensions}
             title={post.title}
             datePosted={post.published_at}
             key={post.uuid}
           />
         );
       })}
-    </HStack>
+    </Grid>
   );
 };
 

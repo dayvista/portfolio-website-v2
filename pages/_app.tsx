@@ -10,6 +10,7 @@ import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
 import "@fontsource/biorhyme/300.css";
 import "@fontsource/space-grotesk/300.css";
 import Layout from "src/components/Layout";
+import "src/theme/css/global.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router: NextRouter = useRouter();

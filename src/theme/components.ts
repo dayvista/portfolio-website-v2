@@ -1,11 +1,15 @@
+interface SizeObject {
+  fontSize: string;
+}
+
 interface ComponentStyles {
   baseStyle?: object;
   sizes?: {
-    xs?: object;
-    sm?: object;
-    md?: object;
-    lg?: object;
-    xl?: object;
+    xs?: SizeObject;
+    sm?: SizeObject;
+    md?: SizeObject;
+    lg?: SizeObject;
+    xl?: SizeObject;
   };
   variants?: object;
 }
@@ -15,6 +19,9 @@ export const Heading: ComponentStyles = {
     fontFamily: "BioRhyme, serif",
   },
   sizes: {
+    xs: {
+      fontSize: "18px",
+    },
     sm: {
       fontSize: "24px",
     },

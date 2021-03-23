@@ -1,0 +1,61 @@
+.scroll {
+  scrollbar-width: thin;
+}
+
+.light_scroll {
+  scrollbar-color: #f2efe9 #766c79;
+}
+
+.light_scroll:hover {
+  scrollbar-color: #dcd5de #766c79;
+}
+
+.dark_scroll {
+  scrollbar-color: #766c79 #c3bbc4; /* scroll thumb and track */
+}
+
+.dark_scroll:hover {
+  scrollbar-color: #8f8592 #c3bbc4; /* scroll thumb and track */
+}
+
+.scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.light_scroll::-webkit-scrollbar-track {
+  background: #766c79;
+}
+
+.dark_scroll::-webkit-scrollbar-track {
+  background: #c3bbc4;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.light_scroll::-webkit-scrollbar-thumb {
+  background-color: #f2efe9;
+  border: 3px solid #f2efe9;
+}
+
+.dark_scroll::-webkit-scrollbar-thumb {
+  background-color: #766c79;
+  border: 3px solid #766c79;
+}
+
+.light_scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #dcd5de;
+  border: 3px solid #dcd5de;
+}
+
+.dark_scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #8f8592;
+  border: 3px solid #8f8592;
+}
