@@ -9,7 +9,7 @@ export const getAllPosts = async () => {
   });
 };
 
-export const getSinglePost = async (postSlug: string) => {
+export const getSinglePost = async (postSlug: string | string[]) => {
   return await ghostApi.posts
     .read({
       slug: postSlug,

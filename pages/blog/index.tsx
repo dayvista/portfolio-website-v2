@@ -2,7 +2,6 @@ import { GetStaticProps } from "next";
 import { getAllPosts, getRemoteImageDimensions } from "src/lib/utils";
 import { Grid, useColorModeValue } from "@chakra-ui/react";
 import BlogPostCard from "src/components/BlogPostCard";
-import { useEffect } from "react";
 
 interface BlogHomeProps {
   meta: object;
@@ -23,10 +22,6 @@ interface PostProps {
 }
 
 const BlogHome = ({ posts }: BlogHomeProps) => {
-  useEffect(() => {
-    console.log(posts);
-  }, []);
-
   const scrollbar = useColorModeValue("light_scroll", "dark_scroll");
   const color = useColorModeValue("black", "white");
 
