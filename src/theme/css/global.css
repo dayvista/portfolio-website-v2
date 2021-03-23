@@ -1,3 +1,7 @@
+.scroll > :last-child {
+  margin-bottom: 3em;
+}
+
 .scroll {
   scrollbar-width: thin;
 }
@@ -11,11 +15,11 @@
 }
 
 .dark_scroll {
-  scrollbar-color: #766c79 #c3bbc4; /* scroll thumb and track */
+  scrollbar-color: #8f8592 #c3bbc4; /* scroll thumb and track */
 }
 
 .dark_scroll:hover {
-  scrollbar-color: #8f8592 #c3bbc4; /* scroll thumb and track */
+  scrollbar-color: #766c79 #c3bbc4; /* scroll thumb and track */
 }
 
 .scroll::-webkit-scrollbar {
@@ -46,8 +50,8 @@
 }
 
 .dark_scroll::-webkit-scrollbar-thumb {
-  background-color: #766c79;
-  border: 3px solid #766c79;
+  background-color: #8f8592;
+  border: 3px solid #8f8592;
 }
 
 .light_scroll::-webkit-scrollbar-thumb:hover {
@@ -56,6 +60,6 @@
 }
 
 .dark_scroll::-webkit-scrollbar-thumb:hover {
-  background-color: #8f8592;
-  border: 3px solid #8f8592;
+  background-color: #766c79;
+  border: 3px solid #766c79;
 }
