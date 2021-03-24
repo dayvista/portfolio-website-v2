@@ -1,7 +1,7 @@
 import { Container, VStack, Text, Box, useColorMode } from "@chakra-ui/react";
 import { default as NextLink } from "next/link";
 import { default as NextImage } from "next/image";
-import styles from "src/theme/css/BlogPostCard.module.css";
+import dayjs from "dayjs";
 
 interface CardProps {
   slug?: string;
@@ -11,8 +11,8 @@ interface CardProps {
   datePosted?: string;
 }
 
-const BlogPostCard = ({ slug, heroImg, title }: CardProps) => {
-  // const parsedDate: string = dayjs(datePosted).format("h A [-] MM/DD/YY");
+const BlogPostCard = ({ slug, heroImg, title, datePosted }: CardProps) => {
+  const parsedDate = dayjs(datePosted).format("MM/DD/YY");
 
   const { colorMode } = useColorMode();
 
@@ -21,25 +21,26 @@ const BlogPostCard = ({ slug, heroImg, title }: CardProps) => {
       <NextLink href={`/blog/post/${slug}`}>
         <a>
           <Container
-            w="20vw"
-            h="30vh"
+            w={["80vw", null, "35vw", null, "20vw"]}
+            h={["30vh", null, "20vh", null, "30vh"]}
             ml="0"
             mr="0"
-            bg={colorMode === "light" ? "white" : "black"}
+            bg={colorMode === "light" ? "grey.50" : "grey.700"}
+            color={colorMode === "light" ? "black" : "white"}
             p="0 !important"
             boxShadow={
               colorMode === "light"
-                ? "-1px 2px 13px 1px rgba(242,239,233,0.4)"
-                : "-1px 2px 13px 1px rgba(37,38,39,0.4)"
+                ? "-1px 2px 13px 1px rgba(86, 78, 88,0.4)"
+                : "-1px 2px 13px 1px rgba(195, 187, 196,0.4)"
             }
             _hover={{
               boxShadow:
                 colorMode === "light"
-                  ? "-1px 2px 13px 1px rgba(242,239,233,0.7)"
-                  : "-1px 2px 13px 1px rgba(37,38,39,0.7)",
+                  ? "-1px 2px 13px 1px rgba(86, 78, 88,0.7)"
+                  : "-1px 2px 13px 1px rgba(195, 187, 196,0.7)",
             }}
             transition="0.25s all"
-            className={styles.img_container}
+            className="img_container"
           >
             <VStack w="100%" h="100%">
               <Box w="100%" h="50%" position="relative">
@@ -47,13 +48,20 @@ const BlogPostCard = ({ slug, heroImg, title }: CardProps) => {
               </Box>
               <Text
                 fontSize="16px"
-                alignSelf="flex-start"
-                p="0 1vw"
                 fontWeight="bold"
-                mt="auto !important"
-                mb="auto !important"
+                alignSelf="flex-start"
+                p="3%"
               >
                 {title}
+              </Text>
+              <Text
+                fontSize="14px"
+                fontWeight="bold"
+                alignSelf="flex-end"
+                mt="auto !important"
+                p="3%"
+              >
+                {parsedDate}
               </Text>
             </VStack>
           </Container>

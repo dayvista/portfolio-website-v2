@@ -16,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <VStack
       w="100vw"
-      h="100vh"
+      minH="100vh"
       p="7.5vh 10vw"
       justify="space-between"
       align="center"

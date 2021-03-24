@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { getAllPosts, getRemoteImageDimensions } from "src/lib/utils";
-import { Grid, useColorModeValue, useColorMode } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import BlogPostCard from "src/components/BlogPostCard";
 
 interface BlogHomeProps {
@@ -22,33 +22,21 @@ interface PostProps {
 }
 
 const BlogHome = ({ posts }: BlogHomeProps) => {
-  const scrollbar = useColorModeValue("light_scroll", "dark_scroll");
-  const color = useColorModeValue("black", "white");
-
-  const { colorMode } = useColorMode();
-
   // TODO: handle pagination with 'meta' prop
-  // TODO: change box and card background colors to be more light/dark mode friendly
   return (
     <Grid
       w="100%"
-      minH="57.5vh"
-      h="100%"
-      m="2.5vh 0 !important"
-      templateColumns="repeat(3, 1fr)"
-      borderRadius="5px"
+      templateColumns={[
+        "repeat(1, 1fr)",
+        null,
+        "repeat(2, 1fr)",
+        null,
+        "repeat(3, 1fr)",
+      ]}
       gap={3}
-      bg={color}
-      color={color}
-      overflowX="hidden"
-      overflowY="scroll"
-      boxShadow={
-        colorMode === "light"
-          ? "-1px 2px 13px 1px rgba(37,38,39,0.4)"
-          : "-1px 2px 13px 1px rgba(242,239,233,0.4)"
-      }
       transition="0.25s all"
-      className={`scroll ${scrollbar}`}
+      mt="2.5vh !important"
+      mb="2.5vh !important"
     >
       {posts.map((post: PostProps) => {
         return (

@@ -1,8 +1,0 @@
-.img_container {
-  border-radius: 5px;
-}
-
-.img_container > div > div > div {
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-}
