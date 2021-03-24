@@ -36,7 +36,7 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
         fontSize="32px"
         right={["1.5rem", null, "2.5rem"]}
         top={["1rem", null, "2rem"]}
-        position="absolute"
+        position="fixed"
         transition="0.25s all"
         _hover={textHoverObj}
       >

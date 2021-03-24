@@ -3,12 +3,12 @@ import { getAllPosts, getRemoteImageDimensions } from "src/lib/utils";
 import { Grid } from "@chakra-ui/react";
 import BlogPostCard from "src/components/BlogPostCard";
 
-interface BlogHomeProps {
+interface BlogInterface {
   meta: object;
   posts: [];
 }
 
-interface PostProps {
+interface PostInterface {
   slug: string;
   feature_image: string;
   uuid: string;
@@ -21,8 +21,7 @@ interface PostProps {
   published_at: string;
 }
 
-const BlogHome = ({ posts }: BlogHomeProps) => {
-  // TODO: handle pagination with 'meta' prop
+const BlogHome = ({ posts }: BlogInterface) => {
   return (
     <Grid
       w="100%"
@@ -38,7 +37,7 @@ const BlogHome = ({ posts }: BlogHomeProps) => {
       mt="2.5vh !important"
       mb="2.5vh !important"
     >
-      {posts.map((post: PostProps) => {
+      {posts.map((post: PostInterface) => {
         return (
           <BlogPostCard
             heroImg={post.feature_image}
@@ -61,7 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let amendedPostsArr: object[] = [];
 
   await Promise.all(
-    allPosts.map(async (post: PostProps) => {
+    allPosts.map(async (post: PostInterface) => {
       if (post.feature_image) {
         const dimensions = await getRemoteImageDimensions(post.feature_image);
 

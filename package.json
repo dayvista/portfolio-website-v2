@@ -19,6 +19,7 @@
     "@tryghost/content-api": "^1.5.1",
     "dayjs": "^1.10.4",
     "framer-motion": "^3.6.2",
+    "html-react-parser": "^1.2.4",
     "image-size": "^0.9.7",
     "next": "10.0.7",
     "react": "17.0.1",
