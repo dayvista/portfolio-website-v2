@@ -1,13 +1,28 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getAllPosts, getSinglePost } from "src/lib/utils";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+const LoadingDynamic = dynamic(() => import("src/components/Loading"));
 
 const BlogPost = ({ post }) => {
+  const router = useRouter();
+
   useEffect(() => {
     console.log(post);
   }, [post]);
 
-  return <p style={{ color: "red" }}>{post.slug}</p>;
+  useEffect(() => {
+    if (post === null) {
+      router.push("/blog");
+    }
+  }, [post]);
+
+  if (router.isFallback || !post) {
+    return <LoadingDynamic />;
+  } else {
+    return <></>;
+  }
 };
 
 export default BlogPost;
@@ -17,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const postData = await getSinglePost(slug);
 
-  return { props: { post: postData }, revalidate: 1 };
+  return { props: { post: postData ? postData : null }, revalidate: 1 };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -35,6 +50,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: postSlugsArr,
-    fallback: false,
+    fallback: true,
   };
 };

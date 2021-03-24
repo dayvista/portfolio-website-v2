@@ -58,7 +58,7 @@ export default BlogHome;
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await getAllPosts();
 
-  const amendedPostsArr = [];
+  let amendedPostsArr: object[] = [];
 
   await Promise.all(
     allPosts.map(async (post: PostProps) => {
@@ -77,6 +77,19 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     })
   );
+
+  interface DateObjInterface {
+    published_at: string;
+  }
+
+  if (amendedPostsArr.length > 1) {
+    amendedPostsArr.sort((a: DateObjInterface, b: DateObjInterface): number => {
+      const dateOne = new Date(a.published_at).getTime();
+      const dateTwo = new Date(b.published_at).getTime();
+
+      return dateTwo > dateOne ? 1 : -1;
+    });
+  }
 
   return {
     props: {
