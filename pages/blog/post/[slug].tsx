@@ -1,7 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getAllPosts, getSinglePost } from "src/lib/utils";
+import { useEffect } from "react";
 
 const BlogPost = ({ post }) => {
+  useEffect(() => {
+    console.log(post);
+  }, [post]);
+
   return <p style={{ color: "red" }}>{post.slug}</p>;
 };
 
