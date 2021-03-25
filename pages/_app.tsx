@@ -1,10 +1,4 @@
-import {
-  CSSReset,
-  ChakraProvider,
-  useColorMode,
-  useColorModeValue,
-  ColorMode,
-} from "@chakra-ui/react";
+import { CSSReset, ChakraProvider } from "@chakra-ui/react";
 import appTheme from "src/theme";
 import * as useAckee from "use-ackee";
 import { useEffect, useState } from "react";
@@ -16,28 +10,27 @@ import "@fontsource/space-grotesk/300.css";
 import type { NextRouter } from "next/router";
 import type { AppProps } from "next/app";
 import Layout from "src/components/Layout";
-import PlausibleProvider from "next-plausible";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  // const router: NextRouter = useRouter();
+  const router: NextRouter = useRouter();
 
-  // const [url, setUrl] = useState<string>(undefined);
+  const [url, setUrl] = useState<string>(undefined);
 
-  // typeof window !== "undefined" &&
-  //   useAckee(
-  //     url,
-  //     {
-  //       server: "https://stats.gammaguys.studio",
-  //       domainId: "18cebffd-1cf9-4568-a246-e681f0844e38",
-  //     },
-  //     { detailed: true, ignoreLocalhost: true, ignoreOwnVisits: false }
-  //   );
+  typeof window !== "undefined" &&
+    useAckee(
+      url,
+      {
+        server: "https://stats.gammaguys.studio",
+        domainId: "18cebffd-1cf9-4568-a246-e681f0844e38",
+      },
+      { detailed: true, ignoreLocalhost: true, ignoreOwnVisits: false }
+    );
 
-  // useEffect(() => {
-  //   if (router?.pathname) {
-  //     setUrl(router.pathname);
-  //   }
-  // }, [router]);
+  useEffect(() => {
+    if (router?.pathname) {
+      setUrl(router.pathname);
+    }
+  }, [router]);
 
   return (
     <>
@@ -124,16 +117,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ChakraProvider theme={appTheme}>
         <CSSReset />
         <MotionConfig features={[AnimationFeature, GesturesFeature]}>
-          <PlausibleProvider
-            domain="liamdavis.dev"
-            selfHosted
-            customDomain="https://stats.server.gammaguys.studio"
-            enabled={process.env.VERCEL_ENV === "production"}
-          >
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </PlausibleProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </MotionConfig>
       </ChakraProvider>
     </>
