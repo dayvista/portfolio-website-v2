@@ -1,3 +1,7 @@
 .img_container > div {
   border-radius: 5px;
 }
+
+.blog_font {
+  font-family: "Yamanatrav", sans-serif !important;
+}

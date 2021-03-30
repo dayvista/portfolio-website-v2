@@ -43,9 +43,11 @@ const BlogPostCard = ({ slug, heroImg, title, datePosted }: CardProps) => {
             className="img_container"
           >
             <VStack w="100%" h="100%">
-              <Box w="100%" h="50%" position="relative">
-                <NextImage src={heroImg} layout="fill" objectFit="cover" />
-              </Box>
+              {heroImg ? (
+                <Box w="100%" h="50%" position="relative">
+                  <NextImage src={heroImg} layout="fill" objectFit="cover" />
+                </Box>
+              ) : null}
               <Text
                 fontSize="16px"
                 fontWeight="bold"

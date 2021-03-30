@@ -59,23 +59,25 @@ export const getStaticProps: GetStaticProps = async () => {
 
   let amendedPostsArr: object[] = [];
 
-  await Promise.all(
-    allPosts.map(async (post: PostInterface) => {
-      if (post.feature_image) {
-        const dimensions = await getRemoteImageDimensions(post.feature_image);
+  if (allPosts) {
+    await Promise.all(
+      allPosts.map(async (post: PostInterface) => {
+        if (post.feature_image) {
+          const dimensions = await getRemoteImageDimensions(post.feature_image);
 
-        amendedPostsArr.push({
-          ...post,
-          feature_image_dimensions: {
-            width: dimensions.width,
-            height: dimensions.height,
-          },
-        });
-      } else {
-        amendedPostsArr.push(post);
-      }
-    })
-  );
+          amendedPostsArr.push({
+            ...post,
+            feature_image_dimensions: {
+              width: dimensions.width,
+              height: dimensions.height,
+            },
+          });
+        } else {
+          amendedPostsArr.push(post);
+        }
+      })
+    );
+  }
 
   interface DateObjInterface {
     published_at: string;
@@ -92,7 +94,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      meta: allPosts.meta,
+      meta: allPosts?.meta ? allPosts.meta : null,
       posts: amendedPostsArr,
     },
     revalidate: 1,

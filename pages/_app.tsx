@@ -9,6 +9,8 @@ import Head from "next/head";
 import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
 import "@fontsource/biorhyme/300.css";
 import "@fontsource/space-grotesk/300.css";
+import "@fontsource/yantramanav/300.css";
+import "@fontsource/yantramanav/400.css";
 import "src/theme/css/global.css";
 import Favicons from "src/components/Favicons";
 import Layout from "src/components/Layout";
@@ -23,9 +25,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       url,
       {
         server: "https://stats.gammaguys.studio",
-        domainId: "18cebffd-1cf9-4568-a246-e681f0844e38",
+        domainId: "5a7ed897-6b19-42e7-b765-36f2e36024f9",
       },
-      { detailed: true, ignoreLocalhost: true, ignoreOwnVisits: false }
+      { detailed: true, ignoreLocalhost: true, ignoreOwnVisits: true }
     );
 
   useEffect(() => {

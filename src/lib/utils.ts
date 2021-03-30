@@ -4,15 +4,18 @@ const https = require("https");
 const sizeOf = require("image-size");
 
 export const getAllPosts = async () => {
-  return await ghostApi.posts.browse({ limit: "all" }).catch(() => {
-    console.log("Error fetching all posts.");
-  });
+  return await ghostApi.posts
+    .browse({ limit: "all", include: "tags,authors" })
+    .catch(() => {
+      console.log("Error fetching all posts.");
+    });
 };
 
 export const getSinglePost = async (postSlug: string | string[]) => {
   return await ghostApi.posts
     .read({
       slug: postSlug,
+      include: "tags,authors",
     })
     .catch(() => {
       console.log("Error fetching single post.");
