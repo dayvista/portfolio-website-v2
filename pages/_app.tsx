@@ -1,10 +1,4 @@
-import {
-  CSSReset,
-  ChakraProvider,
-  useColorMode,
-  useColorModeValue,
-  ColorMode,
-} from "@chakra-ui/react";
+import { CSSReset, ChakraProvider } from "@chakra-ui/react";
 import appTheme from "src/theme";
 import * as useAckee from "use-ackee";
 import { useEffect, useState } from "react";
