@@ -1,30 +1,49 @@
-import { ghostApi } from "src/lib/instances";
-const url = require("url");
-const https = require("https");
-const sizeOf = require("image-size");
+import https from "https";
+import sizeOf from "image-size";
+const root = require("app-root-path");
+import { promises as fs } from "fs";
+import matter from "gray-matter";
+import dayjs from "dayjs";
+const advancedFormat = require("dayjs/plugin/advancedFormat");
+dayjs.extend(advancedFormat);
 
-export const getAllPosts = async () => {
-  return await ghostApi.posts
-    .browse({ limit: "all", include: "tags,authors" })
-    .catch(() => {
-      console.log("Error fetching all posts.");
-    });
+export const dateParser = (dateStr: string) => {
+  return dayjs(dateStr).format("dddd[,] MMMM Do[,] YYYY");
 };
 
-export const getSinglePost = async (postSlug: string | string[]) => {
-  return await ghostApi.posts
-    .read({
-      slug: postSlug,
-      include: "tags,authors",
+export const getAllPosts = async (path: string): Promise<object[]> => {
+  const contentPath: string = root.resolve(path);
+
+  const fileNames = await fs.readdir(contentPath, "utf-8");
+
+  const frontMatterArr: object[] = [];
+
+  await Promise.all(
+    fileNames.map(async (file) => {
+      const fileData = await fs.readFile(`${contentPath}/` + file);
+
+      const parsedFile = matter(fileData.toString(), { excerpt: true });
+
+      const { birthtime: dateCreated, mtime: dateLastEdited } = await fs.stat(
+        `${contentPath}/` + file
+      );
+
+      frontMatterArr.push({
+        ...parsedFile.data,
+        published: dateParser(dateCreated.toString()),
+        last_edited: dateParser(dateLastEdited.toString()),
+      });
     })
-    .catch(() => {
-      console.log("Error fetching single post.");
-    });
+  );
+
+  return frontMatterArr;
 };
 
 export const getRemoteImageDimensions = (imgUrl: string) => {
   const getDimensions = new Promise<any>((resolve) => {
-    https.get(url.parse(imgUrl), function (response) {
+    const parsedImgUrl = new URL(imgUrl);
+
+    https.get(parsedImgUrl, function (response) {
       const chunks = [];
 
       response

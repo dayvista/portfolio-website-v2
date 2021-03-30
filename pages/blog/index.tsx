@@ -1,7 +1,8 @@
 import { GetStaticProps } from "next";
-import { getAllPosts, getRemoteImageDimensions } from "src/lib/utils";
 import { Grid } from "@chakra-ui/react";
 import BlogPostCard from "src/components/BlogPostCard";
+import { useEffect } from "react";
+import { getAllPosts } from "src/lib/utils";
 
 interface BlogInterface {
   meta: object;
@@ -11,6 +12,7 @@ interface BlogInterface {
 interface PostInterface {
   slug: string;
   feature_image: string;
+  // hero_image: string;
   uuid: string;
   id: string;
   feature_image_dimensions: {
@@ -22,6 +24,10 @@ interface PostInterface {
 }
 
 const BlogHome = ({ posts }: BlogInterface) => {
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
+
   return (
     <Grid
       w="100%"
@@ -55,48 +61,11 @@ const BlogHome = ({ posts }: BlogInterface) => {
 export default BlogHome;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getAllPosts();
-
-  let amendedPostsArr: object[] = [];
-
-  if (allPosts) {
-    await Promise.all(
-      allPosts.map(async (post: PostInterface) => {
-        if (post.feature_image) {
-          const dimensions = await getRemoteImageDimensions(post.feature_image);
-
-          amendedPostsArr.push({
-            ...post,
-            feature_image_dimensions: {
-              width: dimensions.width,
-              height: dimensions.height,
-            },
-          });
-        } else {
-          amendedPostsArr.push(post);
-        }
-      })
-    );
-  }
-
-  interface DateObjInterface {
-    published_at: string;
-  }
-
-  if (amendedPostsArr.length > 1) {
-    amendedPostsArr.sort((a: DateObjInterface, b: DateObjInterface): number => {
-      const dateOne = new Date(a.published_at).getTime();
-      const dateTwo = new Date(b.published_at).getTime();
-
-      return dateTwo > dateOne ? 1 : -1;
-    });
-  }
+  const allPostsArr = await getAllPosts("/src/content");
 
   return {
     props: {
-      meta: allPosts?.meta ? allPosts.meta : null,
-      posts: amendedPostsArr,
+      posts: allPostsArr,
     },
-    revalidate: 1,
   };
 };

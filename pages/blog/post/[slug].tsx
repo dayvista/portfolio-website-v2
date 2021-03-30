@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getAllPosts, getSinglePost } from "src/lib/utils";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -12,7 +11,6 @@ import styles from "src/theme/css/Post.module.css";
 import dayjs from "dayjs";
 const advancedFormat = require("dayjs/plugin/advancedFormat");
 dayjs.extend(advancedFormat);
-import { readingTime, tags } from "@tryghost/helpers";
 
 interface PostInterface {
   post: {
@@ -26,13 +24,6 @@ const BlogPost = ({ post }: PostInterface) => {
   const router = useRouter();
 
   const { colorMode } = useColorMode();
-
-  useEffect(() => {
-    console.log(post);
-    console.log(post?.html);
-    console.log(readingTime(post));
-    console.log(tags(post));
-  }, [post]);
 
   useEffect(() => {
     if (post === null) {
@@ -130,29 +121,13 @@ const BlogPost = ({ post }: PostInterface) => {
 
 export default BlogPost;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug: string | string[] = params.slug;
-
-  const postData = await getSinglePost(slug);
-
-  return { props: { post: postData ? postData : null }, revalidate: 1 };
+export const getStaticProps: GetStaticProps = async ({}) => {
+  return { props: { post: null } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPosts();
-
-  const postSlugsArr = [];
-
-  await Promise.all(
-    allPosts.map(async (post: { slug: string }) => {
-      if (post.slug) {
-        postSlugsArr.push({ params: { slug: post.slug } });
-      }
-    })
-  );
-
   return {
-    paths: postSlugsArr,
-    fallback: true,
+    paths: [{ params: { slug: "example" } }],
+    fallback: false,
   };
 };
