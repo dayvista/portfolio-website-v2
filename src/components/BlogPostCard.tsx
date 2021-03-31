@@ -5,10 +5,10 @@ import {
   Box,
   useColorMode,
   HStack,
-  Button,
 } from "@chakra-ui/react";
 import { default as NextLink } from "next/link";
 import { default as NextImage } from "next/image";
+import TagButton from "src/components/TagButton";
 
 interface CardProps {
   slug?: string;
@@ -74,16 +74,8 @@ const BlogPostCard = ({
               </Text>
               {tags && tags.length > 0 ? (
                 <HStack w="100%" justify="flex-end" spacing={2} p="0 5px 0 0">
-                  {tags.map((tag) => {
-                    return (
-                      <NextLink href={`/blog/tags/${tag}`} key={`${tag}-link`}>
-                        <a key={`${tag}-link-a`}>
-                          <Button variant="tag" key={`${tag}-button`}>
-                            {tag}
-                          </Button>
-                        </a>
-                      </NextLink>
-                    );
+                  {tags.map((tag: string) => {
+                    return <TagButton tag={tag} key={tag} />;
                   })}
                 </HStack>
               ) : null}
