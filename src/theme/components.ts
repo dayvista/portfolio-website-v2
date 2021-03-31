@@ -1,20 +1,16 @@
-interface SizeObject {
-  fontSize: string;
-}
-
-interface ComponentStyles {
+interface ComponentStylesInterface {
   baseStyle?: object;
   sizes?: {
-    xs?: SizeObject;
-    sm?: SizeObject;
-    md?: SizeObject;
-    lg?: SizeObject;
-    xl?: SizeObject;
+    xs?: object;
+    sm?: object;
+    md?: object;
+    lg?: object;
+    xl?: object;
   };
   variants?: object;
 }
 
-export const Heading: ComponentStyles = {
+export const Heading: ComponentStylesInterface = {
   baseStyle: {
     fontFamily: "BioRhyme, serif",
   },
@@ -34,8 +30,24 @@ export const Heading: ComponentStyles = {
   },
 };
 
-export const Text: ComponentStyles = {
+export const Text: ComponentStylesInterface = {
   baseStyle: {
     fontFamily: "Space Grotesk, sans-serif",
+  },
+};
+
+export const Button: ComponentStylesInterface = {
+  variants: {
+    tag: {
+      background: "grey.base",
+      borderRadius: "5px",
+      color: "white",
+      fontSize: "13px",
+      padding: "5px !important",
+      transition: "0.25s all",
+      _hover: {
+        background: "grey.500",
+      },
+    },
   },
 };

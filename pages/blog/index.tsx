@@ -5,22 +5,20 @@ import { useEffect } from "react";
 import { getAllPosts } from "src/lib/utils";
 
 interface BlogInterface {
-  meta: object;
-  posts: [];
+  posts: object[];
 }
 
 interface PostInterface {
-  slug: string;
-  feature_image: string;
-  // hero_image: string;
-  uuid: string;
-  id: string;
-  feature_image_dimensions: {
+  hero_image: string;
+  hero_image_dimensions: {
     height: number;
     width: number;
   };
+  published: string;
+  last_edited: string;
+  slug: string;
   title: string;
-  published_at: string;
+  tags: string[];
 }
 
 const BlogHome = ({ posts }: BlogInterface) => {
@@ -44,13 +42,22 @@ const BlogHome = ({ posts }: BlogInterface) => {
       mb="2.5vh !important"
     >
       {posts.map((post: PostInterface) => {
+        const {
+          hero_image: heroImg,
+          slug,
+          title,
+          published: datePosted,
+          tags,
+        } = post;
+
         return (
           <BlogPostCard
-            heroImg={post.feature_image}
-            slug={post.slug}
-            title={post.title}
-            datePosted={post.published_at}
-            key={post.uuid}
+            heroImg={heroImg}
+            slug={slug}
+            title={title}
+            datePosted={datePosted}
+            tags={tags}
+            key={`${post.slug}-${post.published}`}
           />
         );
       })}

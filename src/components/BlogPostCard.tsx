@@ -1,7 +1,14 @@
-import { Container, VStack, Text, Box, useColorMode } from "@chakra-ui/react";
+import {
+  Container,
+  VStack,
+  Text,
+  Box,
+  useColorMode,
+  HStack,
+  Button,
+} from "@chakra-ui/react";
 import { default as NextLink } from "next/link";
 import { default as NextImage } from "next/image";
-import dayjs from "dayjs";
 
 interface CardProps {
   slug?: string;
@@ -9,11 +16,16 @@ interface CardProps {
   dimensions?: { height: number; width: number };
   title?: string;
   datePosted?: string;
+  tags: string[];
 }
 
-const BlogPostCard = ({ slug, heroImg, title, datePosted }: CardProps) => {
-  const parsedDate = dayjs(datePosted).format("MM/DD/YY");
-
+const BlogPostCard = ({
+  slug,
+  heroImg,
+  title,
+  datePosted,
+  tags,
+}: CardProps) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -21,8 +33,8 @@ const BlogPostCard = ({ slug, heroImg, title, datePosted }: CardProps) => {
       <NextLink href={`/blog/post/${slug}`}>
         <a>
           <Container
-            w={["80vw", null, "35vw", null, "20vw"]}
-            h={["30vh", null, "20vh", null, "30vh"]}
+            w={["85vw", null, "40vw", null, "25vw"]}
+            h={["40vh", null, "30vh", null, "40vh"]}
             ml="0"
             mr="0"
             bg={colorMode === "light" ? "grey.50" : "grey.700"}
@@ -45,7 +57,11 @@ const BlogPostCard = ({ slug, heroImg, title, datePosted }: CardProps) => {
             <VStack w="100%" h="100%">
               {heroImg ? (
                 <Box w="100%" h="50%" position="relative">
-                  <NextImage src={heroImg} layout="fill" objectFit="cover" />
+                  <NextImage
+                    src={`/images/blog/${heroImg}`}
+                    layout="fill"
+                    objectFit="cover"
+                  />
                 </Box>
               ) : null}
               <Text
@@ -56,6 +72,21 @@ const BlogPostCard = ({ slug, heroImg, title, datePosted }: CardProps) => {
               >
                 {title}
               </Text>
+              {tags && tags.length > 0 ? (
+                <HStack w="100%" justify="flex-end" spacing={2} p="0 5px 0 0">
+                  {tags.map((tag) => {
+                    return (
+                      <NextLink href={`/blog/tags/${tag}`} key={`${tag}-link`}>
+                        <a key={`${tag}-link-a`}>
+                          <Button variant="tag" key={`${tag}-button`}>
+                            {tag}
+                          </Button>
+                        </a>
+                      </NextLink>
+                    );
+                  })}
+                </HStack>
+              ) : null}
               <Text
                 fontSize="14px"
                 fontWeight="bold"
@@ -63,7 +94,7 @@ const BlogPostCard = ({ slug, heroImg, title, datePosted }: CardProps) => {
                 mt="auto !important"
                 p="3%"
               >
-                {parsedDate}
+                {datePosted}
               </Text>
             </VStack>
           </Container>

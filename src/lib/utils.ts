@@ -14,7 +14,7 @@ export const dateParser = (dateStr: string) => {
 export const getAllPosts = async (path: string): Promise<object[]> => {
   const contentPath: string = root.resolve(path);
 
-  const fileNames = await fs.readdir(contentPath, "utf-8");
+  const fileNames: string[] = await fs.readdir(contentPath, "utf-8");
 
   const frontMatterArr: object[] = [];
 
@@ -24,14 +24,27 @@ export const getAllPosts = async (path: string): Promise<object[]> => {
 
       const parsedFile = matter(fileData.toString(), { excerpt: true });
 
+      // read when the file was created, and when it was last edited
       const { birthtime: dateCreated, mtime: dateLastEdited } = await fs.stat(
         `${contentPath}/` + file
       );
+
+      const heroImg: string = parsedFile?.data?.hero_image;
+
+      // get the hero image's dimensions, if there is one provided
+      const dimensions = heroImg
+        ? sizeOf(`${root.toString()}/public/images/blog/${heroImg}`)
+        : null;
+
+      // Create an array of strings from the file's tags
+      const tags: string[] = parsedFile?.data?.tags.split(",");
 
       frontMatterArr.push({
         ...parsedFile.data,
         published: dateParser(dateCreated.toString()),
         last_edited: dateParser(dateLastEdited.toString()),
+        hero_image_dimensions: dimensions,
+        tags: tags,
       });
     })
   );
