@@ -40,4 +40,5 @@ for (let i = 0; i < life.length; i++) {
 3. ordered list 3
 
 [a link](https://duckduckgo.com/)
+
 ![image alt](/images/blog/nature.jpg)

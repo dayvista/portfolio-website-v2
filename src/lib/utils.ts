@@ -96,6 +96,9 @@ export const getSinglePost = async (
   // Create an array of strings from the file's tags
   const tags: string[] = parsedFile?.data?.tags?.split(",");
 
+  const readingTimeInMin =
+    Math.round(readingTime(parsedFile.content).minutes) / 10;
+
   const fileDataObj = {
     ...parsedFile?.data,
     // TODO: find better markdown parser? possibly npm's marky-markdown
@@ -105,7 +108,7 @@ export const getSinglePost = async (
     hero_image_dimensions: dimensions,
     tags: tags,
     slug: typeof fileName === "string" && (fileName as string).split(".md")[0],
-    minutes_to_read: Math.round(readingTime(parsedFile.content).minutes) / 10,
+    minutes_to_read: readingTimeInMin > 0 ? readingTimeInMin : 0.5,
   };
 
   return fileDataObj;

@@ -41,3 +41,16 @@ body::-webkit-scrollbar-thumb:hover {
   align-self: center;
   margin-top: 0 !important;
 }
+
+ul,
+ol {
+  list-style-position: inside;
+}
+
+code {
+  font-family: "Fira Code", monospace !important;
+}
+
+blockquote {
+  font-family: "Yamanatrav", sans-serif !important;
+}

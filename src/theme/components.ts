@@ -1,3 +1,5 @@
+import { Component } from "react";
+
 interface ComponentStylesInterface {
   baseStyle?: object;
   sizes?: {
@@ -16,16 +18,16 @@ export const Heading: ComponentStylesInterface = {
   },
   sizes: {
     xs: {
-      fontSize: "18px",
+      fontSize: ["16.5px", null, null, null, "20px"],
     },
     sm: {
-      fontSize: "24px",
+      fontSize: ["18px", null, null, "20px", "24px"],
     },
     md: {
-      fontSize: "28px",
+      fontSize: ["22px", null, null, "24px", "28px"],
     },
     lg: {
-      fontSize: "32px",
+      fontSize: ["26px", null, null, "28px", "32px"],
     },
   },
 };

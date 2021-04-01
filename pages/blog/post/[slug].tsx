@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 const LoadingDynamic = dynamic(() => import("src/components/Loading"));
 import {
   VStack,
+  Stack,
   Heading,
   Text,
   Box,
@@ -13,6 +13,8 @@ import {
   Spacer,
   HStack,
   Link as ChakraLink,
+  useMediaQuery,
+  chakra,
 } from "@chakra-ui/react";
 import { default as NextImage } from "next/image";
 import styles from "src/theme/css/Post.module.css";
@@ -20,7 +22,11 @@ import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import TagButton from "src/components/TagButton";
 import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { zenburn } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import {
+  zenburn,
+  atelierHeathLight,
+} from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import "@fontsource/fira-code";
 
 interface PostInterface {
   post: {
@@ -37,34 +43,41 @@ interface PostInterface {
 const BlogPost = ({ post }: PostInterface) => {
   const router = useRouter();
 
+  const [isLargerThan500] = useMediaQuery("(min-width:501px)");
+
   const { colorMode } = useColorMode();
 
   const fontColorMode = colorMode === "light" ? "grey.400" : "grey.200";
-
-  useEffect(() => {
-    console.log(post);
-  }, [post]);
 
   interface renderPropTypes {
     level?: number;
     language?: string;
     value?: string;
     children?: object[];
+    href?: string;
+    src?: string;
+    alt?: string;
   }
 
   const renderers = {
-    code: ({ language, value }) => {
+    code: ({ language, value }: renderPropTypes) => {
       return (
         <SyntaxHighlighter
-          style={zenburn}
+          style={colorMode === "light" ? atelierHeathLight : zenburn}
           language={language}
           children={value}
           customStyle={{
             transition: "0.25s all",
             borderRadius: "5px",
-            margin: "2.5vh 0",
+            margin: "5vh 0",
+            alignSelf: "center",
+            width: isLargerThan500 ? "initial" : "inherit",
           }}
-          codeTagProps={{ style: { transition: "0.25s all" } }}
+          codeTagProps={{
+            style: {
+              transition: "0.25s all",
+            },
+          }}
         />
       );
     },
@@ -85,7 +98,7 @@ const BlogPost = ({ post }: PostInterface) => {
     thematicBreak: () => {
       return <Divider />;
     },
-    blockquote: ({ children }) => {
+    blockquote: ({ children }: renderPropTypes) => {
       return (
         <Box
           bg={colorMode === "light" ? "grey.50" : "grey.700"}
@@ -93,38 +106,70 @@ const BlogPost = ({ post }: PostInterface) => {
           p="1%"
           borderRadius="5px"
           m="2.5vh 0"
+          className={styles.blockquote_container}
         >
           {children}
         </Box>
       );
     },
-    link: ({ href, children }) => {
+    link: ({ href, children }: renderPropTypes) => {
       return (
         <ChakraLink
           href={href}
           target="_blank"
           rel="noopener noreferral nofollow"
+          color="blue.500"
+          transition="0.25s all"
+          _hover={{ color: "blue.700", textDecoration: "underline" }}
+          _focus={{
+            boxShadow: "rgb(74 128 155 / 60%) 0px 0px 0px 3px !important",
+          }}
+          borderRadius="5px"
         >
           {children}
         </ChakraLink>
       );
     },
-    // TODO: get width and height of images in an array
-    // TODO: use pexels api for image
-    // image: ({src,alt}) => {
-    //   console.log("imgdata");
-    //   console.log(data);
-    //   console.log("imgdata");
+    // TODO: use pexels api for images
+    image: ({ src, alt }: renderPropTypes) => {
+      return (
+        <Box
+          position="relative"
+          w={["90%", null, "75%", "80%", null]}
+          h={["25vh", null, "20vh", null, "40vh"]}
+          m="5vh 0 !important"
+          alignSelf="center"
+          className={
+            styles[`img_container_${colorMode === "light" ? "light" : "dark"}`]
+          }
+        >
+          <NextImage src={src} alt={alt} layout="fill" objectFit="cover" />
+        </Box>
+      );
+    },
+    paragraph: ({ children }: renderPropTypes) => {
+      const isImageOrLink = children.every(
+        (child: { props: { node: { type: string } } }) => {
+          if (child.props?.node?.type) {
+            return (
+              child.props.node.type === "link" ||
+              child.props.node.type === "image"
+            );
+          } else {
+            return false;
+          }
+        }
+      );
 
-    //   return <NextImage src={src} alt={alt}  />;
-    // },
+      return isImageOrLink ? <>{children}</> : <Text>{children}</Text>;
+    },
   };
 
   return router.isFallback || !post ? (
     <LoadingDynamic />
   ) : (
     <VStack
-      w="100%"
+      w={["100%", null, "90%", "80%", "70%"]}
       spacing={2}
       m="5vh 0 !important"
       align="flex-start"
@@ -149,25 +194,32 @@ const BlogPost = ({ post }: PostInterface) => {
       >
         {post.title}
       </Heading>
-      <HStack w="100%" justify="space-between">
+      <Stack w="100%" justify="space-between" flexDir={["column", null, "row"]}>
         <Heading
           as="h3"
           size="xs"
           color={fontColorMode}
           fontFamily="Yamanatrav, sans-serif !important"
         >
-          By Liam Davis
+          By{" "}
+          <chakra.span color={colorMode === "light" ? "grey.500" : "grey.300"}>
+            Liam Davis
+          </chakra.span>
         </Heading>
-        <HStack justify="flex-end" spacing={2}>
+        <HStack
+          justify={["center", null, "flex-end"]}
+          spacing={2}
+          m={["2.5vh 0 !important", null, 0]}
+        >
           {post?.tags &&
             post?.tags.map((tag) => {
               return <TagButton tag={tag} key={tag} />;
             })}
         </HStack>
-      </HStack>
+      </Stack>
       <HStack w="100%" justify="space-between" color={fontColorMode}>
         <Text fontFamily="Yamanatrav, sans-serif !important">
-          {`${post?.minutes_to_read} minutes`}
+          {`${post?.minutes_to_read} min. read`}
         </Text>
         <Text fontFamily="Yamanatrav, sans-serif !important">
           {post?.published}
