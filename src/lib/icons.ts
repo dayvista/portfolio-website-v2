@@ -4,6 +4,7 @@ import { GiStripedSun } from "react-icons/gi";
 import { WiMoonAltWaningCrescent6 } from "react-icons/wi";
 import { RiLinkedinLine } from "react-icons/ri";
 import { FiMail, FiGithub } from "react-icons/fi";
+import { SiPexels } from "react-icons/si";
 
 export const ChakraMail: ChakraComponent<any> = chakra(FiMail);
 export const ChakraGitHub: ChakraComponent<any> = chakra(FiGithub);
@@ -12,3 +13,4 @@ export const ChakraSun: ChakraComponent<any> = chakra(GiStripedSun);
 export const ChakraMoon: ChakraComponent<any> = chakra(
   WiMoonAltWaningCrescent6
 );
+export const ChakraPexels: ChakraComponent<any> = chakra(SiPexels);
