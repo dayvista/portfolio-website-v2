@@ -1,0 +1,18 @@
+.img_container_dark > div,
+.img_container_light > div {
+  border-radius: 5px;
+  transition: 0.25s all;
+}
+
+.img_container_light > div {
+  box-shadow: -1px 2px 13px 1px rgba(86, 78, 88, 0.4);
+}
+
+.img_container_dark > div {
+  box-shadow: -1px 2px 13px 1px rgba(195, 187, 196, 0.4);
+}
+
+.blog_font,
+.blockquote_container > p {
+  font-family: "Yamanatrav", sans-serif !important;
+}

@@ -1,5 +1,5 @@
 import { theme } from "@chakra-ui/react";
-import { Heading, Text } from "src/theme/components";
+import { Heading, Text, Button } from "src/theme/components";
 
 const appTheme = {
   ...theme,
@@ -75,6 +75,7 @@ const appTheme = {
     ...theme.components,
     Heading,
     Text,
+    Button,
   },
   config: {
     initialColorMode: "light",
