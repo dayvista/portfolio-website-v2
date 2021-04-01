@@ -19,7 +19,6 @@ import styles from "src/theme/css/Post.module.css";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import TagButton from "src/components/TagButton";
 import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { zenburn } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
@@ -175,7 +174,7 @@ const BlogPost = ({ post }: PostInterface) => {
         </Text>
       </HStack>
       <Spacer />
-      <ReactMarkdown renderers={renderers} plugins={[gfm]} children={post.md} />
+      <ReactMarkdown renderers={renderers} children={post.md} />
     </VStack>
   );
 };
