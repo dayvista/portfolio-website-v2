@@ -28,6 +28,7 @@ export const getAllPostSlugs = async (
   return parsedFileNames;
 };
 
+// TODO: sort blog posts by date
 export const getAllPosts = async (path: string): Promise<object[]> => {
   const contentPath: string = root.resolve(path);
 
@@ -72,7 +73,7 @@ export const getAllPosts = async (path: string): Promise<object[]> => {
 
 export const getSinglePost = async (
   path: string,
-  fileName: string | string[]
+  fileName: string
 ): Promise<object> => {
   const contentPath: string = root.resolve(path);
   const filePath: string = `${contentPath}/${fileName}`;
@@ -112,6 +113,79 @@ export const getSinglePost = async (
   };
 
   return fileDataObj;
+};
+
+export const getAllTagSlugs = async (
+  path: string
+): Promise<{ params: { tag: string } }[]> => {
+  const contentPath: string = root.resolve(path);
+
+  const fileNames: string[] = await fs.readdir(contentPath, "utf-8");
+
+  const tagsArr: { params: { tag: string } }[] = [];
+
+  await Promise.all(
+    fileNames.map(async (file) => {
+      const fileData = await fs.readFile(`${contentPath}/` + file);
+
+      const parsedFile = matter(fileData.toString(), { excerpt: true });
+
+      const tags: string[] = parsedFile?.data?.tags?.split(",");
+
+      tags.forEach((tag) => {
+        if (tagsArr.every((obj) => obj.params.tag !== tag)) {
+          tagsArr.push({ params: { tag: tag } });
+        }
+      });
+    })
+  );
+
+  return tagsArr;
+};
+
+// TODO: sort blog posts by date
+export const getPostsByTag = async (path: string, contextTag: string) => {
+  const contentPath: string = root.resolve(path);
+
+  const fileNames: string[] = await fs.readdir(contentPath, "utf-8");
+
+  const frontMatterArr: object[] = [];
+
+  await Promise.all(
+    fileNames.map(async (file) => {
+      const fileData = await fs.readFile(`${contentPath}/` + file);
+
+      const parsedFile = matter(fileData.toString(), { excerpt: true });
+
+      // Create an array of strings from the file's tags
+      const tags: string[] = parsedFile?.data?.tags?.split(",");
+
+      if (tags.some((tag) => tag === contextTag)) {
+        // read when the file was created, and when it was last edited
+        const { birthtime: dateCreated, mtime: dateLastEdited } = await fs.stat(
+          `${contentPath}/` + file
+        );
+
+        const heroImg: string = parsedFile?.data?.hero_image;
+
+        // get the hero image's dimensions, if there is one provided
+        const dimensions = heroImg
+          ? sizeOf(`${root.toString()}/public/images/blog/${heroImg}`)
+          : null;
+
+        frontMatterArr.push({
+          ...parsedFile?.data,
+          published: dateParser(dateCreated.toString()),
+          last_edited: dateParser(dateLastEdited.toString()),
+          hero_image_dimensions: dimensions,
+          slug: file.split(".md")[0],
+          tags: tags,
+        });
+      }
+    })
+  );
+
+  return frontMatterArr;
 };
 
 export const getRemoteImageDimensions = (imgUrl: string) => {

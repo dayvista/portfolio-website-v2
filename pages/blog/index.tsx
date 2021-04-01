@@ -1,31 +1,10 @@
 import { GetStaticProps } from "next";
 import { Grid } from "@chakra-ui/react";
-import BlogPostCard from "src/components/BlogPostCard";
-import { useEffect } from "react";
+import { BlogPostCard } from "src/components/Blog";
 import { getAllPosts } from "src/lib/utils";
-
-interface BlogInterface {
-  posts: object[];
-}
-
-interface PostInterface {
-  hero_image: string;
-  hero_image_dimensions: {
-    height: number;
-    width: number;
-  };
-  published: string;
-  last_edited: string;
-  slug: string;
-  title: string;
-  tags: string[];
-}
+import { BlogInterface, PostInterface } from "src/lib/interfaces";
 
 const BlogHome = ({ posts }: BlogInterface) => {
-  useEffect(() => {
-    console.log(posts);
-  }, [posts]);
-
   return (
     <Grid
       w="100%"

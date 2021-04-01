@@ -2,7 +2,7 @@
 title: Use Markdown to Create a Blog with Next.js and Typescript
 hero_image: nature.jpg
 # separate each tag with a comma
-tags: next-js,markdown,node-js,typescript
+tags: next-js
 ---
 
 # Sample Markdown

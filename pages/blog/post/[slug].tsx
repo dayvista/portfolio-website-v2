@@ -19,7 +19,7 @@ import {
 import { default as NextImage } from "next/image";
 import styles from "src/theme/css/Post.module.css";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
-import TagButton from "src/components/TagButton";
+import { TagButton } from "src/components/Blog";
 import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
@@ -234,7 +234,10 @@ const BlogPost = ({ post }: PostInterface) => {
 export default BlogPost;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getSinglePost("/src/content", `${params.slug}.md`);
+  const postData = await getSinglePost(
+    "/src/content",
+    `${params.slug as string}.md`
+  );
 
   return { props: { post: postData } };
 };

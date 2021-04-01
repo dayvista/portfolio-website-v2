@@ -5,12 +5,16 @@ import {
   Box,
   useColorMode,
   HStack,
+  Button,
 } from "@chakra-ui/react";
 import { default as NextLink } from "next/link";
 import { default as NextImage } from "next/image";
-import TagButton from "src/components/TagButton";
 
-interface CardProps {
+interface TagButtonInterface {
+  tag: string;
+}
+
+interface CardInterface {
   slug?: string;
   heroImg?: string;
   dimensions?: { height: number; width: number };
@@ -19,13 +23,13 @@ interface CardProps {
   tags: string[];
 }
 
-const BlogPostCard = ({
+export const BlogPostCard = ({
   slug,
   heroImg,
   title,
   datePosted,
   tags,
-}: CardProps) => {
+}: CardInterface) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -96,4 +100,12 @@ const BlogPostCard = ({
   );
 };
 
-export default BlogPostCard;
+export const TagButton = ({ tag }: TagButtonInterface) => {
+  return (
+    <NextLink href={`/blog/tag/${tag}`}>
+      <a>
+        <Button variant="tag">{tag}</Button>
+      </a>
+    </NextLink>
+  );
+};
