@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 const advancedFormat = require("dayjs/plugin/advancedFormat");
 dayjs.extend(advancedFormat);
 import readingTime from "reading-time";
-import snarkdown from "snarkdown";
 
 export const dateParser = (dateStr: string) => {
   return dayjs(dateStr).format("dddd[,] MMMM Do[,] YYYY");
@@ -100,13 +99,13 @@ export const getSinglePost = async (
   const fileDataObj = {
     ...parsedFile?.data,
     // TODO: find better markdown parser? possibly npm's marky-markdown
-    html: snarkdown(parsedFile.content),
+    md: parsedFile.content,
     published: dateParser(dateCreated.toString()),
     last_edited: dateParser(dateLastEdited.toString()),
     hero_image_dimensions: dimensions,
     tags: tags,
     slug: typeof fileName === "string" && (fileName as string).split(".md")[0],
-    minutes_to_read: readingTime(parsedFile.content).minutes,
+    minutes_to_read: Math.round(readingTime(parsedFile.content).minutes) / 10,
   };
 
   return fileDataObj;

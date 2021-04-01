@@ -46,7 +46,7 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
           closeOnClick={isLargerThan1024Px ? false : true}
           userSelect="none"
         >
-          <span>{colorMode === "light" ? <ChakraSun /> : <ChakraMoon />}</span>
+          <span>{colorMode === "light" ? <ChakraMoon /> : <ChakraSun />}</span>
         </Tooltip>
       </Box>
       <VStack

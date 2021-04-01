@@ -19,12 +19,12 @@ _italic text_
 
 ### Code Block
 
-```
+```js
 for (let i = 0; i < life.length; i++) {
   if (i < life.length) {
-    return "i'm alive"
+    return "i'm alive";
   } else {
-    return "oh no"
+    return "oh no";
   }
 }
 ```
@@ -40,8 +40,4 @@ for (let i = 0; i < life.length; i++) {
 3. ordered list 3
 
 [a link](https://duckduckgo.com/)
-![image alt](/images/blog/nature.jpg "nature pic" =1920x1080)
-
-| Column 1 | Column 2 | Column 3 |
-| -------- | -------- | -------- |
-| Text 1   | Text 2   | Text 3   |
+![image alt](/images/blog/nature.jpg)
