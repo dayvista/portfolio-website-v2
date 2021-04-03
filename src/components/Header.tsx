@@ -1,12 +1,12 @@
 import {
   Box,
   useMediaQuery,
-  Tooltip,
   Heading,
   ColorMode,
   HStack,
   Text,
   VStack,
+  Tooltip,
 } from "@chakra-ui/react";
 import { ChakraSun, ChakraMoon } from "src/lib/icons";
 import { default as NextLink } from "next/link";
@@ -78,8 +78,6 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
               ? "◐"
               : router?.pathname?.includes("portfolio")
               ? "◑"
-              : colorMode === "dark"
-              ? "◒"
               : "◓"}
           </Text>
           <NextLink href="/portfolio">

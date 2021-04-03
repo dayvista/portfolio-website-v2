@@ -51,3 +51,14 @@ export const Button: ComponentStylesInterface = {
     },
   },
 };
+
+export const Link: ComponentStylesInterface = {
+  baseStyle: {
+    _focus: {
+      boxShadow: "none !important",
+    },
+    _hover: {
+      textDecoration: "underline",
+    },
+  },
+};

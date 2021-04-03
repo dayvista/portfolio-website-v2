@@ -14,6 +14,7 @@ const PortfolioPage = () => {
               duration={item.duration}
               description={item.description}
               technologies={item.technologies}
+              link={item.link}
               key={`${item.heading}-${item.description}`}
             />
             {i + 1 < portfolioItems.length ? (

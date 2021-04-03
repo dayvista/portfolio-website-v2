@@ -11,7 +11,7 @@ const Frame = ({ children }) => {
       align="flex-start"
       borderRadius="5px"
       p="2.5%"
-      bg={colorMode === "light" ? "#FFFEFD" : "#28222a"}
+      bg={colorMode === "light" ? "#FFFEFD" : "#303132"}
       boxShadow={
         colorMode === "light"
           ? "-1px 2px 13px 1px rgba(86, 78, 88,0.4)"

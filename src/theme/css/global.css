@@ -1,3 +1,13 @@
+::selection {
+  background: #f9eff9;
+  color: #4a809b;
+}
+
+::-moz-selection {
+  background: #f9eff9;
+  color: #4a809b;
+}
+
 body {
   scrollbar-width: thin;
 }

@@ -1,3 +1,5 @@
+import { ChakraComponent } from "@chakra-ui/react";
+
 export interface BlogInterface {
   posts: object[];
   tag?: string;
@@ -14,4 +16,12 @@ export interface PostInterface {
   slug: string;
   title: string;
   tags: string[];
+}
+
+export interface PortfolioItemInterface {
+  heading: string;
+  duration?: [string, string] | [string];
+  description: string;
+  technologies: { component: ChakraComponent<any>; name: string }[];
+  link: string;
 }
