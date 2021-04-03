@@ -38,7 +38,7 @@ export const BlogPostCard = ({
       h={["40vh", null, "30vh", null, "40vh"]}
       ml="0"
       mr="0"
-      bg={colorMode === "light" ? "grey.50" : "grey.700"}
+      bg={colorMode === "light" ? "#FFFEFD" : "#28222a"}
       color={colorMode === "light" ? "black" : "white"}
       p="0 !important"
       boxShadow={
