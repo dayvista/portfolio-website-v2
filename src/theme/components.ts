@@ -1,5 +1,3 @@
-import { Component } from "react";
-
 interface ComponentStylesInterface {
   baseStyle?: object;
   sizes?: {
@@ -50,6 +48,17 @@ export const Button: ComponentStylesInterface = {
       _hover: {
         background: "grey.500",
       },
+    },
+  },
+};
+
+export const Link: ComponentStylesInterface = {
+  baseStyle: {
+    _focus: {
+      boxShadow: "none !important",
+    },
+    _hover: {
+      textDecoration: "underline",
     },
   },
 };
