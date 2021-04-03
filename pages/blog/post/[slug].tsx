@@ -74,7 +74,7 @@ const BlogPost = ({ post }: PostInterface) => {
           >
             By{" "}
             <chakra.span
-              color={colorMode === "light" ? "grey.500" : "grey.300"}
+              color={colorMode === "light" ? "grey.500" : "grey.100"}
             >
               Liam Davis
             </chakra.span>
