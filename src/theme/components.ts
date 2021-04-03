@@ -1,5 +1,3 @@
-import { Component } from "react";
-
 interface ComponentStylesInterface {
   baseStyle?: object;
   sizes?: {
