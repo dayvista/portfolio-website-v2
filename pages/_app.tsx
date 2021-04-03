@@ -9,8 +9,6 @@ import Head from "next/head";
 import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
 import "@fontsource/biorhyme/300.css";
 import "@fontsource/space-grotesk/300.css";
-import "@fontsource/yantramanav/300.css";
-import "@fontsource/yantramanav/400.css";
 import "src/theme/css/global.css";
 import Favicons from "src/components/Favicons";
 import Layout from "src/components/Layout";
@@ -40,6 +38,11 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>Liam Davis | Web Developer</title>
+
+        <meta content="#252627" name="theme-color" />
+        <meta content="#252627" name="msapplication-navbutton-color" />
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta content="#252627" name="apple-mobile-web-app-status-bar-style" />
 
         <Favicons />
       </Head>
