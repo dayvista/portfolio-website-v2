@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/dayvista/portfolio-website-v2/compare/v1.1.0...v1.2.0) (2021-04-03)
+
+
+### Features
+
+* **_app.tsx:** mobile address bar colors ([0260ab8](https://github.com/dayvista/portfolio-website-v2/commit/0260ab8032bb51e68a51e6f14ae11f0e80d0e6ac))
+* **[slug].tsx:** add progress bar as user reads down page ([c2d1692](https://github.com/dayvista/portfolio-website-v2/commit/c2d16925beda88b7ecd15f54f476d3366bffd7f2))
+
+
+### Bug Fixes
+
+* **blogpostcard:** correct dom nesting bug with <a> tag from tagbutton inside another <a> tag ([205d093](https://github.com/dayvista/portfolio-website-v2/commit/205d0934904c9bb2fa126fceb2823df42258aa9d))
+
 ## [1.1.0](https://github.com/dayvista/portfolio-website-v2/compare/v1.0.0...v1.1.0) (2021-04-01)
 
 
