@@ -9,8 +9,6 @@ import Head from "next/head";
 import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
 import "@fontsource/biorhyme/300.css";
 import "@fontsource/space-grotesk/300.css";
-import "@fontsource/yantramanav/300.css";
-import "@fontsource/yantramanav/400.css";
 import "src/theme/css/global.css";
 import Favicons from "src/components/Favicons";
 import Layout from "src/components/Layout";
