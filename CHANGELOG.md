@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/dayvista/portfolio-website-v2/compare/v1.2.0...v1.2.1) (2021-04-03)
+
+
+### Features
+
+* **portfolio/index.js:** add desktop view of portfolio page with data ([3730c8b](https://github.com/dayvista/portfolio-website-v2/commit/3730c8b8c67dbac6d2a43ea7f1d63007c031c388))
+
 ## [1.2.0](https://github.com/dayvista/portfolio-website-v2/compare/v1.1.0...v1.2.0) (2021-04-03)
 
 
