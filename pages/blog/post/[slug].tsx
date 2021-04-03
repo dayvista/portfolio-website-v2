@@ -28,8 +28,8 @@ import {
   zenburn,
   atelierHeathLight,
 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import "@fontsource/Yantramanav/300.css";
-import "@fontsource/Yantramanav/400.css";
+import "@fontsource/yantramanav/300.css";
+import "@fontsource/yantramanav/400.css";
 import "@fontsource/fira-code/400.css";
 import ProgressBar from "react-scroll-progress-bar";
 
