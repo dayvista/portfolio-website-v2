@@ -3,35 +3,22 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 const LoadingDynamic = dynamic(() => import("src/components/Loading"));
 import {
-  VStack,
   Stack,
   Heading,
   Text,
   Box,
-  Divider,
   useColorMode,
   Spacer,
   HStack,
-  Link as ChakraLink,
-  useMediaQuery,
   chakra,
+  useMediaQuery,
 } from "@chakra-ui/react";
-import { default as NextImage } from "next/image";
-import styles from "src/theme/css/Post.module.css";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import { TagButton } from "src/components/Blog";
 import ReactMarkdown from "react-markdown";
-const SyntaxHighlighterDynamic = dynamic(
-  () => import("react-syntax-highlighter")
-);
-import {
-  zenburn,
-  atelierHeathLight,
-} from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import "@fontsource/yantramanav/300.css";
-import "@fontsource/yantramanav/400.css";
-import "@fontsource/fira-code/400.css";
 import ProgressBar from "react-scroll-progress-bar";
+import Frame from "src/components/Frame";
+import Renderers from "src/components/Renderers";
 
 interface PostInterface {
   post: {
@@ -54,122 +41,6 @@ const BlogPost = ({ post }: PostInterface) => {
 
   const fontColorMode = colorMode === "light" ? "grey.400" : "grey.200";
 
-  interface renderPropTypes {
-    level?: number;
-    language?: string;
-    value?: string;
-    children?: object[];
-    href?: string;
-    src?: string;
-    alt?: string;
-  }
-
-  const renderers = {
-    code: ({ language, value }: renderPropTypes) => {
-      return (
-        <SyntaxHighlighterDynamic
-          style={colorMode === "light" ? atelierHeathLight : zenburn}
-          language={language}
-          children={value}
-          customStyle={{
-            transition: "0.25s all",
-            borderRadius: "5px",
-            margin: "5vh 0",
-            alignSelf: "center",
-            width: isLargerThan500 ? "initial" : "inherit",
-          }}
-          codeTagProps={{
-            style: {
-              transition: "0.25s all",
-            },
-          }}
-        />
-      );
-    },
-    heading: ({ level, children }: renderPropTypes) => {
-      return (
-        <Heading
-          // @ts-ignore
-          as={`h${level}`}
-          className={styles.blog_font}
-          size={
-            level === 1 ? "lg" : level === 2 ? "md" : level === 1 ? "sm" : "xs"
-          }
-        >
-          {children}
-        </Heading>
-      );
-    },
-    thematicBreak: () => {
-      return <Divider />;
-    },
-    blockquote: ({ children }: renderPropTypes) => {
-      return (
-        <Box
-          bg={colorMode === "light" ? "grey.50" : "grey.700"}
-          color={colorMode === "light" ? "black" : "white"}
-          p="1%"
-          borderRadius="5px"
-          m="2.5vh 0"
-          className={styles.blockquote_container}
-        >
-          {children}
-        </Box>
-      );
-    },
-    link: ({ href, children }: renderPropTypes) => {
-      return (
-        <ChakraLink
-          href={href}
-          target="_blank"
-          rel="noopener noreferral nofollow"
-          color="blue.500"
-          transition="0.25s all"
-          _hover={{ color: "blue.700", textDecoration: "underline" }}
-          _focus={{
-            boxShadow: "rgb(74 128 155 / 60%) 0px 0px 0px 3px !important",
-          }}
-          borderRadius="5px"
-        >
-          {children}
-        </ChakraLink>
-      );
-    },
-    // TODO: use pexels api for images
-    image: ({ src, alt }: renderPropTypes) => {
-      return (
-        <Box
-          position="relative"
-          w={["90%", null, "75%", "80%", null]}
-          h={["25vh", null, "20vh", null, "40vh"]}
-          m="5vh 0 !important"
-          alignSelf="center"
-          className={
-            styles[`img_container_${colorMode === "light" ? "light" : "dark"}`]
-          }
-        >
-          <NextImage src={src} alt={alt} layout="fill" objectFit="cover" />
-        </Box>
-      );
-    },
-    paragraph: ({ children }: renderPropTypes) => {
-      const isImageOrLink = children.every(
-        (child: { props: { node: { type: string } } }) => {
-          if (child.props?.node?.type) {
-            return (
-              child.props.node.type === "link" ||
-              child.props.node.type === "image"
-            );
-          } else {
-            return false;
-          }
-        }
-      );
-
-      return isImageOrLink ? <>{children}</> : <Text>{children}</Text>;
-    },
-  };
-
   return router.isFallback || !post ? (
     <LoadingDynamic />
   ) : (
@@ -180,24 +51,7 @@ const BlogPost = ({ post }: PostInterface) => {
           height="0.35rem"
         />
       </Box>
-      <VStack
-        w={["100%", null, "90%", "80%", "70%"]}
-        spacing={2}
-        m="5vh 0 !important"
-        align="flex-start"
-        borderRadius="5px"
-        p="2.5%"
-        bg={colorMode === "light" ? "#FFFEFD" : "#28222a"}
-        boxShadow={
-          colorMode === "light"
-            ? "-1px 2px 13px 1px rgba(86, 78, 88,0.4)"
-            : "-1px 2px 13px 1px rgba(195, 187, 196,0.4)"
-        }
-        color={colorMode === "light" ? "black" : "white"}
-        transition="0.25s all"
-        fontFamily="Yantramanav, sans-serif !important"
-        wordBreak="break-word"
-      >
+      <Frame>
         <Heading
           as="h1"
           size="lg"
@@ -245,8 +99,11 @@ const BlogPost = ({ post }: PostInterface) => {
           </Text>
         </HStack>
         <Spacer />
-        <ReactMarkdown renderers={renderers} children={post.md} />
-      </VStack>
+        <ReactMarkdown
+          renderers={Renderers(isLargerThan500, colorMode)}
+          children={post.md}
+        />
+      </Frame>
     </>
   );
 };
