@@ -39,6 +39,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Liam Davis | Web Developer</title>
 
+        <meta content="#252627" name="theme-color" />
+        <meta content="#252627" name="msapplication-navbutton-color" />
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta content="#252627" name="apple-mobile-web-app-status-bar-style" />
+
         <Favicons />
       </Head>
       <ChakraProvider theme={appTheme}>
