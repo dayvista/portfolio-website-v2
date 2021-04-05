@@ -11,18 +11,20 @@ import {
   SiPostgresql,
   SiDocker,
   SiJavascript,
+  SiTypescript,
 } from "react-icons/si";
+import { FaStripe } from "react-icons/fa";
 
-export const ChakraMail: ChakraComponent<any> = chakra(FiMail);
-export const ChakraGitHub: ChakraComponent<any> = chakra(FiGithub);
-export const ChakraLinkedIn: ChakraComponent<any> = chakra(RiLinkedinLine);
-export const ChakraSun: ChakraComponent<any> = chakra(GiStripedSun);
-export const ChakraMoon: ChakraComponent<any> = chakra(
-  WiMoonAltWaningCrescent6
-);
-export const ChakraPexels: ChakraComponent<any> = chakra(SiPexels);
-export const ChakraNext: ChakraComponent<any> = chakra(SiNextDotJs);
-export const ChakraReact: ChakraComponent<any> = chakra(SiReact);
-export const ChakraPostgres: ChakraComponent<any> = chakra(SiPostgresql);
-export const ChakraDocker: ChakraComponent<any> = chakra(SiDocker);
-export const ChakraJavaScript: ChakraComponent<any> = chakra(SiJavascript);
+export const ChakraMail = chakra(FiMail);
+export const ChakraGitHub = chakra(FiGithub);
+export const ChakraLinkedIn = chakra(RiLinkedinLine);
+export const ChakraSun = chakra(GiStripedSun);
+export const ChakraMoon = chakra(WiMoonAltWaningCrescent6);
+export const ChakraPexels = chakra(SiPexels);
+export const ChakraNext = chakra(SiNextDotJs);
+export const ChakraReact = chakra(SiReact);
+export const ChakraPostgres = chakra(SiPostgresql);
+export const ChakraDocker = chakra(SiDocker);
+export const ChakraJavaScript = chakra(SiJavascript);
+export const ChakraStripe = chakra(FaStripe);
+export const ChakraTypeScript = chakra(SiTypescript);

@@ -4,6 +4,8 @@ import {
   ChakraPostgres,
   // ChakraDocker,
   ChakraJavaScript,
+  ChakraTypeScript,
+  ChakraStripe,
 } from "src/lib/icons";
 import { PortfolioItemInterface } from "src/lib/interfaces";
 
@@ -16,7 +18,7 @@ export const portfolioItems: PortfolioItemInterface[] = [
     technologies: [
       { component: ChakraNext, name: "Next.js" },
       { component: ChakraReact, name: "React.js" },
-      { component: ChakraJavaScript, name: "JavaScript" },
+      { component: ChakraTypeScript, name: "TypeScript" },
       { component: ChakraPostgres, name: "PostgreSQL" },
     ],
   },
@@ -45,9 +47,10 @@ export const portfolioItems: PortfolioItemInterface[] = [
     description:
       "Responsive website that showcases artist's work. Features a shop with cart functionality, integrated with Shopify.",
     technologies: [
+      { component: ChakraStripe, name: "Stripe" },
       { component: ChakraNext, name: "Next.js" },
       { component: ChakraReact, name: "React.js" },
-      { component: ChakraJavaScript, name: "JavaScript" },
+      { component: ChakraTypeScript, name: "TypeScript" },
     ],
   },
   {
