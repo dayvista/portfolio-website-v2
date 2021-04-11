@@ -18,6 +18,7 @@ import {
   zenburn,
   atelierHeathLight,
 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { createVisualState } from "framer-motion/types/render/utils/state";
 
 interface renderPropTypes {
   level?: number;
@@ -29,7 +30,7 @@ interface renderPropTypes {
   alt?: string;
 }
 
-const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
+const Renderers = (colorMode: ColorMode) => {
   return {
     code: ({ language, value }: renderPropTypes) => {
       return (
@@ -38,12 +39,13 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
           language={language}
           children={value}
           customStyle={{
+            fontSize: "16px !important",
             transition: "0.25s all",
             borderRadius: "5px",
             margin: "5vh 0",
             alignSelf: "center",
-            width: isLargerThan500 ? "initial" : "inherit",
-            maxWidth: isLargerThan500 && "50vw",
+            width: "90%",
+            maxWidth: "90%",
           }}
           codeTagProps={{
             style: {
@@ -136,7 +138,9 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
       return isImageOrLink ? (
         <>{children}</>
       ) : (
-        <Text className={styles.blog_font}>{children}</Text>
+        <Text fontSize="18px" className={styles.blog_font}>
+          {children}
+        </Text>
       );
     },
   };

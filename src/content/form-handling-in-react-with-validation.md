@@ -1,7 +1,7 @@
 ---
 title: Form Handling in React with Validation
 hero_image: blocks.jpg
-tags: react-hook-form, vest, forms, react, next.js
+tags: react-hook-form,vest,forms,react,next.js
 ---
 
 # Form Handling in React with Validation: React Hook Form and Vest
@@ -57,7 +57,9 @@ As we'll see below, composing a form and validating that form's submitted data c
 ## Benefits of Using [`vest`](https://ealush.com/vest/#/)
 
 - [Comes with many validation functions out of the box](https://ealush.com/vest/#/./n4s/rules).
+
 - Declarative: uses named functions (such as `isString()`) instead of schemas. This is personal preference. I happen to find declarative validation easier to read than when it's schema based.
+
 - [Functionality can be extended using other declarative libraries](https://ealush.com/vest/#/./n4s/external), like [`validator`](https://github.com/validatorjs/validator.js).
 
 ## Walkthrough
@@ -106,10 +108,15 @@ export default SampleForm
 What just happened? Let's break it down:
 
 - The `useState()` hook was replaced with `useForm()`. The form's state is now in the hands of `react-hook-form`. It can be accessed by destructuring the `formState` object found in `useForm()`.
+
 - The `button` is conditionally disabled by the boolean `isSubmitting`. This variable automatically becomes `true` when the `onSubmit` function is running, even if async!
+
 - The `handleSubmit` function is passed to the `form` `onSubmit`, with our custom `onSubmit` function passed as an argument.
+
 - The `button` no longer requires an `onClick` handler because `handleSubmit` will take care of that action for us.
+
 - The `input` has been "registered" by passing `{...register('email')}` to it. It's state is now being tracked by `useForm()`.
+
 - The `errors` object automatically receives keys that correspond with the `name` passed to the `register()` function on form fields. This can be used to conditionally display an error message if validation fails, like so: `{ errors.email && <p>errors.email.message</p> }`. We'll implement validation in the next step.
 
 3. What if the user doesn't input a valid email before clicking "Submit"? What if the user doesn't input anything at all? Preventing these sorts of situations is what validation is for. Start by creating a separate file, entitled `validation.js`. Import the necessary functions from `vest`, instantiate a `vest()` function, and export it.
@@ -130,8 +137,7 @@ export const emailInputValidator = vest.create("emailInput", (data = {}) => {
 ```
 
 - The first argument to the `test` function names the test. The second argument is the error message that will be displayed to the user when the test fails.
-- The final argument is where the magic happens. `enforce()` is passed the user's input from the `data` object. `vest` is able to chain together rules. It's easy to tell from the names of the chained functions what's happening:
-- The input is tested to verify that it is not `null`, is a string, and that it matches a crazy email regex from [this site](https://www.emailregex.com/).
+- The final argument is where the magic happens. `enforce()` is passed the user's input from the `data` object. `vest` is able to chain together rules. It's easy to tell from the names of the chained functions what's happening: input is tested to verify that it is not `null`, is a string, and that it matches a crazy email regex from [this site](https://www.emailregex.com/).
 
 4. Now, we bring it all together using the `@hookform/resolvers` package. Return to the `SampleForm.jsx` file and modify it to match the following:
 

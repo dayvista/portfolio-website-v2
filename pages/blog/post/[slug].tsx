@@ -11,7 +11,6 @@ import {
   Spacer,
   HStack,
   chakra,
-  useMediaQuery,
 } from "@chakra-ui/react";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import { TagButton } from "src/components/Blog";
@@ -34,8 +33,6 @@ interface PostInterface {
 
 const BlogPost = ({ post }: PostInterface) => {
   const router = useRouter();
-
-  const [isLargerThan500] = useMediaQuery("(min-width:501px)");
 
   const { colorMode } = useColorMode();
 
@@ -99,10 +96,7 @@ const BlogPost = ({ post }: PostInterface) => {
           </Text>
         </HStack>
         <Spacer />
-        <ReactMarkdown
-          renderers={Renderers(isLargerThan500, colorMode)}
-          children={post.md}
-        />
+        <ReactMarkdown renderers={Renderers(colorMode)} children={post.md} />
       </Frame>
     </>
   );
