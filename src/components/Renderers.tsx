@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import js from "react-syntax-highlighter/dist/cjs/languages/hljs/javascript";
+// SyntaxHighlighter.registerLanguage('jsx', jsx)
+// SyntaxHighlighter.registerLanguage('jsx=', jsx)
 SyntaxHighlighter.registerLanguage("javascript", js);
 SyntaxHighlighter.registerLanguage("js", js);
 import {
@@ -41,7 +43,7 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
             margin: "5vh 0",
             alignSelf: "center",
             width: isLargerThan500 ? "initial" : "inherit",
-            // width: isLargerThan500 ? "initial" : "inherit",
+            maxWidth: isLargerThan500 && "50vw",
           }}
           codeTagProps={{
             style: {
@@ -131,7 +133,11 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
         }
       );
 
-      return isImageOrLink ? <>{children}</> : <Text>{children}</Text>;
+      return isImageOrLink ? (
+        <>{children}</>
+      ) : (
+        <Text className={styles.blog_font}>{children}</Text>
+      );
     },
   };
 };
