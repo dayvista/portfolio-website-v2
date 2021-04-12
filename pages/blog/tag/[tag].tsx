@@ -4,8 +4,26 @@ import { Grid, Heading, VStack, useColorMode } from "@chakra-ui/react";
 import { BlogInterface, PostInterface } from "src/lib/interfaces";
 import { BlogPostCard } from "src/components/Blog";
 
+const upperCaseAllWords = (str: string) => {
+  let splitStr = str.toLowerCase().split(" ");
+
+  for (let i = 0; i < splitStr.length; i++) {
+    splitStr[i] =
+      splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+
+  return splitStr.join(" ");
+};
+
 const FilterByTagPage = ({ posts, tag }: BlogInterface) => {
   const { colorMode } = useColorMode();
+
+  const tagHeader = upperCaseAllWords(tag.replace(/-/g, " "));
+
+  // (tag.charAt(0).toUpperCase() + tag.slice(1)).replace(
+  //   /-/g,
+  //   " "
+  // )
 
   return (
     <VStack w="100%">
@@ -17,10 +35,11 @@ const FilterByTagPage = ({ posts, tag }: BlogInterface) => {
         color={colorMode === "light" ? "black" : "white"}
         transition="0.25s all"
       >
-        {`${(tag.charAt(0).toUpperCase() + tag.slice(1)).replace(
-          "-",
-          "."
-        )} Articles`}
+        {/* {`${(tag.charAt(0).toUpperCase() + tag.slice(1)).replace(
+          /-/g,
+          " "
+        )} Articles`} */}
+        {`${tagHeader} Articles`}
       </Heading>
       <Grid
         w="100%"

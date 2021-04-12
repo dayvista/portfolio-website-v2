@@ -1,7 +1,7 @@
 ---
 title: Form Handling in React with Validation
 hero_image: blocks.jpg
-tags: react-hook-form,vest,forms,react
+tags: react-hook-form,vest,react
 ---
 
 ## Intro
@@ -114,7 +114,9 @@ The `input` has been "registered" by passing `{...register('email')}` to it. It'
 The `errors` object automatically receives keys that correspond with the `name` passed to the `register()` function on form fields. This can be used to conditionally display an error message if validation fails, like so:
 
 ```javascript
-{ errors.email && <p>errors.email.message</p> }
+{
+  errors.email && <p>errors.email.message</p>;
+}
 ```
 
 We'll implement validation in the next step.

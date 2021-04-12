@@ -12,6 +12,8 @@ import {
   SiDocker,
   SiJavascript,
   SiTypescript,
+  SiMarkdown,
+  SiFramer,
 } from "react-icons/si";
 import { FaStripe } from "react-icons/fa";
 
@@ -28,3 +30,5 @@ export const ChakraDocker = chakra(SiDocker);
 export const ChakraJavaScript = chakra(SiJavascript);
 export const ChakraStripe = chakra(FaStripe);
 export const ChakraTypeScript = chakra(SiTypescript);
+export const ChakraMarkdown = chakra(SiMarkdown);
+export const ChakraFramer = chakra(SiFramer);

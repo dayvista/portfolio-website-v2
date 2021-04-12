@@ -41,7 +41,7 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
         _hover={textHoverObj}
       >
         <Tooltip
-          label={colorMode === "light" ? "Light Mode" : "Dark Mode"}
+          label={colorMode === "light" ? "Dark Mode" : "Light Mode"}
           aria-label="A tooltip for dark/light modes"
           closeOnClick={isLargerThan1024Px ? false : true}
           userSelect="none"
