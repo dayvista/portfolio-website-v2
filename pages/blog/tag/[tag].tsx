@@ -20,11 +20,6 @@ const FilterByTagPage = ({ posts, tag }: BlogInterface) => {
 
   const tagHeader = upperCaseAllWords(tag.replace(/-/g, " "));
 
-  // (tag.charAt(0).toUpperCase() + tag.slice(1)).replace(
-  //   /-/g,
-  //   " "
-  // )
-
   return (
     <VStack w="100%">
       <Heading
@@ -35,10 +30,6 @@ const FilterByTagPage = ({ posts, tag }: BlogInterface) => {
         color={colorMode === "light" ? "black" : "white"}
         transition="0.25s all"
       >
-        {/* {`${(tag.charAt(0).toUpperCase() + tag.slice(1)).replace(
-          /-/g,
-          " "
-        )} Articles`} */}
         {`${tagHeader} Articles`}
       </Heading>
       <Grid
