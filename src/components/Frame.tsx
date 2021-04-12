@@ -7,7 +7,7 @@ const Frame = ({ children }) => {
     <VStack
       w={["100%", null, "90%", "80%", "70%"]}
       spacing={2}
-      m="5vh 0 !important"
+      m="5vh auto !important"
       align="flex-start"
       borderRadius="5px"
       p="2.5%"

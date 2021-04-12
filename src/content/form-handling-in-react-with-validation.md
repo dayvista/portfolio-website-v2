@@ -1,14 +1,12 @@
 ---
 title: Form Handling in React with Validation
 hero_image: blocks.jpg
-tags: react-hook-form,vest,forms,react,next.js
+tags: react-hook-form,vest,forms,react
 ---
-
-# Form Handling in React with Validation: React Hook Form and Vest
 
 ## Intro
 
-If you are already familiar with basic form handling in React, skip to the Walkthrough section.
+If you are already familiar with basic form handling in React, I suggest you skip to the Walkthrough section.
 
 Creating forms and processing and validating submitted form data can be a hassle in React.
 
@@ -44,22 +42,20 @@ export default SampleForm;
 
 This approach, although simple, isn't performant. The app is re-rendered on every key press. It also lacks a seamless way of integrating with a validation library. Using a validation library ensures that the data submitted by the user adheres to certain standards set by the developer (`formState.email` is not null, is a string, and is in an email format, etc.).
 
-As we'll see below, composing a form and validating that form's submitted data can be simplified using libraries like [`react-hook-form`](https://react-hook-form.com/) and [`vest`](https://ealush.com/vest/#/).
+As we'll see below, composing a form and validating that form's submitted data can be simplified using libraries like React Hook Form and Vest.
 
-> If you choose to build a form in the same way as `<SampleForm />` above, I suggest using a schema-based validation library like [`joi`](https://joi.dev/) to handle validation.
+> If you choose to build a form in the same way as `SampleForm.jsx` above, I suggest using a schema-based validation library like [`joi`](https://joi.dev/) to handle validation.
 
-## Benefits of Using [`react-hook-form`](https://react-hook-form.com/)
+## Benefits of Using [React Hook Form](https://react-hook-form.com/)
 
 - Prevent excessive re-renders.
 - Form components mount quickly.
 - Subscribe to the state changes of individual components without re-rendering the whole form.
 
-## Benefits of Using [`vest`](https://ealush.com/vest/#/)
+## Benefits of Using [Vest](https://ealush.com/vest/#/)
 
 - [Comes with many validation functions out of the box](https://ealush.com/vest/#/./n4s/rules).
-
-- Declarative: uses named functions (such as `isString()`) instead of schemas. This is personal preference. I happen to find declarative validation easier to read than when it's schema based.
-
+- Uses declarative, named functions instead of schemas. This is personal preference. I happen to find declarative validation easier to read than when it's schema based.
 - [Functionality can be extended using other declarative libraries](https://ealush.com/vest/#/./n4s/external), like [`validator`](https://github.com/validatorjs/validator.js).
 
 ## Walkthrough
@@ -107,17 +103,21 @@ export default SampleForm
 
 What just happened? Let's break it down:
 
-- The `useState()` hook was replaced with `useForm()`. The form's state is now in the hands of `react-hook-form`. It can be accessed by destructuring the `formState` object found in `useForm()`.
+The `useState()` hook was replaced with `useForm()`. The form's state is now in the hands of `react-hook-form`. It can be accessed by destructuring the `formState` object found in `useForm()`.
 
-- The `button` is conditionally disabled by the boolean `isSubmitting`. This variable automatically becomes `true` when the `onSubmit` function is running, even if async!
+The `button` is conditionally disabled by the boolean `isSubmitting`. This variable automatically becomes `true` when the `onSubmit` function is running, even if async! It also no longer requires an `onClick` handler because `handleSubmit` will take care of that action for us.
 
-- The `handleSubmit` function is passed to the `form` `onSubmit`, with our custom `onSubmit` function passed as an argument.
+`handleSubmit` is passed to the `form` `onSubmit`, with our custom `onSubmit` function passed as an argument.
 
-- The `button` no longer requires an `onClick` handler because `handleSubmit` will take care of that action for us.
+The `input` has been "registered" by passing `{...register('email')}` to it. It's state is now being tracked by `useForm()`.
 
-- The `input` has been "registered" by passing `{...register('email')}` to it. It's state is now being tracked by `useForm()`.
+The `errors` object automatically receives keys that correspond with the `name` passed to the `register()` function on form fields. This can be used to conditionally display an error message if validation fails, like so:
 
-- The `errors` object automatically receives keys that correspond with the `name` passed to the `register()` function on form fields. This can be used to conditionally display an error message if validation fails, like so: `{ errors.email && <p>errors.email.message</p> }`. We'll implement validation in the next step.
+```javascript
+{ errors.email && <p>errors.email.message</p> }
+```
+
+We'll implement validation in the next step.
 
 3. What if the user doesn't input a valid email before clicking "Submit"? What if the user doesn't input anything at all? Preventing these sorts of situations is what validation is for. Start by creating a separate file, entitled `validation.js`. Import the necessary functions from `vest`, instantiate a `vest()` function, and export it.
 

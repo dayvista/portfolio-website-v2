@@ -16,3 +16,11 @@
 .blockquote_container > p {
   font-family: "Yantramanav", sans-serif !important;
 }
+
+.hero_img_container > div {
+  border-radius: 5px !important;
+}
+
+.blog_post_container * {
+  font-family: "Yantramanav", sans-serif !important;
+}

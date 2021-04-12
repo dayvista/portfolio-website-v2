@@ -18,7 +18,6 @@ import {
   zenburn,
   atelierHeathLight,
 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import { createVisualState } from "framer-motion/types/render/utils/state";
 
 interface renderPropTypes {
   level?: number;
@@ -30,7 +29,7 @@ interface renderPropTypes {
   alt?: string;
 }
 
-const Renderers = (colorMode: ColorMode) => {
+const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
   return {
     code: ({ language, value }: renderPropTypes) => {
       return (
@@ -44,8 +43,8 @@ const Renderers = (colorMode: ColorMode) => {
             borderRadius: "5px",
             margin: "5vh 0",
             alignSelf: "center",
-            width: "90%",
-            maxWidth: "90%",
+            width: isLargerThan500 ? "90%" : "100%",
+            maxWidth: isLargerThan500 ? "90%" : "100%",
           }}
           codeTagProps={{
             style: {
@@ -122,7 +121,7 @@ const Renderers = (colorMode: ColorMode) => {
       );
     },
     paragraph: ({ children }: renderPropTypes) => {
-      const isImageOrLink = children.every(
+      const omitParagraphTag = children.some(
         (child: { props: { node: { type: string } } }) => {
           if (child.props?.node?.type) {
             return (
@@ -135,10 +134,14 @@ const Renderers = (colorMode: ColorMode) => {
         }
       );
 
-      return isImageOrLink ? (
+      return omitParagraphTag ? (
         <>{children}</>
       ) : (
-        <Text fontSize="18px" className={styles.blog_font}>
+        <Text
+          fontSize="18px"
+          className={styles.blog_font}
+          display="inline-block !important"
+        >
           {children}
         </Text>
       );
