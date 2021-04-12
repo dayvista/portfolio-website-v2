@@ -2,7 +2,7 @@ import {
   ChakraReact,
   ChakraNext,
   ChakraPostgres,
-  // ChakraDocker,
+  ChakraDocker,
   ChakraJavaScript,
   ChakraTypeScript,
   ChakraStripe,
@@ -22,13 +22,13 @@ export const portfolioItems: PortfolioItemInterface[] = [
       { component: ChakraPostgres, name: "PostgreSQL" },
     ],
   },
-  // {
-  //   heading: "Invidious - Open Source & Privacy-Friendly YouTube Front-End",
-  //   link: "https://rei.link",
-  //   duration: ["Apr. '21"],
-  //   description: "Contributed docker-compose tutorial to documentation.",
-  //   technologies: [{ component: ChakraDocker, name: "Docker" }],
-  // },
+  {
+    heading: "Invidious - Open Source, Private YouTube Front-End",
+    link: "https://github.com/iv-org/documentation/",
+    duration: ["Apr. '21"],
+    description: "Contributed docker-compose tutorial to documentation.",
+    technologies: [{ component: ChakraDocker, name: "Docker" }],
+  },
   {
     heading: "Gamma Guys Studio - Web Design Agency",
     link: "https://gammaguys.studio",
@@ -42,7 +42,7 @@ export const portfolioItems: PortfolioItemInterface[] = [
     ],
   },
   {
-    heading: "Giuliana Design - Custom Shopfront and Artist Showcase",
+    heading: "Giuliana Design - Custom Shopfront and Art Showcase",
     link: "https://giuliana.design",
     description:
       "Responsive website that showcases artist's work. Features a shop with cart functionality, integrated with Shopify.",
@@ -54,7 +54,7 @@ export const portfolioItems: PortfolioItemInterface[] = [
     ],
   },
   {
-    heading: "REI Link - Real Estate ",
+    heading: "REI Link - Real Estate Social Media Platform",
     link: "https://rei.link",
     duration: ["Oct. '20", "Mar. '21"],
     description:

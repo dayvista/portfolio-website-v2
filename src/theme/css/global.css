@@ -59,8 +59,22 @@ ol {
 
 code {
   font-family: "Fira Code", monospace !important;
+  font-size: 16px !important;
 }
 
 blockquote {
   font-family: "Yamanatrav", sans-serif !important;
+}
+
+li {
+  font-size: 18px !important;
+}
+
+li::marker {
+  font-weight: bold !important;
+  font-size: 20px !important;
+}
+
+code {
+  font-size: 16px !important;
 }

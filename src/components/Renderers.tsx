@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import js from "react-syntax-highlighter/dist/cjs/languages/hljs/javascript";
+// SyntaxHighlighter.registerLanguage('jsx', jsx)
+// SyntaxHighlighter.registerLanguage('jsx=', jsx)
 SyntaxHighlighter.registerLanguage("javascript", js);
 SyntaxHighlighter.registerLanguage("js", js);
 import {
@@ -36,12 +38,13 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
           language={language}
           children={value}
           customStyle={{
+            fontSize: "16px !important",
             transition: "0.25s all",
             borderRadius: "5px",
             margin: "5vh 0",
             alignSelf: "center",
-            width: isLargerThan500 ? "initial" : "inherit",
-            // width: isLargerThan500 ? "initial" : "inherit",
+            width: isLargerThan500 ? "90%" : "100%",
+            maxWidth: isLargerThan500 ? "90%" : "100%",
           }}
           codeTagProps={{
             style: {
@@ -118,7 +121,7 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
       );
     },
     paragraph: ({ children }: renderPropTypes) => {
-      const isImageOrLink = children.every(
+      const omitParagraphTag = children.some(
         (child: { props: { node: { type: string } } }) => {
           if (child.props?.node?.type) {
             return (
@@ -131,7 +134,17 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
         }
       );
 
-      return isImageOrLink ? <>{children}</> : <Text>{children}</Text>;
+      return omitParagraphTag ? (
+        <>{children}</>
+      ) : (
+        <Text
+          fontSize="18px"
+          className={styles.blog_font}
+          display="inline-block !important"
+        >
+          {children}
+        </Text>
+      );
     },
   };
 };

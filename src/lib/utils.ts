@@ -97,12 +97,10 @@ export const getSinglePost = async (
   // Create an array of strings from the file's tags
   const tags: string[] = parsedFile?.data?.tags?.split(",");
 
-  const readingTimeInMin =
-    Math.round(readingTime(parsedFile.content).minutes) / 10;
+  const readingTimeInMin = Math.round(readingTime(parsedFile.content).minutes);
 
   const fileDataObj = {
     ...parsedFile?.data,
-    // TODO: find better markdown parser? possibly npm's marky-markdown
     md: parsedFile.content,
     published: dateParser(dateCreated.toString()),
     last_edited: dateParser(dateLastEdited.toString()),

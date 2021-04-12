@@ -19,6 +19,8 @@ import ReactMarkdown from "react-markdown";
 import ProgressBar from "react-scroll-progress-bar";
 import Frame from "src/components/Frame";
 import Renderers from "src/components/Renderers";
+import { default as NextImage } from "next/image";
+import styles from "src/theme/css/Post.module.css";
 
 interface PostInterface {
   post: {
@@ -35,9 +37,9 @@ interface PostInterface {
 const BlogPost = ({ post }: PostInterface) => {
   const router = useRouter();
 
-  const [isLargerThan500] = useMediaQuery("(min-width:501px)");
-
   const { colorMode } = useColorMode();
+
+  const [isLargerThan500] = useMediaQuery("(min-width: 501px)");
 
   const fontColorMode = colorMode === "light" ? "grey.400" : "grey.200";
 
@@ -51,59 +53,74 @@ const BlogPost = ({ post }: PostInterface) => {
           height="0.35rem"
         />
       </Box>
-      <Frame>
-        <Heading
-          as="h1"
-          size="lg"
-          fontFamily="Yantramanav, sans-serif !important"
-          fontWeight={400}
-        >
-          {post.title}
-        </Heading>
-        <Stack
-          w="100%"
-          justify="space-between"
-          align="center"
-          flexDir={["column", null, "row"]}
-        >
+      <Box className="blog_post_container" w="100%">
+        <Frame>
           <Heading
-            as="h3"
-            size="xs"
-            color={fontColorMode}
+            as="h1"
+            size="lg"
             fontFamily="Yantramanav, sans-serif !important"
+            fontWeight={400}
           >
-            By{" "}
-            <chakra.span
-              color={colorMode === "light" ? "grey.500" : "grey.100"}
-            >
-              Liam Davis
-            </chakra.span>
+            {post.title}
           </Heading>
-          <HStack
-            justify={["center", null, "flex-end"]}
-            spacing={2}
-            m={["2.5vh 0 !important", null, 0]}
+          <Stack
+            w="100%"
+            justify="space-between"
+            align={["flex-start", null, "center"]}
+            flexDir={["column", null, "row"]}
           >
-            {post?.tags &&
-              post?.tags.map((tag) => {
-                return <TagButton tag={tag} key={tag} />;
-              })}
+            <Heading
+              as="h3"
+              size="xs"
+              color={fontColorMode}
+              fontFamily="Yantramanav, sans-serif !important"
+            >
+              By{" "}
+              <chakra.span
+                color={colorMode === "light" ? "grey.500" : "grey.100"}
+              >
+                Liam Davis
+              </chakra.span>
+            </Heading>
+            <HStack
+              justify={["center", null, "flex-end"]}
+              spacing={2}
+              m={["2.5vh 0 !important", null, 0]}
+              alignSelf={["flex-end", null, "inherit"]}
+            >
+              {post?.tags &&
+                post?.tags.map((tag) => {
+                  return <TagButton tag={tag} key={tag} />;
+                })}
+            </HStack>
+          </Stack>
+          <HStack w="100%" justify="space-between" color={fontColorMode}>
+            <Text fontFamily="Yantramanav, sans-serif !important">
+              {`${post?.minutes_to_read} min. read`}
+            </Text>
+            <Text fontFamily="Yantramanav, sans-serif !important">
+              {post?.published}
+            </Text>
           </HStack>
-        </Stack>
-        <HStack w="100%" justify="space-between" color={fontColorMode}>
-          <Text fontFamily="Yantramanav, sans-serif !important">
-            {`${post?.minutes_to_read} min. read`}
-          </Text>
-          <Text fontFamily="Yantramanav, sans-serif !important">
-            {post?.published}
-          </Text>
-        </HStack>
-        <Spacer />
-        <ReactMarkdown
-          renderers={Renderers(isLargerThan500, colorMode)}
-          children={post.md}
-        />
-      </Frame>
+          <Spacer />
+          <Box
+            className={styles.hero_img_container}
+            m="2vh auto !important"
+            w={["90%", null, "75%"]}
+          >
+            <NextImage
+              src={`/images/blog/${post.hero_image}`}
+              width={post.hero_image_dimensions.width}
+              height={post.hero_image_dimensions.height}
+              priority={true}
+            />
+          </Box>
+          <ReactMarkdown
+            renderers={Renderers(isLargerThan500, colorMode)}
+            children={post.md}
+          />
+        </Frame>
+      </Box>
     </>
   );
 };
