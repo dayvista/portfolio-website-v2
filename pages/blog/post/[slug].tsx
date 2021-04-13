@@ -13,9 +13,10 @@ import {
   VStack,
   chakra,
   useMediaQuery,
-  Link as ChakraLink,
   Divider,
   useColorModeValue,
+  useDisclosure,
+  Button,
 } from "@chakra-ui/react";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import { TagButton } from "src/components/Blog";
@@ -33,6 +34,9 @@ import {
   ChakraLitecoin,
   ChakraRipple,
 } from "src/lib/icons";
+import { useState, useRef } from "react";
+import ScrollToTopButton from "src/components/ScrollToTopButton";
+import DonateCryptoModal from "src/components/DonateCryptoModal";
 
 interface PostInterface {
   post: {
@@ -47,15 +51,34 @@ interface PostInterface {
 }
 
 const cryptoDonationOptions = [
-  { component: ChakraKoFi, link: "" },
-  ChakraBitcoin,
-  ChakraEthereum,
-  ChakraLitecoin,
-  ChakraRipple,
+  {
+    component: ChakraBitcoin,
+    name: "BTC",
+    address: "3GnSprq2F4E14tr1MTgawdTSHeiGAzXKSt",
+  },
+  {
+    component: ChakraLitecoin,
+    name: "LTC",
+    address: "MW57LEfQdHrEGoTNNoRxQUv7v26VTVELAU",
+  },
+  {
+    component: ChakraEthereum,
+    name: "ETH",
+    address: "0x8D77C7A62246b0bf7867437f36865DdFF81D6E0E",
+  },
+  {
+    component: ChakraRipple,
+    name: "XRP",
+    address: "rwEpLBJpSc3v8C8tsjw7ryvXTZNLMXnFCR",
+  },
 ];
 
 const BlogPost = ({ post }: PostInterface) => {
+  const scrollRef = useRef(null);
+
   const router = useRouter();
+
+  const [chosenCrypto, setChosenCrypto] = useState(cryptoDonationOptions[0]);
 
   const { colorMode } = useColorMode();
 
@@ -64,6 +87,8 @@ const BlogPost = ({ post }: PostInterface) => {
   const [isLargerThan500] = useMediaQuery("(min-width: 501px)");
 
   const fontColorMode = colorMode === "light" ? "grey.400" : "grey.200";
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return router.isFallback || !post ? (
     <LoadingDynamic />
@@ -75,6 +100,7 @@ const BlogPost = ({ post }: PostInterface) => {
           height="0.35rem"
         />
       </Box>
+      <Box visibility="hidden" w={0} h={0} m="0 !important" ref={scrollRef} />
       <Box className="blog_post_container" w="100%">
         <Frame>
           <Heading
@@ -147,7 +173,7 @@ const BlogPost = ({ post }: PostInterface) => {
               If you found this article useful, please consider donating through
               one of the links below:
             </Heading>
-            <HStack>
+            <HStack spacing="5vw" mt="2.5vh !important">
               <NextLink href="/donate/kofi">
                 <a>
                   <Box
@@ -162,10 +188,37 @@ const BlogPost = ({ post }: PostInterface) => {
                   </Box>
                 </a>
               </NextLink>
+              {cryptoDonationOptions.map((crypto) => {
+                const CryptoIcon = crypto.component;
+
+                return (
+                  <Button
+                    fontSize="32px"
+                    color={color}
+                    _hover={{
+                      color: colorMode === "light" ? "grey.base" : "grey.100",
+                    }}
+                    transition="0.25s all"
+                    key={`${crypto.name}-container`}
+                    onClick={() => {
+                      setChosenCrypto(crypto);
+                      onOpen();
+                    }}
+                  >
+                    <CryptoIcon key={`${crypto.name}-icon`} />
+                  </Button>
+                );
+              })}
             </HStack>
           </VStack>
         </Frame>
       </Box>
+      <DonateCryptoModal
+        isOpen={isOpen}
+        onClose={onClose}
+        crypto={chosenCrypto}
+      />
+      <ScrollToTopButton scrollRef={scrollRef} />
     </>
   );
 };

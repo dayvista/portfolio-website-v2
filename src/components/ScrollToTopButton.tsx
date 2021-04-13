@@ -32,25 +32,23 @@ const ScrollToTopButton = ({ scrollRef }) => {
     <Button
       as={motion.button}
       initial={{
-        scale: 0,
+        scale: 1,
         opacity: 0,
       }}
       animate={{
-        scale: showScrollButton ? 0.9 : 0,
         opacity: showScrollButton ? 0.8 : 0,
       }}
       whileHover={{
-        scale: 1,
         opacity: 1,
       }}
       whileTap={{
-        scale: 0.8,
+        scale: 0.9,
         opacity: 1,
       }}
-      color="#5B6BFD"
+      color="#508AA8"
       cursor={showScrollButton ? "pointer" : "default"}
       position="fixed"
-      right={[0, null, "30px"]}
+      right={[0, null, "2.5rem"]}
       bottom="20px"
       border="none"
       p="0 !important"
@@ -64,15 +62,7 @@ const ScrollToTopButton = ({ scrollRef }) => {
         }
       }}
     >
-      {/* <ScrollLink
-        to="home"
-        containerId="sections-container"
-        offset={-15}
-        smooth={true}
-        style={{ fontSize: "52px" }}
-      > */}
       <ChakraUpArrow />
-      {/* </ScrollLink> */}
     </Button>
   );
 };
