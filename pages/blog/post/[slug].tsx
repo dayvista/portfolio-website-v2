@@ -155,7 +155,7 @@ const BlogPost = ({ post }: PostInterface) => {
             children={post.md}
           />
           <Divider />
-          <Box id="commento" />
+          <Box id="commento" m="5vh auto !important" />
           <VStack w="100%">
             <Heading as="h3" size="sm" textAlign="center">
               If you found this article useful, please consider donating:

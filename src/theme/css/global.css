@@ -57,10 +57,6 @@ code {
   font-size: 16px !important;
 }
 
-blockquote {
-  font-family: "Yamanatrav", sans-serif !important;
-}
-
 li {
   font-size: 18px !important;
 }
@@ -71,4 +67,51 @@ li::marker {
 
 code {
   font-size: 16px !important;
+}
+
+blockquote,
+#commento * {
+  font-family: "Yamanatrav", sans-serif !important;
+}
+
+.commento-root-min-height {
+  min-height: auto !important;
+}
+
+.commento-submit-button-root {
+  background: #904e55;
+  border-radius: 5px;
+}
+
+.commento-submit-button-root:hover {
+  background: #753e44;
+}
+
+#commento-login-box {
+  background: #f9eff9;
+}
+
+.commento-email-button,
+.commento-login-link,
+.commento-submit-button-root {
+  transition: 0.25s all;
+}
+
+.commento-email-button,
+.commento-login-link {
+  color: #4a809b;
+}
+
+.commento-email-button:hover,
+.commento-login-link:hover {
+  color: #38637a;
+}
+
+.commento-login-text {
+  color: #423c45;
+}
+
+.commento-logo,
+.commento-markdown-button {
+  display: none;
 }
