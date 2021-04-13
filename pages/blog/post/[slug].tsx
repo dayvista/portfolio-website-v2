@@ -32,6 +32,7 @@ import { useState, useRef } from "react";
 import ScrollToTopButton from "src/components/ScrollToTopButton";
 import DonateCryptoModal from "src/components/DonateCryptoModal";
 import { cryptoDonationOptions } from "src/lib/data";
+import Head from "next/head";
 
 interface PostInterface {
   post: {
@@ -66,9 +67,15 @@ const BlogPost = ({ post }: PostInterface) => {
     <LoadingDynamic />
   ) : (
     <>
+      <Head>
+        <script
+          defer
+          src="https://discuss.server.gammaguys.studio/js/commento.js"
+        />
+      </Head>
       <Box position="fixed" top={0} left={0} mt="0 !important">
         <ProgressBar
-          bgcolor={colorMode === "light" ? "#8f8592" : "#c3bbc4"}
+          bgcolor={colorMode === "light" ? "#766c79" : "#c3bbc4"}
           height="0.35rem"
         />
       </Box>
@@ -148,6 +155,7 @@ const BlogPost = ({ post }: PostInterface) => {
             children={post.md}
           />
           <Divider />
+          <Box id="commento" />
           <VStack w="100%">
             <Heading as="h3" size="sm" textAlign="center">
               If you found this article useful, please consider donating:
