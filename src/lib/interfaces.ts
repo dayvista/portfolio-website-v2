@@ -25,3 +25,9 @@ export interface PortfolioItemInterface {
   technologies: { component: ChakraComponent<any>; name: string }[];
   link: string;
 }
+
+export interface CryptoDonationOptionsInterface {
+  component: ChakraComponent<any>;
+  name: string;
+  address: string;
+}

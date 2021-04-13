@@ -28,7 +28,6 @@ export const getAllPostSlugs = async (
   return parsedFileNames;
 };
 
-// TODO: sort blog posts by date
 export const getAllPosts = async (path: string): Promise<object[]> => {
   const contentPath: string = root.resolve(path);
 
@@ -141,7 +140,6 @@ export const getAllTagSlugs = async (
   return tagsArr;
 };
 
-// TODO: sort blog posts by date
 export const getPostsByTag = async (path: string, contextTag: string) => {
   const contentPath: string = root.resolve(path);
 

@@ -103,7 +103,6 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
         </ChakraLink>
       );
     },
-    // TODO: use pexels api for images
     image: ({ src, alt }: renderPropTypes) => {
       return (
         <Box

@@ -10,8 +10,13 @@ import {
   useColorMode,
   Spacer,
   HStack,
+  VStack,
   chakra,
   useMediaQuery,
+  Divider,
+  useColorModeValue,
+  useDisclosure,
+  Button,
 } from "@chakra-ui/react";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import { TagButton } from "src/components/Blog";
@@ -20,7 +25,14 @@ import ProgressBar from "react-scroll-progress-bar";
 import Frame from "src/components/Frame";
 import Renderers from "src/components/Renderers";
 import { default as NextImage } from "next/image";
+import { default as NextLink } from "next/link";
 import styles from "src/theme/css/Post.module.css";
+import { ChakraKoFi } from "src/lib/icons";
+import { useState, useRef } from "react";
+import ScrollToTopButton from "src/components/ScrollToTopButton";
+import DonateCryptoModal from "src/components/DonateCryptoModal";
+import { cryptoDonationOptions } from "src/lib/data";
+import Head from "next/head";
 
 interface PostInterface {
   post: {
@@ -35,24 +47,47 @@ interface PostInterface {
 }
 
 const BlogPost = ({ post }: PostInterface) => {
+  const scrollRef = useRef(null);
+
   const router = useRouter();
 
+  const [chosenCrypto, setChosenCrypto] = useState(cryptoDonationOptions[0]);
+
   const { colorMode } = useColorMode();
+
+  const color = useColorModeValue("black", "white");
 
   const [isLargerThan500] = useMediaQuery("(min-width: 501px)");
 
   const fontColorMode = colorMode === "light" ? "grey.400" : "grey.200";
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return router.isFallback || !post ? (
     <LoadingDynamic />
   ) : (
     <>
+      <Head>
+        <script
+          defer
+          src="https://discuss.server.gammaguys.studio/js/commento.js"
+        />
+      </Head>
       <Box position="fixed" top={0} left={0} mt="0 !important">
         <ProgressBar
-          bgcolor={colorMode === "light" ? "#8f8592" : "#c3bbc4"}
+          bgcolor={colorMode === "light" ? "#766c79" : "#c3bbc4"}
           height="0.35rem"
         />
       </Box>
+      <Box
+        position="absolute"
+        top={0}
+        visibility="hidden"
+        w={0}
+        h={0}
+        m="0 !important"
+        ref={scrollRef}
+      />
       <Box className="blog_post_container" w="100%">
         <Frame>
           <Heading
@@ -119,8 +154,57 @@ const BlogPost = ({ post }: PostInterface) => {
             renderers={Renderers(isLargerThan500, colorMode)}
             children={post.md}
           />
+          <Box id="commento" m="5vh auto !important" />
+          <VStack w="100%">
+            <Heading as="h3" size="sm" textAlign="center">
+              If you found this article useful, please consider donating:
+            </Heading>
+            <HStack spacing="5vw" mt="2.5vh !important">
+              <NextLink href="/donate/kofi">
+                <a>
+                  <Box
+                    fontSize="32px"
+                    color={color}
+                    _hover={{
+                      color: colorMode === "light" ? "grey.base" : "grey.100",
+                    }}
+                    transition="0.25s all"
+                  >
+                    <ChakraKoFi />
+                  </Box>
+                </a>
+              </NextLink>
+              {cryptoDonationOptions.map((crypto) => {
+                const CryptoIcon = crypto.component;
+
+                return (
+                  <Button
+                    fontSize="32px"
+                    color={color}
+                    _hover={{
+                      color: colorMode === "light" ? "grey.base" : "grey.100",
+                    }}
+                    transition="0.25s all"
+                    key={`${crypto.name}-container`}
+                    onClick={() => {
+                      setChosenCrypto(crypto);
+                      onOpen();
+                    }}
+                  >
+                    <CryptoIcon key={`${crypto.name}-icon`} />
+                  </Button>
+                );
+              })}
+            </HStack>
+          </VStack>
         </Frame>
       </Box>
+      <DonateCryptoModal
+        isOpen={isOpen}
+        onClose={onClose}
+        crypto={chosenCrypto}
+      />
+      <ScrollToTopButton scrollRef={scrollRef} />
     </>
   );
 };

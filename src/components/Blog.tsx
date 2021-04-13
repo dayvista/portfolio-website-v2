@@ -36,8 +36,8 @@ export const BlogPostCard = ({
     <Container
       w={["85vw", null, "40vw", null, "25vw"]}
       h={["40vh", null, "30vh", null, "40vh"]}
-      ml="0"
-      mr="0"
+      ml={["auto", null, 0]}
+      mr={["auto", null, 0]}
       bg={colorMode === "light" ? "#FFFEFD" : "#28222a"}
       color={colorMode === "light" ? "black" : "white"}
       p="0 !important"
