@@ -78,12 +78,12 @@ blockquote,
   min-height: auto !important;
 }
 
-.commento-submit-button-root {
+#commento-submit-button-root {
   background: #904e55 !important;
   border-radius: 5px !important;
 }
 
-.commento-submit-button-root:hover {
+#commento-submit-button-root:hover {
   background: #753e44 !important;
 }
 
@@ -93,7 +93,7 @@ blockquote,
 
 .commento-email-button,
 .commento-login-link,
-.commento-submit-button-root {
+#commento-submit-button-root {
   transition: 0.25s all !important;
 }
 
