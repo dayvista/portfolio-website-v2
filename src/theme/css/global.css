@@ -47,11 +47,6 @@ body::-webkit-scrollbar-thumb:hover {
   border-top-left-radius: 5px;
 }
 
-.kg-image-card {
-  align-self: center;
-  margin-top: 0 !important;
-}
-
 ul,
 ol {
   list-style-position: inside;

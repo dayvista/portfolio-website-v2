@@ -8,6 +8,10 @@ import {
   ChakraStripe,
   ChakraMarkdown,
   ChakraFramer,
+  ChakraBitcoin,
+  ChakraEthereum,
+  ChakraLitecoin,
+  ChakraRipple,
 } from "src/lib/icons";
 import { PortfolioItemInterface } from "src/lib/interfaces";
 
@@ -70,5 +74,28 @@ export const portfolioItems: PortfolioItemInterface[] = [
       { component: ChakraReact, name: "React.js" },
       { component: ChakraJavaScript, name: "JavaScript" },
     ],
+  },
+];
+
+export const cryptoDonationOptions = [
+  {
+    component: ChakraBitcoin,
+    name: "BTC",
+    address: "3GnSprq2F4E14tr1MTgawdTSHeiGAzXKSt",
+  },
+  {
+    component: ChakraLitecoin,
+    name: "LTC",
+    address: "MW57LEfQdHrEGoTNNoRxQUv7v26VTVELAU",
+  },
+  {
+    component: ChakraEthereum,
+    name: "ETH",
+    address: "0x8D77C7A62246b0bf7867437f36865DdFF81D6E0E",
+  },
+  {
+    component: ChakraRipple,
+    name: "XRP",
+    address: "rwEpLBJpSc3v8C8tsjw7ryvXTZNLMXnFCR",
   },
 ];

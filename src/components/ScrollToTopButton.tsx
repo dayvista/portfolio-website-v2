@@ -1,9 +1,13 @@
 import { Button } from "@chakra-ui/react";
 import { m as motion } from "framer-motion";
 import { ChakraUpArrow } from "src/lib/icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MutableRefObject } from "react";
 
-const ScrollToTopButton = ({ scrollRef }) => {
+const ScrollToTopButton = ({
+  scrollRef,
+}: {
+  scrollRef: MutableRefObject<any>;
+}) => {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   const checkScrollFromTop = () => {
@@ -36,7 +40,7 @@ const ScrollToTopButton = ({ scrollRef }) => {
         opacity: 0,
       }}
       animate={{
-        opacity: showScrollButton ? 0.8 : 0,
+        opacity: showScrollButton ? 0.7 : 0,
       }}
       whileHover={{
         opacity: 1,

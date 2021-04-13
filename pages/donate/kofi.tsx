@@ -9,6 +9,7 @@ const KoFiDonation = () => {
         src="https://ko-fi.com/liamdavis/?hidefeed=true&widget=true&embed=true&preview=true"
         style={{
           border: "none",
+          borderRadius: "5px",
           width: "70%",
           padding: "16px",
           background: "#f7f7f7",
