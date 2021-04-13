@@ -79,39 +79,39 @@ blockquote,
 }
 
 .commento-submit-button-root {
-  background: #904e55;
-  border-radius: 5px;
+  background: #904e55 !important;
+  border-radius: 5px !important;
 }
 
 .commento-submit-button-root:hover {
-  background: #753e44;
+  background: #753e44 !important;
 }
 
 #commento-login-box {
-  background: #f9eff9;
+  background: #f9eff9 !important;
 }
 
 .commento-email-button,
 .commento-login-link,
 .commento-submit-button-root {
-  transition: 0.25s all;
+  transition: 0.25s all !important;
 }
 
 .commento-email-button,
 .commento-login-link {
-  color: #4a809b;
+  color: #4a809b !important;
 }
 
 .commento-email-button:hover,
 .commento-login-link:hover {
-  color: #38637a;
+  color: #38637a !important;
 }
 
 .commento-login-text {
-  color: #423c45;
+  color: #423c45 !important;
 }
 
 .commento-logo,
 .commento-markdown-button {
-  display: none;
+  display: none !important;
 }

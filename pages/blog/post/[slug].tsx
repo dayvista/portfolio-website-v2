@@ -154,7 +154,6 @@ const BlogPost = ({ post }: PostInterface) => {
             renderers={Renderers(isLargerThan500, colorMode)}
             children={post.md}
           />
-          <Divider />
           <Box id="commento" m="5vh auto !important" />
           <VStack w="100%">
             <Heading as="h3" size="sm" textAlign="center">
