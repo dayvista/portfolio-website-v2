@@ -14,14 +14,22 @@ import {
   SiTypescript,
   SiMarkdown,
   SiFramer,
+  SiKoFi,
+  SiBitcoin,
+  SiEthereum,
+  SiLitecoin,
+  SiRipple,
 } from "react-icons/si";
 import { FaStripe } from "react-icons/fa";
+import { IoIosArrowDropupCircle } from "react-icons/io";
 
 export const ChakraMail = chakra(FiMail);
 export const ChakraGitHub = chakra(FiGithub);
 export const ChakraLinkedIn = chakra(RiLinkedinLine);
+
 export const ChakraSun = chakra(GiStripedSun);
 export const ChakraMoon = chakra(WiMoonAltWaningCrescent6);
+
 export const ChakraPexels = chakra(SiPexels);
 export const ChakraNext = chakra(SiNextDotJs);
 export const ChakraReact = chakra(SiReact);
@@ -32,3 +40,11 @@ export const ChakraStripe = chakra(FaStripe);
 export const ChakraTypeScript = chakra(SiTypescript);
 export const ChakraMarkdown = chakra(SiMarkdown);
 export const ChakraFramer = chakra(SiFramer);
+
+export const ChakraKoFi = chakra(SiKoFi);
+export const ChakraBitcoin = chakra(SiBitcoin);
+export const ChakraLitecoin = chakra(SiLitecoin);
+export const ChakraEthereum = chakra(SiEthereum);
+export const ChakraRipple = chakra(SiRipple);
+
+export const ChakraUpArrow = chakra(IoIosArrowDropupCircle);

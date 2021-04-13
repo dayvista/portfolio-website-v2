@@ -41,6 +41,7 @@ const Footer = ({ colorMode, color }: FooterProps) => {
             }}
             _focus={{ boxShadow: "none" }}
             key={obj.link}
+            transition="0.25s all"
           >
             {obj.icon}
           </ChakraLink>

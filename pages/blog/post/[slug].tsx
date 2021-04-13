@@ -10,8 +10,12 @@ import {
   useColorMode,
   Spacer,
   HStack,
+  VStack,
   chakra,
   useMediaQuery,
+  Link as ChakraLink,
+  Divider,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import { TagButton } from "src/components/Blog";
@@ -20,7 +24,15 @@ import ProgressBar from "react-scroll-progress-bar";
 import Frame from "src/components/Frame";
 import Renderers from "src/components/Renderers";
 import { default as NextImage } from "next/image";
+import { default as NextLink } from "next/link";
 import styles from "src/theme/css/Post.module.css";
+import {
+  ChakraKoFi,
+  ChakraBitcoin,
+  ChakraEthereum,
+  ChakraLitecoin,
+  ChakraRipple,
+} from "src/lib/icons";
 
 interface PostInterface {
   post: {
@@ -34,10 +46,20 @@ interface PostInterface {
   };
 }
 
+const cryptoDonationOptions = [
+  { component: ChakraKoFi, link: "" },
+  ChakraBitcoin,
+  ChakraEthereum,
+  ChakraLitecoin,
+  ChakraRipple,
+];
+
 const BlogPost = ({ post }: PostInterface) => {
   const router = useRouter();
 
   const { colorMode } = useColorMode();
+
+  const color = useColorModeValue("black", "white");
 
   const [isLargerThan500] = useMediaQuery("(min-width: 501px)");
 
@@ -119,6 +141,29 @@ const BlogPost = ({ post }: PostInterface) => {
             renderers={Renderers(isLargerThan500, colorMode)}
             children={post.md}
           />
+          <Divider />
+          <VStack w="100%">
+            <Heading as="h3" size="md" textAlign="center">
+              If you found this article useful, please consider donating through
+              one of the links below:
+            </Heading>
+            <HStack>
+              <NextLink href="/donate/kofi">
+                <a>
+                  <Box
+                    fontSize="32px"
+                    color={color}
+                    _hover={{
+                      color: colorMode === "light" ? "grey.base" : "grey.100",
+                    }}
+                    transition="0.25s all"
+                  >
+                    <ChakraKoFi />
+                  </Box>
+                </a>
+              </NextLink>
+            </HStack>
+          </VStack>
         </Frame>
       </Box>
     </>

@@ -72,7 +72,6 @@ li {
 
 li::marker {
   font-weight: bold !important;
-  font-size: 20px !important;
 }
 
 code {

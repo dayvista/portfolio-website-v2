@@ -103,20 +103,18 @@ export default SampleForm
 
 What just happened? Let's break it down:
 
-The `useState()` hook was replaced with `useForm()`. The form's state is now in the hands of `react-hook-form`. It can be accessed by destructuring the `formState` object found in `useForm()`.
+- The `useState()` hook was replaced with `useForm()`. The form's state is now in the hands of `react-hook-form`. It can be accessed by destructuring the `formState` object found in `useForm()`.
 
-The `button` is conditionally disabled by the boolean `isSubmitting`. This variable automatically becomes `true` when the `onSubmit` function is running, even if async! It also no longer requires an `onClick` handler because `handleSubmit` will take care of that action for us.
+- The `button` is conditionally disabled by the boolean `isSubmitting`. This variable automatically becomes `true` when the `onSubmit` function is running, even if async! It also no longer requires an `onClick` handler because `handleSubmit` will take care of that action for us.
 
-`handleSubmit` is passed to the `form` `onSubmit`, with our custom `onSubmit` function passed as an argument.
+- `handleSubmit` is passed to the `form` `onSubmit`, with our custom `onSubmit` function passed as an argument.
 
-The `input` has been "registered" by passing `{...register('email')}` to it. It's state is now being tracked by `useForm()`.
+- The `input` has been "registered" by passing `{...register('email')}` to it. It's state is now being tracked by `useForm()`.
 
-The `errors` object automatically receives keys that correspond with the `name` passed to the `register()` function on form fields. This can be used to conditionally display an error message if validation fails, like so:
+- The `errors` object automatically receives keys that correspond with the `name` passed to the `register()` function on form fields. This can be used to conditionally display an error message if validation fails, like so:
 
 ```javascript
-{
-  errors.email && <p>errors.email.message</p>;
-}
+{ errors.email && <p>errors.email.message</p> }
 ```
 
 We'll implement validation in the next step.
