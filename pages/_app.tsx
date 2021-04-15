@@ -1,8 +1,5 @@
 import { CSSReset, ChakraProvider } from "@chakra-ui/react";
 import appTheme from "src/theme";
-import * as useAckee from "use-ackee";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import type { NextRouter } from "next/router";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -16,26 +13,6 @@ import "src/theme/css/global.css";
 import Layout from "src/components/Layout";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const router: NextRouter = useRouter();
-
-  const [url, setUrl] = useState<string>(undefined);
-
-  typeof window !== "undefined" &&
-    useAckee(
-      url,
-      {
-        server: "https://stats.gammaguys.studio",
-        domainId: "5a7ed897-6b19-42e7-b765-36f2e36024f9",
-      },
-      { detailed: true, ignoreLocalhost: true, ignoreOwnVisits: true }
-    );
-
-  useEffect(() => {
-    if (router?.pathname) {
-      setUrl(router.pathname);
-    }
-  }, [router]);
-
   return (
     <>
       <Head>
@@ -122,6 +99,16 @@ const App = ({ Component, pageProps }: AppProps) => {
           content="/favicons/ms-icon-144x144.png"
         />
         <meta name="theme-color" content="#ffffff" />
+
+        {typeof window !== "undefined" &&
+          window.location.hostname === "liamdavis.dev" && (
+            <script
+              async
+              defer
+              data-domain="liamdavis.dev"
+              src="https://stats.liamdavis.dev/js/index.js"
+            />
+          )}
       </Head>
       <ChakraProvider theme={appTheme}>
         <CSSReset />
