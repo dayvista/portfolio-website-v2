@@ -1,6 +1,5 @@
 import { CSSReset, ChakraProvider } from "@chakra-ui/react";
 import appTheme from "src/theme";
-import type { NextRouter } from "next/router";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
@@ -11,10 +10,43 @@ import "@fontsource/yantramanav/400.css";
 import "@fontsource/fira-code/400.css";
 import "src/theme/css/global.css";
 import Layout from "src/components/Layout";
+import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+
+  const seoTitle = "Liam Davis | Web Developer";
+  const seoDescription =
+    "Liam Davis is a full-stack web developer with 2 years of professional experience and 1 in project management. He specializes in Next.js/React development with a Node.js/PostgreSQL back-end.";
+
   return (
     <>
+      <NextSeo
+        title={seoTitle}
+        description={seoDescription}
+        openGraph={{
+          url: `https://liamdavis.dev/${router.route}`,
+          title: seoTitle,
+          description: seoDescription,
+          images: [
+            {
+              url:
+                "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoDark_r285pd.png",
+              width: 794,
+              height: 1123,
+              alt: "Liam Davis Web Development - Dark Logo",
+            },
+            {
+              url:
+                "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoLight_f3a9lv.png",
+              width: 794,
+              height: 1123,
+              alt: "Liam Davis Web Development - Light Logo",
+            },
+          ],
+        }}
+      />
       <Head>
         <title>Liam Davis | Web Developer</title>
 
