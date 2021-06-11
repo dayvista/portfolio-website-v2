@@ -61,7 +61,7 @@ export const BlogPostCard = ({
     >
       <VStack w="100%" h="100%" position="absolute">
         {heroImg ? (
-          <Box w="100%" h="50%" position="relative">
+          <Box w="100%" h="70%" position="relative">
             <NextImage
               src={`/images/blog/${heroImg}`}
               layout="fill"
@@ -69,7 +69,12 @@ export const BlogPostCard = ({
             />
           </Box>
         ) : null}
-        <Text fontSize="16px" fontWeight="bold" alignSelf="flex-start" p="3%">
+        <Text
+          fontSize={["15px", null, "18px", "19px", "16px"]}
+          fontWeight="bold"
+          alignSelf="flex-start"
+          p="3%"
+        >
           {title}
         </Text>
         {tags && tags.length > 0 ? (
