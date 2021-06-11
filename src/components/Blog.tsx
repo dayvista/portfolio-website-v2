@@ -70,7 +70,7 @@ export const BlogPostCard = ({
           </Box>
         ) : null}
         <Text
-          fontSize={["15px", null, "18px", "19px", "16px"]}
+          fontSize={["15px", null, "18px", "19px", "18px"]}
           fontWeight="bold"
           alignSelf="flex-start"
           p="3%"
