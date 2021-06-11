@@ -31,15 +31,13 @@ const App = ({ Component, pageProps }: AppProps) => {
           description: seoDescription,
           images: [
             {
-              url:
-                "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoDark_r285pd.png",
+              url: "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoDark_r285pd.png",
               width: 794,
               height: 1123,
               alt: "Liam Davis Web Development - Dark Logo",
             },
             {
-              url:
-                "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoLight_f3a9lv.png",
+              url: "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoLight_f3a9lv.png",
               width: 794,
               height: 1123,
               alt: "Liam Davis Web Development - Light Logo",
@@ -125,12 +123,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           href="/favicons/favicon-16x16.png"
         />
         <link rel="manifest" href="/favicons/manifest.json" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta
-          name="msapplication-TileImage"
-          content="/favicons/ms-icon-144x144.png"
-        />
-        <meta name="theme-color" content="#ffffff" />
 
         {typeof window !== "undefined" &&
           window.location.hostname === "liamdavis.dev" && (
