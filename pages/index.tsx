@@ -27,6 +27,7 @@ const HomePage = () => {
             layout="fill"
             objectFit="cover"
             priority={true}
+            draggable={false}
           />
         ) : (
           <NextImage
@@ -34,6 +35,7 @@ const HomePage = () => {
             layout="fill"
             objectFit="cover"
             priority={true}
+            draggable={false}
           />
         )}
       </motion.div>

@@ -5,27 +5,25 @@ import {
   ChakraDocker,
   ChakraJavaScript,
   ChakraTypeScript,
-  ChakraStripe,
   ChakraMarkdown,
   ChakraFramer,
   ChakraBitcoin,
   ChakraEthereum,
-  ChakraLitecoin,
-  ChakraRipple,
+  ChakraShopify,
 } from "src/lib/icons";
 import { PortfolioItemInterface } from "src/lib/interfaces";
 
 export const portfolioItems: PortfolioItemInterface[] = [
   {
     heading: "Forge - Client Collaboration Suite",
-    link: "https://github.com/Gamma-Guys-Studio/forge",
+    link: "https://forgedash.com",
     description:
       "SaaS offering for teams to manage client relationships with a suite of tools (invoicing, chat, to-do, etc.).",
     technologies: [
+      { component: ChakraPostgres, name: "PostgreSQL" },
       { component: ChakraNext, name: "Next.js" },
       { component: ChakraReact, name: "React.js" },
       { component: ChakraTypeScript, name: "TypeScript" },
-      { component: ChakraPostgres, name: "PostgreSQL" },
     ],
   },
   {
@@ -43,10 +41,11 @@ export const portfolioItems: PortfolioItemInterface[] = [
   {
     heading: "Giuliana Design - Custom Shopfront and Art Showcase",
     link: "https://giuliana.design",
+    duration: ["Apr. '21", "May '21"],
     description:
       "Responsive website that showcases artist's work. Features a shop with cart functionality, integrated with Shopify.",
     technologies: [
-      { component: ChakraStripe, name: "Stripe" },
+      { component: ChakraShopify, name: "Shopify" },
       { component: ChakraNext, name: "Next.js" },
       { component: ChakraReact, name: "React.js" },
       { component: ChakraTypeScript, name: "TypeScript" },
@@ -64,8 +63,8 @@ export const portfolioItems: PortfolioItemInterface[] = [
   },
   {
     heading: "REI Link - Real Estate Social Media Platform",
-    link: "https://rei.link",
-    duration: ["Oct. '20", "Mar. '21"],
+    link: "#",
+    duration: ["Jul. '20", "Apr. '21"],
     description:
       "Managed code repo and tech-related decisions for a social real-estate listings platform. Features included live chat, auth, and dynamic searches.",
     technologies: [
@@ -84,18 +83,8 @@ export const cryptoDonationOptions = [
     address: "3GnSprq2F4E14tr1MTgawdTSHeiGAzXKSt",
   },
   {
-    component: ChakraLitecoin,
-    name: "LTC",
-    address: "MW57LEfQdHrEGoTNNoRxQUv7v26VTVELAU",
-  },
-  {
     component: ChakraEthereum,
     name: "ETH",
-    address: "0x8D77C7A62246b0bf7867437f36865DdFF81D6E0E",
-  },
-  {
-    component: ChakraRipple,
-    name: "XRP",
-    address: "rwEpLBJpSc3v8C8tsjw7ryvXTZNLMXnFCR",
+    address: "0x417227E2f8b8aeD3B03d71c2DC9C94332EFf6fA4",
   },
 ];
