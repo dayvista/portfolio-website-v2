@@ -111,11 +111,13 @@ export const BlogPostCard = ({
 };
 
 export const TagButton = ({ tag }: TagButtonInterface) => {
+  const parsedTag = tag.split(".").join("-");
+
   return (
-    <NextLink href={`/blog/tag/${tag}`}>
+    <NextLink href={`/blog/tag/${parsedTag}`}>
       <a>
         <Button variant="tag" zIndex={2}>
-          {tag}
+          {parsedTag}
         </Button>
       </a>
     </NextLink>

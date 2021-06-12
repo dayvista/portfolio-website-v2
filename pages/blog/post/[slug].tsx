@@ -13,10 +13,10 @@ import {
   VStack,
   chakra,
   useMediaQuery,
-  Divider,
   useColorModeValue,
   useDisclosure,
   Button,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { getSinglePost, getAllPostSlugs } from "src/lib/utils";
 import { TagButton } from "src/components/Blog";
@@ -25,9 +25,8 @@ import ProgressBar from "react-scroll-progress-bar";
 import Frame from "src/components/Frame";
 import Renderers from "src/components/Renderers";
 import { default as NextImage } from "next/image";
-import { default as NextLink } from "next/link";
 import styles from "src/theme/css/Post.module.css";
-import { ChakraKoFi } from "src/lib/icons";
+import { ChakraDollar } from "src/lib/icons";
 import { useState, useRef } from "react";
 import ScrollToTopButton from "src/components/ScrollToTopButton";
 import DonateCryptoModal from "src/components/DonateCryptoModal";
@@ -138,18 +137,21 @@ const BlogPost = ({ post }: PostInterface) => {
             </Text>
           </HStack>
           <Spacer />
-          <Box
+          <AspectRatio
             className={styles.hero_img_container}
             m="2vh auto !important"
             w={["90%", null, "75%"]}
+            maxW={["90%", null, "75%"]}
+            ratio={16 / 9}
+            position="relative"
           >
             <NextImage
               src={`/images/blog/${post.hero_image}`}
-              width={post.hero_image_dimensions.width}
-              height={post.hero_image_dimensions.height}
+              layout="fill"
+              objectFit="cover"
               priority={true}
             />
-          </Box>
+          </AspectRatio>
           <ReactMarkdown
             renderers={Renderers(isLargerThan500, colorMode)}
             children={post.md}
@@ -160,20 +162,21 @@ const BlogPost = ({ post }: PostInterface) => {
               If you found this article useful, please consider donating:
             </Heading>
             <HStack spacing="5vw" mt="2.5vh !important">
-              <NextLink href="/donate/kofi">
-                <a>
-                  <Box
-                    fontSize="32px"
-                    color={color}
-                    _hover={{
-                      color: colorMode === "light" ? "grey.base" : "grey.100",
-                    }}
-                    transition="0.25s all"
-                  >
-                    <ChakraKoFi />
-                  </Box>
-                </a>
-              </NextLink>
+              <Button
+                as="a"
+                fontSize="32px"
+                color={color}
+                cursor="pointer"
+                _hover={{
+                  color: colorMode === "light" ? "grey.base" : "grey.100",
+                }}
+                transition="0.25s all"
+                href="https://www.buymeacoffee.com/liamdavis"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                <ChakraDollar />
+              </Button>
               {cryptoDonationOptions.map((crypto) => {
                 const CryptoIcon = crypto.component;
 

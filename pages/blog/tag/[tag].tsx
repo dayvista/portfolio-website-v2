@@ -1,4 +1,4 @@
-import { getAllTagSlugs, getPostsByTag } from "src/lib/utils";
+import { getAllTagSlugs, getPostsByTag, sortByDate } from "src/lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Grid, Heading, VStack, useColorMode } from "@chakra-ui/react";
 import { BlogInterface, PostInterface } from "src/lib/interfaces";
@@ -76,14 +76,29 @@ export default FilterByTagPage;
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postsArr = await getPostsByTag("/src/content", params.tag as string);
 
-  return { props: { posts: postsArr, tag: params.tag } };
+  return {
+    props: {
+      posts: postsArr.sort((a, b) => sortByDate(a.last_edited, b.last_edited)),
+      tag: params.tag.includes("-js")
+        ? (params.tag as string).split("-").join(".")
+        : params.tag,
+    },
+  };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const tagArr = await getAllTagSlugs("/src/content");
 
+  const parsedTagArr = tagArr.map((paramsObj) => {
+    return {
+      params: {
+        tag: paramsObj.params.tag.split(".").join("-"),
+      },
+    };
+  });
+
   return {
-    paths: tagArr,
+    paths: parsedTagArr,
     fallback: false,
   };
 };

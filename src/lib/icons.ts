@@ -1,5 +1,6 @@
 import { chakra } from "@chakra-ui/react";
 
+import { AiFillDollarCircle } from "react-icons/ai";
 import { GiStripedSun } from "react-icons/gi";
 import { WiMoonAltWaningCrescent6 } from "react-icons/wi";
 import { RiLinkedinLine } from "react-icons/ri";
@@ -14,7 +15,6 @@ import {
   SiTypescript,
   SiMarkdown,
   SiFramer,
-  SiKoFi,
   SiBitcoin,
   SiEthereum,
 } from "react-icons/si";
@@ -39,7 +39,7 @@ export const ChakraMarkdown = chakra(SiMarkdown);
 export const ChakraFramer = chakra(SiFramer);
 export const ChakraShopify = chakra(FaShopify);
 
-export const ChakraKoFi = chakra(SiKoFi);
+export const ChakraDollar = chakra(AiFillDollarCircle);
 export const ChakraBitcoin = chakra(SiBitcoin);
 export const ChakraEthereum = chakra(SiEthereum);
 

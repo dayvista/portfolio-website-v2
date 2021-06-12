@@ -1,18 +1,21 @@
-import { Text, Flex, useColorModeValue } from "@chakra-ui/react";
+import { Text, VStack, useColorModeValue } from "@chakra-ui/react";
 
 export const Custom404Page = () => {
   const color = useColorModeValue("black", "white");
 
   return (
-    <Flex
+    <VStack
       w="100%"
       justify="center"
       textAlign="center"
       fontSize="22px"
       userSelect="none"
     >
-      <Text color={color}>404... Were you looking for something?</Text>
-    </Flex>
+      <Text color={color}>404...</Text>
+      <Text color={color}>
+        Let me know if I can help you find what you're looking for!
+      </Text>
+    </VStack>
   );
 };
 

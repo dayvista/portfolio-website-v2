@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 const advancedFormat = require("dayjs/plugin/advancedFormat");
 dayjs.extend(advancedFormat);
 import readingTime from "reading-time";
+import { PostInterface } from "./interfaces";
 
 export const dateParser = (dateStr: string) => {
   return dayjs(dateStr).format("dddd[,] MMMM Do[,] YYYY");
@@ -140,13 +141,12 @@ export const getAllTagSlugs = async (
   return tagsArr;
 };
 
-export const getPostsByTag = async (path: string, contextTag: string) => {
-  const contentPath: string = root.resolve(path);
-
-  const fileNames: string[] = await fs.readdir(contentPath, "utf-8");
-
-  const frontMatterArr: object[] = [];
-
+const parsePostsByTag = async (
+  fileNames: string[],
+  contentPath: string,
+  contextTag: string,
+  frontMatterArr: object[]
+) =>
   await Promise.all(
     fileNames.map(async (file) => {
       const fileData = await fs.readFile(`${contentPath}/` + file);
@@ -181,6 +181,24 @@ export const getPostsByTag = async (path: string, contextTag: string) => {
     })
   );
 
+export const getPostsByTag = async (path: string, contextTag: string) => {
+  const contentPath: string = root.resolve(path);
+
+  const fileNames: string[] = await fs.readdir(contentPath, "utf-8");
+
+  const frontMatterArr: PostInterface[] = [];
+
+  await parsePostsByTag(fileNames, contentPath, contextTag, frontMatterArr);
+
+  if (frontMatterArr.length === 0) {
+    await parsePostsByTag(
+      fileNames,
+      contentPath,
+      contextTag.split("-").join("."),
+      frontMatterArr
+    );
+  }
+
   return frontMatterArr;
 };
 
@@ -211,4 +229,12 @@ export const getRemoteImageDimensions = (imgUrl: string) => {
       console.error(error);
     }
   );
+};
+
+type SortableDate = string | number | Date;
+export const sortByDate = (a: SortableDate, b: SortableDate) => {
+  const dateA = new Date(a).getTime();
+  const dateB = new Date(b).getTime();
+
+  return dateA > dateB ? 1 : -1;
 };
