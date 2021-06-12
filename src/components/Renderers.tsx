@@ -1,60 +1,66 @@
-import { default as NextImage } from "next/image";
-import styles from "src/theme/css/Post.module.css";
 import {
-  Heading,
-  Text,
-  Box,
-  Divider,
-  Link as ChakraLink,
   ColorMode,
+  Heading,
+  Divider,
+  Box,
+  Flex,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import js from "react-syntax-highlighter/dist/cjs/languages/hljs/javascript";
-// SyntaxHighlighter.registerLanguage('jsx', jsx)
-// SyntaxHighlighter.registerLanguage('jsx=', jsx)
 SyntaxHighlighter.registerLanguage("javascript", js);
 SyntaxHighlighter.registerLanguage("js", js);
 import {
   zenburn,
   atelierHeathLight,
 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import styles from "src/theme/css/Post.module.css";
+import { default as NextImage } from "next/image";
 
-interface renderPropTypes {
+type Child = { props: { node: { type: string } } };
+
+interface RenderPropsTypes {
   level?: number;
   language?: string;
   value?: string;
-  children?: object[];
+  children?: Child[];
   href?: string;
   src?: string;
   alt?: string;
 }
 
-const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
+const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
   return {
-    code: ({ language, value }: renderPropTypes) => {
+    code: ({ language, value }: RenderPropsTypes) => {
       return (
-        <SyntaxHighlighter
-          style={colorMode === "light" ? atelierHeathLight : zenburn}
-          language={language}
-          children={value}
-          customStyle={{
-            fontSize: "16px !important",
-            transition: "0.25s all",
-            borderRadius: "5px",
-            margin: "5vh 0",
-            alignSelf: "center",
-            width: isLargerThan500 ? "90%" : "100%",
-            maxWidth: isLargerThan500 ? "90%" : "100%",
-          }}
-          codeTagProps={{
-            style: {
+        <Flex
+          w="100%"
+          justifyContent="center"
+          alignItems="center"
+          className={styles.custom_scrollbar}
+        >
+          <SyntaxHighlighter
+            style={colorMode === "light" ? atelierHeathLight : zenburn}
+            language={language}
+            children={value}
+            customStyle={{
+              fontSize: "16px !important",
               transition: "0.25s all",
-            },
-          }}
-        />
+              borderRadius: "5px",
+              margin: "3.5vh 0",
+              width: !isMobile ? "90%" : "100%",
+              maxWidth: !isMobile ? "90%" : "100%",
+            }}
+            codeTagProps={{
+              style: {
+                transition: "0.25s all",
+              },
+            }}
+          />
+        </Flex>
       );
     },
-    heading: ({ level, children }: renderPropTypes) => {
+    heading: ({ level, children }: RenderPropsTypes) => {
       return (
         <Heading
           // @ts-ignore
@@ -71,7 +77,7 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
     thematicBreak: () => {
       return <Divider />;
     },
-    blockquote: ({ children }: renderPropTypes) => {
+    blockquote: ({ children }: RenderPropsTypes) => {
       return (
         <Box
           bg={colorMode === "light" ? "grey.50" : "grey.700"}
@@ -79,21 +85,25 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
           p="1%"
           borderRadius="5px"
           m="2.5vh 0"
+          fontSize="18px"
           className={styles.blockquote_container}
         >
           {children}
         </Box>
       );
     },
-    link: ({ href, children }: renderPropTypes) => {
+    link: ({ href, children }: RenderPropsTypes) => {
       return (
         <ChakraLink
           href={href}
           target="_blank"
           rel="noopener noreferral nofollow"
-          color="blue.500"
+          color={colorMode === "light" ? "blue.500" : "blue.300"}
           transition="0.25s all"
-          _hover={{ color: "blue.700", textDecoration: "underline" }}
+          _hover={{
+            color: colorMode === "light" ? "blue.700" : "blue.200",
+            textDecoration: "underline",
+          }}
           _focus={{
             boxShadow: "rgb(74 128 155 / 60%) 0px 0px 0px 3px !important",
           }}
@@ -103,7 +113,7 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
         </ChakraLink>
       );
     },
-    image: ({ src, alt }: renderPropTypes) => {
+    image: ({ src, alt }: RenderPropsTypes) => {
       return (
         <Box
           position="relative"
@@ -117,32 +127,6 @@ const Renderers = (isLargerThan500: boolean, colorMode: ColorMode) => {
         >
           <NextImage src={src} alt={alt} layout="fill" objectFit="cover" />
         </Box>
-      );
-    },
-    paragraph: ({ children }: renderPropTypes) => {
-      const omitParagraphTag = children.some(
-        (child: { props: { node: { type: string } } }) => {
-          if (child.props?.node?.type) {
-            return (
-              child.props.node.type === "link" ||
-              child.props.node.type === "image"
-            );
-          } else {
-            return false;
-          }
-        }
-      );
-
-      return omitParagraphTag ? (
-        <>{children}</>
-      ) : (
-        <Text
-          fontSize="18px"
-          className={styles.blog_font}
-          display="inline-block !important"
-        >
-          {children}
-        </Text>
       );
     },
   };

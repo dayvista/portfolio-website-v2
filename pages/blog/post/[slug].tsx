@@ -27,11 +27,21 @@ import Renderers from "src/components/Renderers";
 import { default as NextImage } from "next/image";
 import styles from "src/theme/css/Post.module.css";
 import { ChakraDollar } from "src/lib/icons";
-import { useState, useRef } from "react";
+import {
+  useState,
+  useRef,
+  useEffect as useClientEffect,
+  useLayoutEffect,
+} from "react";
 import ScrollToTopButton from "src/components/ScrollToTopButton";
 import DonateCryptoModal from "src/components/DonateCryptoModal";
 import { cryptoDonationOptions } from "src/lib/data";
 import Head from "next/head";
+import { stripHtml } from "string-strip-html";
+// import axios from "axios";
+
+const useEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useClientEffect;
 
 interface PostInterface {
   post: {
@@ -56,11 +66,23 @@ const BlogPost = ({ post }: PostInterface) => {
 
   const color = useColorModeValue("black", "white");
 
-  const [isLargerThan500] = useMediaQuery("(min-width: 501px)");
+  const [isMobile] = useMediaQuery("(max-width: 30em)");
 
   const fontColorMode = colorMode === "light" ? "grey.400" : "grey.200";
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useEffect(() => {
+    const pTags = document.getElementsByTagName("p");
+
+    for (let i = 0; i < pTags.length; i++) {
+      if (pTags[i].parentElement.localName === "li") {
+        pTags[i].outerHTML = stripHtml(pTags[i].outerHTML, {
+          onlyStripTags: ["p"],
+        }).result;
+      }
+    }
+  }, []);
 
   return router.isFallback || !post ? (
     <LoadingDynamic />
@@ -152,10 +174,25 @@ const BlogPost = ({ post }: PostInterface) => {
               priority={true}
             />
           </AspectRatio>
-          <ReactMarkdown
-            renderers={Renderers(isLargerThan500, colorMode)}
-            children={post.md}
-          />
+          <VStack
+            w="100%"
+            align="flex-start"
+            sx={{
+              "ol code, li code, p code, a code": {
+                bg: useColorModeValue("rgb(247, 243, 247)", "rgb(63, 63, 63)"),
+                px: "5px",
+                borderRadius: "5px",
+              },
+              "li, li a": {
+                fontSize: "18px",
+              },
+            }}
+          >
+            <ReactMarkdown
+              renderers={Renderers(isMobile, colorMode)}
+              children={post.md}
+            />
+          </VStack>
           <Box id="commento" m="5vh auto !important" />
           <VStack w="100%">
             <Heading as="h3" size="sm" textAlign="center">
@@ -219,6 +256,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "/src/content",
     `${params.slug as string}.md`
   );
+
+  // const pageViewsReq = await axios.get(
+  //   `https://plausible.io/api/v1/stats/aggregate?site_id=liamdavis.dev&period=6mo&filters=event:page%3D%3D%2Fblog%2Fpost%2F${params.tag}`,
+  //   {
+  //     headers: {
+  //       Authorization: `Bearer ${process.env.PLAUSIBLE_API_KEY}`,
+  //     },
+  //   }
+  // );
+
+  // const { data }: { data: { results: { visitors: { value: number } } } } =
+  //   pageViewsReq;
+  // const { results } = data;
+  // const { visitors } = results;
+  // const { value: pageViews } = visitors;
 
   return { props: { post: postData } };
 };
