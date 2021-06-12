@@ -186,6 +186,7 @@ const BlogPost = ({ post }: PostInterface) => {
               "li, li a": {
                 fontSize: "18px",
               },
+              p: { fontSize: "18px" },
             }}
           >
             <ReactMarkdown
