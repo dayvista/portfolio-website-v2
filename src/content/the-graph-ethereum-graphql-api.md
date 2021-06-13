@@ -2,6 +2,7 @@
 title: "The Graph: Hasura for the Ethereum Blockchain"
 hero_image: giraffe.jpg
 tags: graphql,blockchain,crypto,ethereum
+published: 06-13-2021
 ---
 
 ## The Problem

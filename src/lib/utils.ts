@@ -42,11 +42,6 @@ export const getAllPosts = async (path: string): Promise<PostInterface[]> => {
 
       const parsedFile = matter(fileData.toString(), { excerpt: true });
 
-      // read when the file was created, and when it was last edited
-      const { birthtime: dateCreated, mtime: dateLastEdited } = await fs.stat(
-        `${contentPath}/` + file
-      );
-
       const heroImg: string = parsedFile?.data?.hero_image;
 
       // get the hero image's dimensions, if there is one provided
@@ -59,8 +54,7 @@ export const getAllPosts = async (path: string): Promise<PostInterface[]> => {
 
       frontMatterArr.push({
         ...parsedFile?.data,
-        published: dateParser(dateCreated.toString()),
-        last_edited: dateParser(dateLastEdited.toString()),
+        published: dateParser(parsedFile?.data.published),
         hero_image_dimensions: dimensions,
         slug: file.split(".md")[0],
         tags: tags,
@@ -74,18 +68,13 @@ export const getAllPosts = async (path: string): Promise<PostInterface[]> => {
 export const getSinglePost = async (
   path: string,
   fileName: string
-): Promise<object> => {
+): Promise<PostInterface> => {
   const contentPath: string = root.resolve(path);
   const filePath: string = `${contentPath}/${fileName}`;
 
   const fileData = await fs.readFile(filePath);
 
   const parsedFile = matter(fileData.toString(), { excerpt: true });
-
-  // read when the file was created, and when it was last edited
-  const { birthtime: dateCreated, mtime: dateLastEdited } = await fs.stat(
-    filePath
-  );
 
   const heroImg: string = parsedFile?.data?.hero_image;
 
@@ -101,9 +90,8 @@ export const getSinglePost = async (
 
   const fileDataObj = {
     ...parsedFile?.data,
+    published: dateParser(parsedFile?.data.published),
     md: parsedFile.content,
-    published: dateParser(dateCreated.toString()),
-    last_edited: dateParser(dateLastEdited.toString()),
     hero_image_dimensions: dimensions,
     tags: tags,
     slug: typeof fileName === "string" && (fileName as string).split(".md")[0],
@@ -157,11 +145,6 @@ const parsePostsByTag = async (
       const tags: string[] = parsedFile?.data?.tags?.split(",");
 
       if (tags.some((tag) => tag === contextTag)) {
-        // read when the file was created, and when it was last edited
-        const { birthtime: dateCreated, mtime: dateLastEdited } = await fs.stat(
-          `${contentPath}/` + file
-        );
-
         const heroImg: string = parsedFile?.data?.hero_image;
 
         // get the hero image's dimensions, if there is one provided
@@ -171,8 +154,7 @@ const parsePostsByTag = async (
 
         frontMatterArr.push({
           ...parsedFile?.data,
-          published: dateParser(dateCreated.toString()),
-          last_edited: dateParser(dateLastEdited.toString()),
+          published: dateParser(parsedFile?.data.published),
           hero_image_dimensions: dimensions,
           slug: file.split(".md")[0],
           tags: tags,

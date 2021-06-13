@@ -2,6 +2,7 @@
 title: JavaScript Variable Hydration in Next.js
 hero_image: leaf.jpg
 tags: javascript,markdown,mdx,react,next.js
+published: 06-12-2021
 ---
 
 ## Remotely Updating the Theme on a Static Website

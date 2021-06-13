@@ -11,8 +11,8 @@ export interface PostInterface {
     height: number;
     width: number;
   };
-  published: string;
-  last_edited: string;
+  published?: string;
+  last_edited?: string;
   slug: string;
   title?: string;
   tags: string[];
