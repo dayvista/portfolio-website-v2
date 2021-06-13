@@ -11,11 +11,14 @@ export interface PostInterface {
     height: number;
     width: number;
   };
+  description?: string;
   published?: string;
   last_edited?: string;
   slug: string;
   title?: string;
   tags: string[];
+  minutes_to_read?: number;
+  md?: string;
 }
 
 export interface PortfolioItemInterface {
