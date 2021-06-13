@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await getAllPosts("/src/content");
 
   const allPostsSortedByDate = allPosts.sort((a, b) =>
-    sortByDate(a.last_edited, b.last_edited)
+    sortByDate(a.published, b.published)
   );
 
   return {

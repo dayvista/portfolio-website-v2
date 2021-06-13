@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      posts: postsArr.sort((a, b) => sortByDate(a.last_edited, b.last_edited)),
+      posts: postsArr.sort((a, b) => sortByDate(a.published, b.published)),
       tag: params.tag.includes("-js")
         ? (params.tag as string).split("-").join(".")
         : params.tag,
