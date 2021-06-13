@@ -38,24 +38,27 @@ import DonateCryptoModal from "src/components/DonateCryptoModal";
 import { cryptoDonationOptions } from "src/lib/data";
 import Head from "next/head";
 import { stripHtml } from "string-strip-html";
+import { NextSeo } from "next-seo";
+import { PostInterface } from "src/lib/interfaces";
 // import axios from "axios";
 
 const useEffect =
   typeof window !== "undefined" ? useLayoutEffect : useClientEffect;
 
-interface PostInterface {
-  post: {
-    md: string;
-    title: string;
-    published: string;
-    tags: string[];
-    hero_image: string;
-    hero_image_dimensions: { width: number; height: number; type: string };
-    minutes_to_read: number;
-  };
-}
+// interface PostInterface {
+//   post: {
+//     md: string;
+//     title: string;
+//     published: string;
+//     tags: string[];
+//     hero_image: string;
+//     hero_image_dimensions: { width: number; height: number; type: string };
+//     minutes_to_read: number;
+//   };
+// }
 
-const BlogPost = ({ post }: PostInterface) => {
+type BlogPostProps = { post: PostInterface; slug: string };
+const BlogPost = ({ post, slug }: BlogPostProps) => {
   const scrollRef = useRef(null);
 
   const router = useRouter();
@@ -88,6 +91,23 @@ const BlogPost = ({ post }: PostInterface) => {
     <LoadingDynamic />
   ) : (
     <>
+      <NextSeo
+        title={post.title}
+        description={post.description}
+        openGraph={{
+          url: `https://liamdavis.dev/blog/post/${slug}`,
+          title: post.title,
+          description: post.description,
+          images: [
+            {
+              url: `https://liamdavis.dev/_next/image?url=%2Fimages%2Fblog%2F${post.hero_image}&w=1920&q=75`,
+              width: post.hero_image_dimensions.width,
+              height: post.hero_image_dimensions.height,
+              alt: post.title,
+            },
+          ],
+        }}
+      />
       <Head>
         <script
           defer
@@ -273,7 +293,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // const { visitors } = results;
   // const { value: pageViews } = visitors;
 
-  return { props: { post: postData } };
+  return { props: { post: postData, slug: params.slug as string } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

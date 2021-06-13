@@ -15,7 +15,7 @@ import "@fontsource/yantramanav/400.css";
 import "@fontsource/fira-code/400.css";
 import "src/theme/css/global.css";
 import Layout from "src/components/Layout";
-import { NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <NextSeo
+      <DefaultSeo
         title={seoTitle}
         description={seoDescription}
         openGraph={{
