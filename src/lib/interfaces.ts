@@ -1,12 +1,12 @@
 import { ChakraComponent } from "@chakra-ui/react";
 
 export interface BlogInterface {
-  posts: object[];
+  posts: PostInterface[];
   tag?: string;
 }
 
 export interface PostInterface {
-  hero_image: string;
+  hero_image?: string;
   hero_image_dimensions: {
     height: number;
     width: number;
@@ -14,7 +14,7 @@ export interface PostInterface {
   published: string;
   last_edited: string;
   slug: string;
-  title: string;
+  title?: string;
   tags: string[];
 }
 

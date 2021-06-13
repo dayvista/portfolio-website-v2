@@ -11,13 +11,20 @@ import {
 import { ChakraSun, ChakraMoon } from "src/lib/icons";
 import { default as NextLink } from "next/link";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import { AnimatePresence, m as motion } from "framer-motion";
 
-interface HeaderProps {
+const descriptors = [
+  "Web Developer",
+  "Blockchain Enthusiast",
+  "Permaculturist",
+];
+
+type HeaderProps = {
   color: "black" | "white";
   colorMode: ColorMode;
   toggleColorMode: () => void;
-}
-
+};
 const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
   const router = useRouter();
 
@@ -26,6 +33,20 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
   const textHoverObj = {
     color: colorMode === "light" ? "grey.base" : "grey.100",
   };
+
+  const [currentDescriptor, setCurrentDescriptor] = useState(descriptors[0]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (descriptors.indexOf(currentDescriptor) + 1 < descriptors.length) {
+        setCurrentDescriptor(
+          descriptors[descriptors.indexOf(currentDescriptor) + 1]
+        );
+      } else {
+        setCurrentDescriptor(descriptors[0]);
+      }
+    }, 9250);
+  }, [currentDescriptor]);
 
   return (
     <>
@@ -59,7 +80,22 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
           <NextLink href="/">
             <a>
               <Heading as="h1" size="lg" _hover={textHoverObj}>
-                Liam Davis | Web Developer
+                Liam Davis |{" "}
+                <AnimatePresence exitBeforeEnter>
+                  {descriptors.map((desc) => {
+                    return desc === currentDescriptor ? (
+                      <motion.span
+                        key={desc}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5 }}
+                      >
+                        {currentDescriptor}
+                      </motion.span>
+                    ) : null;
+                  })}
+                </AnimatePresence>
               </Heading>
             </a>
           </NextLink>

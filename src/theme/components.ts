@@ -19,7 +19,7 @@ export const Heading: ComponentStylesInterface = {
       fontSize: ["16.5px", null, null, null, "20px"],
     },
     sm: {
-      fontSize: ["18px", null, null, "20px", "24px"],
+      fontSize: ["20px", null, null, "22px", "26px"],
     },
     md: {
       fontSize: ["22px", null, null, "24px", "28px"],

@@ -2,7 +2,12 @@ import { CSSReset, ChakraProvider } from "@chakra-ui/react";
 import appTheme from "src/theme";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { MotionConfig, AnimationFeature, GesturesFeature } from "framer-motion";
+import {
+  MotionConfig,
+  AnimationFeature,
+  GesturesFeature,
+  ExitFeature,
+} from "framer-motion";
 import "@fontsource/biorhyme/300.css";
 import "@fontsource/space-grotesk/300.css";
 import "@fontsource/yantramanav/300.css";
@@ -136,7 +141,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <ChakraProvider theme={appTheme}>
         <CSSReset />
-        <MotionConfig features={[AnimationFeature, GesturesFeature]}>
+        <MotionConfig
+          features={[AnimationFeature, GesturesFeature, ExitFeature]}
+        >
           <Layout>
             <Component {...pageProps} />
           </Layout>

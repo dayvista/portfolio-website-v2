@@ -29,12 +29,12 @@ export const getAllPostSlugs = async (
   return parsedFileNames;
 };
 
-export const getAllPosts = async (path: string): Promise<object[]> => {
+export const getAllPosts = async (path: string): Promise<PostInterface[]> => {
   const contentPath: string = root.resolve(path);
 
   const fileNames: string[] = await fs.readdir(contentPath, "utf-8");
 
-  const frontMatterArr: object[] = [];
+  const frontMatterArr: PostInterface[] = [];
 
   await Promise.all(
     fileNames.map(async (file) => {

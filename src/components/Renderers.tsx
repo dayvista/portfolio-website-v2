@@ -67,7 +67,7 @@ const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
           as={`h${level}`}
           className={styles.blog_font}
           size={
-            level === 1 ? "lg" : level === 2 ? "md" : level === 1 ? "sm" : "xs"
+            level === 1 ? "lg" : level === 2 ? "md" : level === 3 ? "sm" : "xs"
           }
         >
           {children}

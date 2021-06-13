@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { Grid } from "@chakra-ui/react";
 import { BlogPostCard } from "src/components/Blog";
-import { getAllPosts } from "src/lib/utils";
+import { getAllPosts, sortByDate } from "src/lib/utils";
 import { BlogInterface, PostInterface } from "src/lib/interfaces";
 
 const BlogHome = ({ posts }: BlogInterface) => {
@@ -47,11 +47,15 @@ const BlogHome = ({ posts }: BlogInterface) => {
 export default BlogHome;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsArr = await getAllPosts("/src/content");
+  const allPosts = await getAllPosts("/src/content");
+
+  const allPostsSortedByDate = allPosts.sort((a, b) =>
+    sortByDate(a.last_edited, b.last_edited)
+  );
 
   return {
     props: {
-      posts: allPostsArr,
+      posts: allPostsSortedByDate,
     },
   };
 };
