@@ -3,6 +3,7 @@ title: Form Handling in React with Validation
 hero_image: blocks.jpg
 tags: react-hook-form,vest,react
 published: 04-27-2021
+description: Create custom forms with validation in React using the react-hook-form and vest libraries.
 ---
 
 ## Intro
