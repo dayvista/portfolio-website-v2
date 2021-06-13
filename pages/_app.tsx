@@ -23,7 +23,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   const seoTitle = "Liam Davis | Web Developer";
   const seoDescription =
-    "Liam Davis is a full-stack web developer with 2 years of professional experience and 1 in project management. He specializes in Next.js/React development with a Node.js/PostgreSQL back-end.";
+    "Liam Davis is a full-stack web developer with 2+ years of professional experience. He specializes in Next.js/React development with a Node.js/PostgreSQL back-end.";
 
   return (
     <>
@@ -39,13 +39,7 @@ const App = ({ Component, pageProps }: AppProps) => {
               url: "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoDark_r285pd.png",
               width: 794,
               height: 1123,
-              alt: "Liam Davis Web Development - Dark Logo",
-            },
-            {
-              url: "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoLight_f3a9lv.png",
-              width: 794,
-              height: 1123,
-              alt: "Liam Davis Web Development - Light Logo",
+              alt: "Liam Davis | Web Development",
             },
           ],
         }}

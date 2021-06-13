@@ -100,6 +100,12 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
           description: post.description,
           images: [
             {
+              url: "https://res.cloudinary.com/gamma-guys-studio/image/upload/v1619743307/logoDark_r285pd.png",
+              width: 794,
+              height: 1123,
+              alt: "Liam Davis | Web Development",
+            },
+            {
               url: `https://liamdavis.dev/_next/image?url=%2Fimages%2Fblog%2F${post.hero_image}&w=1920&q=75`,
               width: post.hero_image_dimensions.width,
               height: post.hero_image_dimensions.height,
