@@ -43,3 +43,7 @@ This combination of private stablecoins with a private wallet creates a truly an
 If only there was a way to exchange XHV and xAssets with other coins privately... Well, that's exactly what [the emerging alliance](https://havenprotocol.org/2021/05/17/thorchain-integration-update/) between Haven and ThorChain makes possible. The trading of xAssets will be supported on Thorswap. This will provide decentralized liquidity to anonymous stablecoin assets.
 
 Citizens under threat from an authoritarian government or similar criminal organization now have access to a completely private hedge against coercion and hyper inflation. This development will revitalize the viability of cryptocurrencies as an alternative to the fiat economic system. Erik Voorhes, Bitcoin veteran and CEO of the exchange Shapeshift, [seems to think so too](https://youtube.com/watch?v=VpFow_B4R-Q).
+
+---
+
+Note: This article was written because of a genuine interest in the protocol(s) described. I did not receive any endorsement, paid or otherwise.

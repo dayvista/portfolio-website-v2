@@ -121,7 +121,7 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
         m="0 !important"
         ref={scrollRef}
       />
-      <Box className="blog_post_container" w="100%">
+      <Box className={styles.blog_post_container} w="100%">
         <Frame>
           <Heading
             as="h1"

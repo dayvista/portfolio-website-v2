@@ -98,4 +98,4 @@ Popular dApps that use The Graph to process blockchain queries include some of t
 
 ---
 
-Note: This article was written entirely out of interest in the protocol. I did not receive any endorsement, paid or otherwise.
+Note: This article was written because of a genuine interest in the protocol described. I did not receive any endorsement, paid or otherwise.

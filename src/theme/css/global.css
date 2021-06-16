@@ -115,3 +115,27 @@ blockquote,
 .commento-markdown-button {
   display: none !important;
 }
+
+.chakra-ui-dark #commento-textarea-root {
+  background: #404040 !important;
+}
+
+.chakra-ui-dark
+  #commento-login-box-email-subtitle
+  .chakra-ui-dark
+  #commento-forgot-link {
+  color: white !important;
+}
+
+.chakra-ui-dark .commento-login-link {
+  color: #84b0c6 !important;
+}
+
+.chakra-ui-dark #commento-login-box-email-input {
+  background: #737373 !important;
+  color: white;
+}
+
+.chakra-ui-dark #commento-login-box-email-button {
+  background: #737373 !important;
+}
