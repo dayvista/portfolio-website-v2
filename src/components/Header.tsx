@@ -76,26 +76,26 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
         <Box>
           <NextLink href="/">
             <a>
-              <ReactFitty>
-                <Heading as="h1" size="lg" maxW="100%" _hover={textHoverObj}>
-                  Liam Davis |{" "}
-                  <AnimatePresence exitBeforeEnter>
-                    {descriptors.map((desc) => {
-                      return desc === currentDescriptor ? (
-                        <motion.span
-                          key={desc}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 1.5 }}
-                        >
-                          {currentDescriptor}
-                        </motion.span>
-                      ) : null;
-                    })}
-                  </AnimatePresence>
-                </Heading>
-              </ReactFitty>
+              {/* <ReactFitty> */}
+              <Heading as="h1" size="lg" maxW="100%" _hover={textHoverObj}>
+                Liam Davis |{" "}
+                <AnimatePresence exitBeforeEnter>
+                  {descriptors.map((desc) => {
+                    return desc === currentDescriptor ? (
+                      <motion.span
+                        key={desc}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5 }}
+                      >
+                        {currentDescriptor}
+                      </motion.span>
+                    ) : null;
+                  })}
+                </AnimatePresence>
+              </Heading>
+              {/* </ReactFitty> */}
             </a>
           </NextLink>
         </Box>

@@ -17,7 +17,7 @@ import {
 import styles from "src/theme/css/Post.module.css";
 import { default as NextImage } from "next/image";
 
-type Child = { props: { node: { type: string } } };
+type Child = { props: { src?: string; alt?: string; node: { type: string } } };
 
 interface RenderPropsTypes {
   level?: number;
@@ -114,6 +114,9 @@ const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
       );
     },
     image: ({ src, alt }: RenderPropsTypes) => {
+      console.log(src);
+      console.log(alt);
+
       return (
         <Box
           position="relative"
@@ -128,6 +131,30 @@ const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
           <NextImage src={src} alt={alt} layout="fill" objectFit="cover" />
         </Box>
       );
+    },
+    paragraph: ({ children }: RenderPropsTypes) => {
+      if (children[0].props.node.type === "image") {
+        const { src, alt } = children[0].props;
+
+        return (
+          <Box
+            position="relative"
+            w={["90%", null, "75%", "80%", null]}
+            h={["25vh", null, "20vh", null, "40vh"]}
+            m="5vh 0 !important"
+            alignSelf="center"
+            className={
+              styles[
+                `img_container_${colorMode === "light" ? "light" : "dark"}`
+              ]
+            }
+          >
+            <NextImage src={src} alt={alt} layout="fill" objectFit="cover" />
+          </Box>
+        );
+      } else {
+        return <p>{children}</p>;
+      }
     },
   };
 };

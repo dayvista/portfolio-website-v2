@@ -211,7 +211,11 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
             <Heading as="h3" size="sm" textAlign="center">
               If you found this article useful, please consider donating:
             </Heading>
-            <HStack spacing={["10vw", null, "5vw"]} mt="2.5vh !important">
+            <HStack
+              w={["65%", null, "50%", "55%", "35%"]}
+              justify="space-between"
+              mt="2.5vh !important"
+            >
               <Button
                 as="a"
                 fontSize="32px"
