@@ -7,6 +7,7 @@ import {
   Text,
   VStack,
   Tooltip,
+  chakra,
 } from "@chakra-ui/react";
 import { ChakraSun, ChakraMoon } from "src/lib/icons";
 import { default as NextLink } from "next/link";
@@ -14,11 +15,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { AnimatePresence, m as motion } from "framer-motion";
 
-const descriptors = [
-  "Web Developer",
-  "Blockchain Enthusiast",
-  "Permaculturist",
-];
+const descriptors = ["Web Developer", "Permaculturist", "♡ Blockchain"];
 
 type HeaderProps = {
   color: "black" | "white";
@@ -45,7 +42,7 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
       } else {
         setCurrentDescriptor(descriptors[0]);
       }
-    }, 9250);
+    }, 1500);
   }, [currentDescriptor]);
 
   return (
