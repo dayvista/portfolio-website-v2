@@ -45,18 +45,6 @@ import { PostInterface } from "src/lib/interfaces";
 const useEffect =
   typeof window !== "undefined" ? useLayoutEffect : useClientEffect;
 
-// interface PostInterface {
-//   post: {
-//     md: string;
-//     title: string;
-//     published: string;
-//     tags: string[];
-//     hero_image: string;
-//     hero_image_dimensions: { width: number; height: number; type: string };
-//     minutes_to_read: number;
-//   };
-// }
-
 type BlogPostProps = { post: PostInterface; slug: string };
 const BlogPost = ({ post, slug }: BlogPostProps) => {
   const scrollRef = useRef(null);
@@ -92,11 +80,9 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
   ) : (
     <>
       <NextSeo
-        title={post.title}
         description={post.description}
         openGraph={{
           url: `https://liamdavis.dev/blog/post/${slug}`,
-          title: post.title,
           description: post.description,
           images: [
             {

@@ -15,7 +15,8 @@ const BlogHome = ({ posts }: BlogInterface) => {
         null,
         "repeat(3, 1fr)",
       ]}
-      gap={3}
+      rowGap={5}
+      columnGap={3}
       transition="0.25s all"
       mt="2.5vh !important"
       mb="2.5vh !important"

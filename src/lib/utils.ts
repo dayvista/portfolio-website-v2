@@ -4,13 +4,13 @@ const root = require("app-root-path");
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 import dayjs from "dayjs";
-const advancedFormat = require("dayjs/plugin/advancedFormat");
+import advancedFormat from "dayjs/plugin/advancedFormat";
 dayjs.extend(advancedFormat);
 import readingTime from "reading-time";
 import { PostInterface } from "./interfaces";
 
 export const dateParser = (dateStr: string) => {
-  return dayjs(dateStr).format("dddd[,] MMMM Do[,] YYYY");
+  return dayjs(dateStr).format("MMMM Do[,] YYYY");
 };
 
 export const getAllPostSlugs = async (
