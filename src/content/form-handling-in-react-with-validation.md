@@ -111,7 +111,7 @@ What just happened? Let's break it down:
 
 - `handleSubmit` is passed to the `form` `onSubmit`, with our custom `onSubmit` function passed as an argument.
 
-- The `input` has been "registered" by passing `{...register('email')}` to it. It's state is now being tracked by `useForm()`.
+- The `input` has been "registered" by passing `{...register('email')}` to it. Its state is now being tracked by `useForm()`.
 
 - The `errors` object automatically receives keys that correspond with the `name` passed to the `register()` function on form fields. This can be used to conditionally display an error message if validation fails, like so:
 

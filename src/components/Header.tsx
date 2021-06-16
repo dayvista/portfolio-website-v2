@@ -7,13 +7,13 @@ import {
   Text,
   VStack,
   Tooltip,
-  chakra,
 } from "@chakra-ui/react";
 import { ChakraSun, ChakraMoon } from "src/lib/icons";
 import { default as NextLink } from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { AnimatePresence, m as motion } from "framer-motion";
+import { ReactFitty } from "react-fitty";
 
 const descriptors = ["Web Developer", "Permaculturist", "♡ Blockchain"];
 
@@ -42,7 +42,7 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
       } else {
         setCurrentDescriptor(descriptors[0]);
       }
-    }, 1500);
+    }, 9250);
   }, [currentDescriptor]);
 
   return (
@@ -76,24 +76,26 @@ const Header = ({ color, colorMode, toggleColorMode }: HeaderProps) => {
         <Box>
           <NextLink href="/">
             <a>
-              <Heading as="h1" size="lg" _hover={textHoverObj}>
-                Liam Davis |{" "}
-                <AnimatePresence exitBeforeEnter>
-                  {descriptors.map((desc) => {
-                    return desc === currentDescriptor ? (
-                      <motion.span
-                        key={desc}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 }}
-                      >
-                        {currentDescriptor}
-                      </motion.span>
-                    ) : null;
-                  })}
-                </AnimatePresence>
-              </Heading>
+              <ReactFitty>
+                <Heading as="h1" size="lg" maxW="100%" _hover={textHoverObj}>
+                  Liam Davis |{" "}
+                  <AnimatePresence exitBeforeEnter>
+                    {descriptors.map((desc) => {
+                      return desc === currentDescriptor ? (
+                        <motion.span
+                          key={desc}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 1.5 }}
+                        >
+                          {currentDescriptor}
+                        </motion.span>
+                      ) : null;
+                    })}
+                  </AnimatePresence>
+                </Heading>
+              </ReactFitty>
             </a>
           </NextLink>
         </Box>

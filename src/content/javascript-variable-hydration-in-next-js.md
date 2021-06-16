@@ -44,7 +44,7 @@ Now this is all well said and done, except the user's info, as stored in key val
 After hours of brainstorming, we came up this approach:
 
 1. Import the JSON file into the same page as `getStaticProps` and convert the JSON to [YAML format](https://www.tutorialspoint.com/yaml/yaml_basics.htm), perhaps using a library like [json2yaml](https://github.com/jeffsu/json2yaml)
-2. Concatenate the newly-created YAML string with the JSX string prior to hydration. This creates a MDX string with frontmatter. Frontmatter is data in YAML format placed at the beginning of Markdown files in order to store information about the Markdown file and it's contents. This data usually includes the date the file was modified, the content's author, any tags or otherwise identifying information associated with the content, etc.
+2. Concatenate the newly-created YAML string with the JSX string prior to hydration. This creates a MDX string with frontmatter. Frontmatter is data in YAML format placed at the beginning of Markdown files in order to store information about the Markdown file and its contents. This data usually includes the date the file was modified, the content's author, any tags or otherwise identifying information associated with the content, etc.
 3. Hydrate the frontmatter into a JavaScript object using the [`gray-matter`](https://github.com/jonschlinkert/gray-matter) library, or a similar frontmatter processing library.
 4. Return a `props` object including the the hydrated JSX and JavaScript object. This `props` object is passed to the component on the client side.
 
@@ -81,6 +81,6 @@ export const getStaticProps = async () => {
 };
 ```
 
-Now, the `userData` object can be destructured on the client side, and it's data will be read by the hydrated JSX at build time.
+Now, the `userData` object can be destructured on the client side, and its data will be read by the hydrated JSX at build time.
 
 Voila! A SSG, CMS-driven site with the ability to switch themes on demand!

@@ -1,7 +1,7 @@
 ---
 title: "The Graph: Hasura for the Ethereum Blockchain"
 hero_image: giraffe.jpg
-tags: graphql,blockchain,crypto,ethereum
+tags: graphql,blockchain,ethereum
 published: 06-13-2021
 description: The Graph is a dApp service that generates GraphQL APIs from the Ethereum blockchain.
 ---

@@ -153,7 +153,7 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
             <HStack
               justify={["center", null, "flex-end"]}
               spacing={2}
-              m={["2.5vh 0 !important", null, 0]}
+              m={["1vh 0 !important", null, 0]}
               alignSelf={["flex-end", null, "inherit"]}
             >
               {post?.tags &&
@@ -211,7 +211,7 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
             <Heading as="h3" size="sm" textAlign="center">
               If you found this article useful, please consider donating:
             </Heading>
-            <HStack spacing="5vw" mt="2.5vh !important">
+            <HStack spacing={["10vw", null, "5vw"]} mt="2.5vh !important">
               <Button
                 as="a"
                 fontSize="32px"
