@@ -13,6 +13,7 @@ export interface PostInterface {
   };
   description?: string;
   published?: string;
+  publishedRaw?: string;
   last_edited?: string;
   slug: string;
   title?: string;

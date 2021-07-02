@@ -55,6 +55,7 @@ export const getAllPosts = async (path: string): Promise<PostInterface[]> => {
       frontMatterArr.push({
         ...parsedFile?.data,
         published: dateParser(parsedFile?.data.published),
+        publishedRaw: parsedFile?.data.published,
         hero_image_dimensions: dimensions,
         slug: file.split(".md")[0],
         tags: tags,
@@ -218,5 +219,5 @@ export const sortByDate = (a: SortableDate, b: SortableDate) => {
   const dateA = new Date(a).getTime();
   const dateB = new Date(b).getTime();
 
-  return dateA > dateB ? 1 : -1;
+  return dateA < dateB ? 1 : -1;
 };

@@ -3,6 +3,7 @@ import { Grid } from "@chakra-ui/react";
 import { BlogPostCard } from "src/components/Blog";
 import { getAllPosts, sortByDate } from "src/lib/utils";
 import { BlogInterface, PostInterface } from "src/lib/interfaces";
+import dayjs from "dayjs";
 
 const BlogHome = ({ posts }: BlogInterface) => {
   return (
@@ -51,7 +52,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await getAllPosts("/src/content");
 
   const allPostsSortedByDate = allPosts.sort((a, b) =>
-    sortByDate(a.published, b.published)
+    sortByDate(a.publishedRaw, b.publishedRaw)
   );
 
   return {
