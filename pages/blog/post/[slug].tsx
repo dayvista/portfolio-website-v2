@@ -37,7 +37,7 @@ import ScrollToTopButton from "src/components/ScrollToTopButton";
 import DonateCryptoModal from "src/components/DonateCryptoModal";
 import { cryptoDonationOptions } from "src/lib/data";
 import Head from "next/head";
-import { stripHtml } from "string-strip-html";
+// import { stripHtml } from "string-strip-html";
 import { NextSeo } from "next-seo";
 import { PostInterface } from "src/lib/interfaces";
 // import axios from "axios";
@@ -63,17 +63,17 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  useEffect(() => {
-    const pTags = document.getElementsByTagName("p");
+  // useEffect(() => {
+  //   const pTags = document.getElementsByTagName("p");
 
-    for (let i = 0; i < pTags.length; i++) {
-      if (pTags[i].parentElement.localName === "li") {
-        pTags[i].outerHTML = stripHtml(pTags[i].outerHTML, {
-          onlyStripTags: ["p"],
-        }).result;
-      }
-    }
-  }, []);
+  //   for (let i = 0; i < pTags.length; i++) {
+  //     if (pTags[i].parentElement.localName === "li") {
+  //       pTags[i].outerHTML = stripHtml(pTags[i].outerHTML, {
+  //         onlyStripTags: ["p"],
+  //       }).result;
+  //     }
+  //   }
+  // }, []);
 
   return router.isFallback || !post ? (
     <LoadingDynamic />
