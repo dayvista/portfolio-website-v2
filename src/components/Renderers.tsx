@@ -132,9 +132,9 @@ const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
         </Box>
       );
     },
-    paragraph: (node: RenderPropsTypes) => {
-      if (node.children[0].props.node.type === "image") {
-        const { src, alt } = node.children[0].props;
+    paragraph: ({ children }: RenderPropsTypes) => {
+      if (children[0]?.props?.node?.type === "image") {
+        const { src, alt } = children[0].props;
 
         return (
           <Box
@@ -153,7 +153,7 @@ const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
           </Box>
         );
       } else {
-        return <p style={{ display: "inline" }}>{node.children}</p>;
+        return <p style={{ display: "inline" }}>{children}</p>;
       }
     },
   };

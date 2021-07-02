@@ -93,7 +93,7 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
           src="https://discuss.server.gammaguys.studio/js/commento.js"
         />
       </Head>
-      <Box position="fixed" top={0} left={0} mt="0 !important">
+      <Box position="fixed" top={0} left={0} mt="0 !important" zIndex={2}>
         <ProgressBar
           bgcolor={colorMode === "light" ? "#766c79" : "#c3bbc4"}
           height="0.35rem"
