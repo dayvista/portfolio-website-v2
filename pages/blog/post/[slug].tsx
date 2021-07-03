@@ -27,12 +27,7 @@ import Renderers from "src/components/Renderers";
 import { default as NextImage } from "next/image";
 import styles from "src/theme/css/Post.module.css";
 import { ChakraDollar } from "src/lib/icons";
-import {
-  useState,
-  useRef,
-  useEffect as useClientEffect,
-  useLayoutEffect,
-} from "react";
+import { useState, useRef } from "react";
 import ScrollToTopButton from "src/components/ScrollToTopButton";
 import DonateCryptoModal from "src/components/DonateCryptoModal";
 import { cryptoDonationOptions } from "src/lib/data";
@@ -40,9 +35,6 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { PostInterface } from "src/lib/interfaces";
 // import axios from "axios";
-
-const useEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useClientEffect;
 
 type BlogPostProps = { post: PostInterface; slug: string };
 const BlogPost = ({ post, slug }: BlogPostProps) => {
@@ -185,6 +177,7 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
               "li, li a": {
                 fontSize: "18px",
               },
+              "li p": { display: "inline" },
               p: { fontSize: "18px" },
             }}
           >

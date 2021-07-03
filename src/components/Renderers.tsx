@@ -153,7 +153,7 @@ const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
           </Box>
         );
       } else {
-        return <p style={{ display: "inline" }}>{children}</p>;
+        return <p>{children}</p>;
       }
     },
   };
