@@ -39,7 +39,7 @@ export const getStaticProps = async () => {
 
 ## Making the Theme Compatible with Dynamic Data
 
-Now this is all well said and done, except the user's info, as stored in key value pairs in a JSON object fetched from the CMS, has to be injected into the otherwise static hydrated JSX.
+Now this is all well said and done, except the user's info, as stored in key-value pairs, has to be injected into the otherwise static hydrated JSX.
 
 After hours of brainstorming, we came up this approach:
 

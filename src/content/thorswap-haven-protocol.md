@@ -32,6 +32,8 @@ Thorchain bypasses the custodial element of exchanging cross-chain assets. In do
 
 The con of transactional transparency is that anyone can view your wallet's holdings, so long as they know the corresponding public key. Coins such as Monero and ZCash have obfuscation capabilities that are able to hide the identities of wallets involved in transactions. However, CEXs generally make trading in private currencies difficult, if not impossible. The trade of anonymous currencies on government-regulated platforms poses obvious legal risks to CEX operators. It also poses a threat to the statist thesis that privacy is merely an asset to criminal behavior.
 
+![DeFi can be a rocky path with many legal perils](https://res.cloudinary.com/gamma-guys-studio/image/upload/v1625270005/stones_hzvegn.jpg)
+
 ## A Safe Haven
 
 [The Haven Protocol](https://havenprotocol.org/), an open-source fork of Monero, bears similar privacy attributes. Haven does this while expanding on the concept of private assets in a way that makes it extremely useful to DeFi.
@@ -39,6 +41,8 @@ The con of transactional transparency is that anyone can view your wallet's hold
 Haven's native coin, XHV, is burned to create synths (synthetic assets) that are pegged to real world assets, such as USD and gold. Decentralization is maintained by relying on [Chainlink oracles](https://chain.link/solutions/defi) to peg synth valuations. This is in contrast to the centralization risk posed when synths are backed by physical assets or the trust of an intermediary entity (such as is the case with USDT - Tether). Haven offers a unique web wallet that allows users to store their xAssets (Haven synths) in a private, untraceable fashion. Assets such as xUSD and xAU can be exchanged in-wallet, without even need for an exchange.
 
 This combination of private stablecoins with a private wallet creates a truly anonymous store of value safe from the volatility of asset markets - and protected from [the perils of government bureaucracy](https://money.cnn.com/2018/01/17/news/economy/venezuela-cash-crisis/index.html).
+
+![Thorchain and Haven Protocol promise to cultivate a positive environment for creating nest eggs](https://res.cloudinary.com/gamma-guys-studio/image/upload/v1625270005/eggs_gprkxz.jpg)
 
 ## Love at First Swap
 
