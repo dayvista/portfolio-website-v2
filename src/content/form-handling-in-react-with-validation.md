@@ -193,4 +193,4 @@ It's best to also validate form data on the server side in order to protect agai
 
 ---
 
-That concludes this walkthrough. I suggest you try out other form validation libraries to see which one you like best. Some developers prefer schema-based validation. Thanks for reading! If you found this blog post helpful, or ran into any errors along the way, please leave a comment below and I'll respond as soon as I can!
+That concludes this walkthrough. I suggest you try out other form validation libraries to see which one you like best - some developers prefer schema-based and other methods of validation. Thanks for reading!
