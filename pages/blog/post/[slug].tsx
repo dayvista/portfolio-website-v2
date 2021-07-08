@@ -31,7 +31,6 @@ import { useState, useRef } from "react";
 import ScrollToTopButton from "src/components/ScrollToTopButton";
 import DonateCryptoModal from "src/components/DonateCryptoModal";
 import { cryptoDonationOptions } from "src/lib/data";
-import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { PostInterface } from "src/lib/interfaces";
 // import axios from "axios";
@@ -59,9 +58,11 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
   ) : (
     <>
       <NextSeo
+        {...(post.title ? { title: post.title } : {})}
         description={post.description}
         openGraph={{
           url: `https://liamdavis.dev/blog/post/${slug}`,
+          ...(post.title ? { title: post.title } : {}),
           description: post.description,
           images: [
             {
@@ -79,12 +80,6 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
           ],
         }}
       />
-      <Head>
-        <script
-          defer
-          src="https://discuss.server.gammaguys.studio/js/commento.js"
-        />
-      </Head>
       <Box position="fixed" top={0} left={0} mt="0 !important" zIndex={2}>
         <ProgressBar
           bgcolor={colorMode === "light" ? "#766c79" : "#c3bbc4"}
@@ -186,7 +181,6 @@ const BlogPost = ({ post, slug }: BlogPostProps) => {
               children={post.md}
             />
           </VStack>
-          <Box id="commento" m="5vh auto !important" />
           <VStack w="100%">
             <Heading as="h3" size="sm" textAlign="center">
               If you found this article useful, please consider donating:

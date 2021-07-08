@@ -6,39 +6,37 @@ published: 07-01-2021
 description: Permaculture allows people to grow food while massively benefiting their local and macro environments.
 ---
 
-> This article is an ongoing body of work. It's basically a knowledge dump comprised of what I've experienced and read about in the world of permaculture and sustainable ag over the last 5 years. Thus, it's nowhere near complete! If you have any advice, comments, or contributions you'd like to make, feel free to drop a comment below.
+> This article is an ongoing body of work. It's basically a knowledge dump made up of what I've read about/experienced regarding permaculture over the last 5 years. It's nowhere near complete. If you have any advice, comments, or contributions you'd like to make, feel free to drop me an [email](mailto:liamdavis@tuta.io) or reach out on [Telegram](https://t.me/liamdavis).
 
-### Moving Towards a Permanent Culture
+## Moving Towards Permanence
 
 Permaculture is a way of organizing systems in accordance with natural law and the local environment to make them self-sustaining - hence, a "perma-culture".
 
 Think of a forest; how often do you have to go there and dump fertilizer on the ground to keep it from dying? Never. What happens when a forest system is out of balance? A corrective force emerges that brings the entire system back into balance - i.e., a forest fire that occurs there is an excessive amount of old, dead trees. The fire will burn away the upper canopy, enrich the soil with ash, and allow light to reach seeds and saplings.
 
-If this sounds "woo woo" or too good to be true, [here's a suburban example](https://www.youtube.com/watch?v=4XraLIgNfTc). Here's an extreme and very cool [example](https://www.youtube.com/watch?v=2xcZS7arcgk), where a team took completely infertile land (a desert) and turned it into what's called a 'food forest'.
+If this sounds too good to be true, [here's a suburban example](https://www.youtube.com/watch?v=4XraLIgNfTc). Here's another extreme [example](https://www.youtube.com/watch?v=2xcZS7arcgk), where a team took completely infertile land (a desert) and turned it into what's called a 'food forest'.
 
-These principles can be applied to any terrain or any size space, even an apartment in the city. This is because permaculture seeks to mimic the progression of natural systems, which is an ethos at home anywhere on Earth.
+These principles can be applied to any terrain or sized space, even an apartment in the city. This is because permaculture seeks to mimic the form and function of Earth's natural systems.
 
-> A food forest can be defined as a self sustaining, closed-loop organic system that provides nutritional, medicinal, and economic yields.
+> A food forest is an organic, self sustaining, closed-loop system that provides nutritional, medicinal, and economic yields.
 
-Sustainable agriculture actually benefits from animals being involved. Grazed pasture is enriched with manure and aerated by the snouts, beaks, hooves, and claws of any animals involved. Goats can even be used to clear out hardy, invasive brush - they get a meal while saving you hours of yard work. Successful examples of beneficial animal permaculture include Joel Salatin's [Polyface Farm](https://www.youtube.com/watch?v=smVYindYP3w) (he's even a meat supplier for Chipotle, a fast food chain in the United States). [Mark Shepherd](https://youtu.be/xBRnPcZ8xUo) is another good example.
+Side note: Contrary to environmentalist belief, sustainable agriculture actually benefits from animals being involved. Grazed pasture is enriched with manure and aerated by the foraging action of any animals involved. Goats can even be used to clear out hardy, invasive brush - they get a meal while saving you hours of yard work. Successful examples of beneficial animal permaculture include Joel Salatin's [Polyface Farm](https://www.youtube.com/watch?v=smVYindYP3w) (he even supplies meat for Chipotle, a fast food chain in the United States). [Mark Shepherd](https://youtu.be/xBRnPcZ8xUo) is another good example.
 
 ![Cows grazing in a foggy pasture](https://res.cloudinary.com/gamma-guys-studio/image/upload/v1625194078/cows_grazing_ordrhg.jpg)
 
 ## 0. Planning
 
-Be prepared to wait at least 6 months before your garden begins being productive. The soil must be prepared, perennial and supporting plants (nitrogen fixers, green manure, etc.) need to be put in the ground, and you generally need to make sure you have your ducks in a row before diving in head-first.
+Be prepared to wait at least 6 months before your garden or farm starts being truly productive. The soil must be prepared, perennial and supporting plants (nitrogen fixers, green manure, etc.) need to be put in the ground, and you must generally make sure you have your ducks in a row before diving in head-first.
 
 **While planning your design, take the following into consideration:**
 
-Over time, external inputs (fertilizer, landscaping, soil tests) should decrease as internal inputs (on-site animal manure, compost, water catchment) increase. Plan to invest more time, energy, and money in the beginning for decreased costs down the line.
+Over time, external inputs (fertilizer, landscaping, soil tests) should decrease and internal inputs (on-site animal manure, compost, water catchment) should increase. Plan to invest more time, energy, and money in the beginning for decreased costs down the line.
 
-Attempt to source external inputs from 'waste products' - wood mulch from tree removal services, cardboard boxes from a department store, or greenhouse parts from craigslist, to name a few.
+Attempt to source inputs from 'waste products' - wood mulch from tree removal services, cardboard boxes from a department store, or greenhouse parts from craigslist, to name a few.
 
-Identify the slope of your property. Water runs down slope - fertilizer sources (like chicken coops) and rainwater catchment can be placed upslope. Water intensive crops are placed down slope in order to [capture and hold water](http://en.permaculturescience.org/english-pages/3-earth-care/water/abc-slow-spread-sink-it) on the property.
+Identify the slope of your property. Water runs down slope - fertilizer sources (like chicken coops) and rainwater catchment can be placed upslope. Water intensive crops are placed down slope in order to [capture and hold water](http://en.permaculturescience.org/english-pages/3-earth-care/water/abc-slow-spread-sink-it) on the property. Identify areas where you can implement [berms and swales](https://www.tenthacrefarm.com/permaculture-swale/) into your design - along contour lines in the slope of your property, along the edges of walkways, etc. Capturing water that flows over the contour of the land is one of the most efficient means of increasing fertility, especially in dry environments.
 
-Identify areas where you can implement [berms and swales](https://www.tenthacrefarm.com/permaculture-swale/) into your design - along contour lines in the slope of your property, along the edges of walkways, etc.
-
-Consider organizing your property in terms of [zones](https://www.youtube.com/watch?v=OY5lIgfysuc) to minimize the energy it takes for you to traverse your property. Remember that forests are inherently feminine and utilizing [circular designs](https://www.tenthacrefarm.com/circle-garden-design/) in your garden can reduce energy expenditure on your part (and make things more interesting/visually appealing).
+Consider organizing your property in terms of [zones](https://www.youtube.com/watch?v=OY5lIgfysuc) to minimize the energy it takes for you to traverse your property. Remember that forests are inherently feminine, and utilizing [circular designs](https://www.tenthacrefarm.com/circle-garden-design/) in your garden can reduce energy expenditure on your part (and make things more interesting/visually appealing).
 
 In the northern hemisphere, the southwest direction gets the most sun. Orient your design to reflect this by placing sun-loving plants facing toward the southwest (or generally sunniest part of the property), and shade-loving plants in the northeast/shadiest part of the property.
 
@@ -52,7 +50,7 @@ Don't solely focus on incorporating food-producing plants into your garden. Plan
 
 Furthermore, look into [companion planting](https://worldwidepermaculture.com/wp-content/uploads/2018/11/World-Wide-Permaculture-Companion-Planting-Guide-1.pdf) as a means of controlling pests and generally creating a hospitable environment for your plants
 
-![A row of companion plants in a raised garden bed, including chives and lettuce](https://res.cloudinary.com/gamma-guys-studio/image/upload/v1625194078/companion_plants_k2rxz6.jpg)
+![A row of companion plants such as chives and lettuce, planted in a raised garden bed](https://res.cloudinary.com/gamma-guys-studio/image/upload/v1625194078/companion_plants_k2rxz6.jpg)
 
 ## 1. First Steps
 

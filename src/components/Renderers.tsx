@@ -84,7 +84,8 @@ const Renderers = (isMobile: boolean, colorMode: ColorMode) => {
           color={colorMode === "light" ? "black" : "white"}
           p="1%"
           borderRadius="5px"
-          m="1.5vh 0 !important"
+          mx="auto !important"
+          my="1.5vh 0 !important"
           fontSize="18px"
           className={styles.blockquote_container}
         >
